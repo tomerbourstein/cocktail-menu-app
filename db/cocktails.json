@@ -1,0 +1,44 @@
+{
+  "db": {
+    "vodka": {
+      "moscow_mule": {
+        "ingredients": ["vodka", "lemon_juice", "ginger_beer"],
+        "flavours": ["sour", "spicy"],
+        "properties": [
+          "light",
+          "seasoned",
+          "ginger",
+          "sparkling",
+          "refreshing"
+        ],
+        "strength": 2
+      },
+      "bloody_mary": {
+        "ingredients": [
+          "vodka",
+          "tomato_juice",
+          "lemon_juice",
+          "spices",
+          "tabasco"
+        ],
+        "flavours": ["sour", "spicy", "spiced"],
+        "properties": ["heavy", "seasoned"],
+        "strength": 2
+      }
+    },
+    "whiskey": {
+      "old_fashioned": {
+        "ingredients": ["whiskey", "brown_sugar", "bitters"],
+        "flavours": ["sweet", "bitter", "spiced"],
+        "properties": ["heavy", "strong", "sit_and_drink"],
+        "strength": 3
+      },
+      "whiskey_sour": {
+        "ingredients": ["whiskey", "lemon_juice", "egg_white", "sugar"],
+        "flavours": ["sweet", "sour"],
+        "properties": ["medium", "thick", "full_body"],
+        "strength": 2
+      }
+    }
+  }
+}
