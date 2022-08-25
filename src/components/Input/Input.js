@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux/";
 import { inputActions } from "../../store/input-slice";
+import { menuActions } from "../../store/menu-slice";
 import classes from "./Input.module.css";
 const Input = () => {
   const alcohol = useSelector((state) => state.input.alcohol);
@@ -17,6 +18,12 @@ const Input = () => {
     const enteredAmount = event.target.value;
     dispatch(inputActions.enterAmount({ amount: enteredAmount }));
   };
+
+  /////////////// On button click change the initial generated state to true.
+  const generateMenuHandler = (event) => {
+    dispatch(menuActions.toggleGenerated());
+  };
+
   return (
     <div className={classes.inputField}>
       <div>
@@ -37,7 +44,9 @@ const Input = () => {
           placeholder="enter a number"
         ></input>
       </div>
-      <button>Generate</button>
+      <button onClick={generateMenuHandler} type="button">
+        Generate
+      </button>
     </div>
   );
 };
