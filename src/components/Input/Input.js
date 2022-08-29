@@ -35,10 +35,12 @@ const Input = () => {
     dispatch(menuActions.toggleGenerated());
   };
 
+  ////////////// On button click dispatch increment by 1 reducer.
   const plusButtonHandler = () => {
     dispatch(inputActions.increment());
   };
 
+  ////////////// On button click dispatch decrement by 1 reducer.
   const minusButtonHandler = () => {
     dispatch(inputActions.decrement());
   };
