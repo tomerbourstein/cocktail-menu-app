@@ -7,7 +7,8 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import classes from "./Input.module.css";
 const Input = () => {
-  const amount = useSelector((state) => state.input.amount);
+  const alcohol = useSelector(state => state.input.onChangeAlcohol)
+  const amount = useSelector((state) => state.input.onChangeAmount);
   const liquers = useSelector((state) => state.dataBase.liquers);
   const dispatch = useDispatch();
 
@@ -33,6 +34,7 @@ const Input = () => {
   const generateMenuHandler = (event) => {
     event.preventDefault();
     dispatch(menuActions.toggleGenerated());
+    dispatch(inputActions.setPreference({preferredAlcohol: alcohol, preferredAmount: amount}))
   };
 
   ////////////// On button click dispatch increment by 1 reducer.

@@ -2,26 +2,35 @@ import { createSlice } from "@reduxjs/toolkit/";
 
 const inputSlice = createSlice({
   name: "input",
-  initialState: { alcohol: "", amount: "" },
+  initialState: {
+    preferredAlcohol: "",
+    preferredAmount: "",
+    onChangeAlcohol: "",
+    onChangeAmount: "",
+  },
   reducers: {
+    setPreference (state,action) {
+      state.preferredAlcohol = action.payload.preferredAlcohol;
+      state.preferredAmount = action.payload.preferredAmount;
+      console.log(action.payload);
+    },
     enterAlcohol(state, action) {
-      state.alcohol = action.payload.alcohol;
-      console.log(state.alcohol);
+      state.onChangeAlcohol = action.payload.alcohol;
     },
     enterAmount(state, action) {
-      state.amount = action.payload.amount;
+      state.onChangeAmount = action.payload.amount;
     },
     increment(state) {
-      if(state.amount <= 3) {
-        state.amount++;
+      if (state.onChangeAmount <= 3) {
+        state.onChangeAmount++;
       }
     },
-    decrement (state) {
-      if (state.amount > 1){
-        state.amount--;
+    decrement(state) {
+      if (state.onChangeAmount > 1) {
+        state.onChangeAmount--;
       }
-    }
-  }, 
+    },
+  },
 });
 
 export const inputActions = inputSlice.actions;
