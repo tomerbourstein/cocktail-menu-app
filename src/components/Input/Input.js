@@ -32,6 +32,7 @@ const Input = () => {
   };
 
   /////////////// On button click change the initial generated state to true.
+  /////////////// dispatch preferences to set the filtered array cocktails.
   const generateMenuHandler = (event) => {
     event.preventDefault();
     dispatch(menuActions.toggleGenerated());
