@@ -11,19 +11,21 @@ const Input = () => {
   const liquers = useSelector((state) => state.cocktails.liquers);
   const dispatch = useDispatch();
 
-
   ///////////// Changing the Alcohol input, and dispatch to redux store to save state.
   const enterAlcoholInputHandler = (event, newValue) => {
     dispatch(inputActions.enterAlcohol({ alcohol: newValue }));
   };
 
-  /////////////// Changing the Amount input, Check if the input is numeric and not empty
+  /////////////// Changing the Amount input, Check if the input is smaller then 1
+  /////////////// Check if the input is nuperic and not empty
   /////////////// dispatch to redux store to save state.
   const enterAmountInputHandler = (event) => {
     const regex = /^[0-4\b]+$/;
     const enteredAmount = event.target.value;
-    if (enteredAmount === "" || regex.test(enteredAmount)) {
-      dispatch(inputActions.enterAmount({ amount: enteredAmount }));
+    if (enteredAmount.length <= 1) {
+      if (enteredAmount === "" || regex.test(enteredAmount)) {
+        dispatch(inputActions.enterAmount({ amount: enteredAmount }));
+      }
     }
   };
 
@@ -33,6 +35,13 @@ const Input = () => {
     dispatch(menuActions.toggleGenerated());
   };
 
+  const plusButtonHandler = () => {
+    dispatch(inputActions.increment());
+  };
+
+  const minusButtonHandler = () => {
+    dispatch(inputActions.decrement());
+  };
   return (
     <form onSubmit={generateMenuHandler} className={classes.inputField}>
       <Box sx={{ width: 210, margin: "auto" }}>
@@ -49,13 +58,20 @@ const Input = () => {
         />
       </Box>
       <div>
+        <button type="button" onClick={minusButtonHandler}>
+          -
+        </button>
         <TextField
+          autoComplete="off"
           id="outlined-basic"
           label="How Many?"
           variant="outlined"
           value={amount}
           onChange={enterAmountInputHandler}
         />
+        <button type="button" onClick={plusButtonHandler}>
+          +
+        </button>
       </div>
       <button type="submit">Generate</button>
     </form>
