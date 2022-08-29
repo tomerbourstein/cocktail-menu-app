@@ -6,6 +6,7 @@ const inputSlice = createSlice({
   reducers: {
     enterAlcohol(state, action) {
       state.alcohol = action.payload.alcohol;
+      console.log(state.alcohol);
     },
     enterAmount(state, action) {
       state.amount = action.payload.amount;
