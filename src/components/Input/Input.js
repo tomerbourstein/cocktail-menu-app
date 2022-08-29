@@ -8,7 +8,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import classes from "./Input.module.css";
 const Input = () => {
   const amount = useSelector((state) => state.input.amount);
-  const liquers = useSelector((state) => state.cocktails.liquers);
+  const liquers = useSelector((state) => state.dataBase.liquers);
   const dispatch = useDispatch();
 
   ///////////// Changing the Alcohol input, and dispatch to redux store to save state.

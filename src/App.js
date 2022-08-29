@@ -1,6 +1,6 @@
 import { Fragment, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { cocktailsListActions } from "./store/cocktails-list-slice";
+import { dataBaseActions } from "./store/dataBase-slice";
 import Header from "./components/Header/Header";
 import Input from "./components/Input/Input";
 import Main from "./components/Main/Main";
@@ -22,17 +22,17 @@ function App() {
         throw new Error("Could not fetch data!");
       }
       const data = await response.json();
-      const cocktailsList = [];
+      const dataBase = [];
       const liquers = [];
       for (const key in data) {
-        cocktailsList.push({
+        dataBase.push({
           id: key,
           main_liquier: key,
           cocktail: data[key],
         });
         liquers.push(key);
       }
-      dispatch(cocktailsListActions.fetchData({ cocktailsList, liquers }));
+      dispatch(dataBaseActions.fetchData({ dataBase, liquers }));
       // dispatch(cocktailsListActions.fetchData(liquers));
     };
     handleFetchData();
