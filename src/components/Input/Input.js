@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux/";
 import { inputActions } from "../../store/input-slice";
 import { menuActions } from "../../store/menu-slice";
 
+import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import classes from "./Input.module.css";
@@ -33,13 +34,10 @@ const Input = () => {
 
   return (
     <form onSubmit={generateMenuHandler} className={classes.inputField}>
-      <div>
-        <label>I Love to drink</label>
+      <Box sx={{ width: 210, margin: "auto" }}>
         <Autocomplete
           id="combo-box-demo"
-          sx={{ width: 200 }}
           options={["Whiskey", "Vodka", "Tequila", "Rum"]}
-          // value={alcohol}
           autoHighlight
           isOptionEqualToValue={(option, value) => option.id === value.id}
           getOptionLabel={(option) =>
@@ -48,15 +46,15 @@ const Input = () => {
           onChange={enterAlcoholInputHandler}
           renderInput={(params) => <TextField {...params} label="Liquer" />}
         />
-      </div>
+      </Box>
       <div>
-        <label>How many drinks</label>
-        <input
+        <TextField
+          id="outlined-basic"
+          label="How Many?"
+          variant="outlined"
           value={amount}
           onChange={enterAmountInputHandler}
-          type="text"
-          placeholder="Let's Start With One"
-        ></input>
+        />
       </div>
       <button type="submit">Generate</button>
     </form>
