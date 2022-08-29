@@ -2,6 +2,7 @@
   "db": {
     "vodka": {
       "moscow_mule": {
+        "image": "https://www.liquor.com/thmb/j0DKX_lCKZUVeuZoN-36CqtqHzM=/735x0/__opt__aboutcom__coeus__resources__content_migration__liquor__2017__03__07152853__moscow-mule-720x720-recipe-61ce552013b04880901b2abfb63017fd.jpg",
         "ingredients": ["vodka", "lemon_juice", "ginger_beer"],
         "flavours": ["sour", "spicy"],
         "properties": [
@@ -11,32 +12,71 @@
           "sparkling",
           "refreshing"
         ],
+        "receipt": ["1_1/2_oz_vodka", "1/6_oz_lemon_juice", "4_oz_ginger_beer"],
+        "preperation": "Combine vodka and ginger beer in a copper mug or highball glass filled with ice. Add lime juice. Stir gently and garnish with a lime slice.",
+        "served": "On the rocks; poured over ice",
+        "garnish": "lime_slice",
         "strength": 2
       },
       "bloody_mary": {
+        "image": "https://www.liquor.com/thmb/076lNK7XXALejxpKn_utvtImbHk=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/bloody-mary-720x720-primary-28cf1aaa79d0424d951901fcc0a42e91.jpg",
         "ingredients": [
           "vodka",
           "tomato_juice",
           "lemon_juice",
-          "spices",
-          "tabasco"
+          "salt",
+          "pepper",
+          "tabasco",
+          "worcestershire_sauce"
         ],
         "flavours": ["sour", "spicy", "spiced"],
         "properties": ["heavy", "seasoned"],
+        "receipt": [
+          "1_1/2_oz_vodka",
+          "1/2_oz_lemon_juice",
+          "3_oz_tomato_juice"
+        ],
+        "preperation": "Add dashes of Worcestershire Sauce, Tabasco, salt and pepper into highball glass, then pour all ingredients into highball with ice cubes. Stir gently. Garnish with celery stalk and lemon wedge (optional).",
+        "served": "On the rocks; poured over ice",
+        "garnish": ["celery_stalk", "cornichon", "lemon_slice"],
         "strength": 2
       }
     },
     "whiskey": {
       "old_fashioned": {
+        "image": "https://www.liquor.com/thmb/_0WLXSRV03SfpWgZ1hwiAkyIrzE=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2018__05__08113350__bourbon-old-fashioned-720x720-recipe-ade6f7780c304999be3577e565c9bcdd.jpg",
         "ingredients": ["whiskey", "brown_sugar", "bitters"],
         "flavours": ["sweet", "bitter", "spiced"],
         "properties": ["heavy", "strong", "sit_and_drink"],
+        "receipt": [
+          "1_1/2_oz_whiskey",
+          "1_teaspoon_brown_sugar",
+          "2_dashes_angostura_bitters"
+        ],
+        "preperation": "Place sugar in old fashioned glass and saturate with bitters. Muddle until dissolved. Fill the glass with ice cubes and add whiskey. Garnish with orange slice, and a cocktail cherry.",
+        "served": "On the rocks; poured over ice",
+        "garnish": ["orange_twist", "cherry"],
         "strength": 3
       },
       "whiskey_sour": {
+        "image": "https://www.liquor.com/thmb/j68HLUx9ATtBoAvNH5Sv9sMD_XQ=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/whiskey-sour-720x720-primary-v2-4fc831b613964da5a19cdbfda917d7df.jpg",
         "ingredients": ["whiskey", "lemon_juice", "egg_white", "sugar"],
         "flavours": ["sweet", "sour"],
         "properties": ["medium", "thick", "full_body"],
+        "receipt": [
+          "1_1/2_oz_whiskey",
+          "1_dash_egg_white",
+          "1_oz_lemon_juice",
+          "1/2_oz_sugar"
+        ],
+        "preperation": "Shake with ice. Strain into ice-filled old-fashioned glass to serve `on the rocks`.",
+        "served": "Shaken; on the rocks",
+        "garnish": [
+          "orange_slice",
+          "maraschino_cherry",
+          "lemon_rind",
+          "sugared_glass"
+        ],
         "strength": 2
       }
     }
