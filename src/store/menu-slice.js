@@ -5,7 +5,7 @@ const menuSlice = createSlice({
   initialState: { generated: false },
   reducers: {
     toggleGenerated(state) {
-      state.generated = !state.generated;
+      state.generated = true;
     },
   },
 });
