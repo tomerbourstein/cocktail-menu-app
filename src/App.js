@@ -9,6 +9,10 @@ import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
+
+
+  ////////// Only when page is loaded fetch the data from firebase. then create two arrays
+  ////////// 1. Contains the liquers in the db. 2. the entire db.
   useEffect(() => {
     const handleFetchData = async () => {
       const response = await fetch(
