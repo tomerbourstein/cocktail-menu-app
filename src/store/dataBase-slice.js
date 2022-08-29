@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const dataBaseSlice = createSlice({
   name: "dataBase",
@@ -6,8 +6,7 @@ const dataBaseSlice = createSlice({
     dataBase: [],
     liquers: [],
     preferences: "",
-    filterdByLiquer: [],
-    randomCocktails: [],
+    filteredByLiquer: [],
   },
   reducers: {
     fetchData(state, action) {
@@ -24,10 +23,8 @@ const dataBaseSlice = createSlice({
         (element) => element.main_liquer === action.payload.toLowerCase()
       );
       for (const key in foundAlcohol.cocktail) {
-        state.filterdByLiquer.push(foundAlcohol.cocktail[key]);
+        state.filteredByLiquer.push(foundAlcohol.cocktail[key]);
       }
-
-      
     },
   },
 });
