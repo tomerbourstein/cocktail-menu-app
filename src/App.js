@@ -10,7 +10,6 @@ import "./App.css";
 function App() {
   const dispatch = useDispatch();
 
-
   ////////// Only when page is loaded fetch the data from firebase. then create two arrays
   ////////// 1. Contains the liquers in the db. 2. the entire db.
   useEffect(() => {
@@ -27,16 +26,16 @@ function App() {
       for (const key in data) {
         dataBase.push({
           id: key,
-          main_liquier: key,
+          main_liquer: key,
           cocktail: data[key],
         });
         liquers.push(key);
       }
       dispatch(dataBaseActions.fetchData({ dataBase, liquers }));
-      // dispatch(cocktailsListActions.fetchData(liquers));
     };
     handleFetchData();
   }, [dispatch]);
+
   return (
     <div className="App">
       <Fragment>

@@ -3,16 +3,13 @@ import { createSlice } from "@reduxjs/toolkit/";
 const inputSlice = createSlice({
   name: "input",
   initialState: {
-    preferredAlcohol: "",
-    preferredAmount: "",
+    preferences: "",
     onChangeAlcohol: "",
     onChangeAmount: "",
   },
   reducers: {
     setPreference (state,action) {
-      state.preferredAlcohol = action.payload.preferredAlcohol;
-      state.preferredAmount = action.payload.preferredAmount;
-      console.log(action.payload);
+      state.preferences = action.payload;
     },
     enterAlcohol(state, action) {
       state.onChangeAlcohol = action.payload.alcohol;
