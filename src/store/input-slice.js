@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit/";
 
 const inputSlice = createSlice({
   name: "input",
-  initialState: { alcohol: "", amount: 0 },
+  initialState: { alcohol: "", amount: "" },
   reducers: {
     enterAlcohol(state, action) {
       state.alcohol = action.payload.alcohol;
