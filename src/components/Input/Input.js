@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux/";
 import { inputActions } from "../../store/input-slice";
 import { menuActions } from "../../store/menu-slice";
+import { dataBaseActions } from "../../store/dataBase-slice";
 
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -34,7 +35,8 @@ const Input = () => {
   const generateMenuHandler = (event) => {
     event.preventDefault();
     dispatch(menuActions.toggleGenerated());
-    dispatch(inputActions.setPreference({preferredAlcohol: alcohol, preferredAmount: amount}))
+    dispatch(dataBaseActions.setPreference({preferredAlcohol: alcohol, preferredAmount: amount}))
+    dispatch(dataBaseActions.filterByLiquer(alcohol));
   };
 
   ////////////// On button click dispatch increment by 1 reducer.

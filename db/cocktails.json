@@ -2,6 +2,7 @@
   "db": {
     "vodka": {
       "moscow_mule": {
+        "name": "moscow_mule",
         "image": "https://www.liquor.com/thmb/j0DKX_lCKZUVeuZoN-36CqtqHzM=/735x0/__opt__aboutcom__coeus__resources__content_migration__liquor__2017__03__07152853__moscow-mule-720x720-recipe-61ce552013b04880901b2abfb63017fd.jpg",
         "ingredients": ["vodka", "lemon_juice", "ginger_beer"],
         "flavours": ["sour", "spicy"],
@@ -19,6 +20,7 @@
         "strength": 2
       },
       "bloody_mary": {
+        "name": "bloody_mary",
         "image": "https://www.liquor.com/thmb/076lNK7XXALejxpKn_utvtImbHk=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/bloody-mary-720x720-primary-28cf1aaa79d0424d951901fcc0a42e91.jpg",
         "ingredients": [
           "vodka",
@@ -44,6 +46,7 @@
     },
     "whiskey": {
       "old_fashioned": {
+        "name": "old_fashioned",
         "image": "https://www.liquor.com/thmb/_0WLXSRV03SfpWgZ1hwiAkyIrzE=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2018__05__08113350__bourbon-old-fashioned-720x720-recipe-ade6f7780c304999be3577e565c9bcdd.jpg",
         "ingredients": ["whiskey", "brown_sugar", "bitters"],
         "flavours": ["sweet", "bitter", "spiced"],
@@ -59,6 +62,7 @@
         "strength": 3
       },
       "whiskey_sour": {
+        "name": "whiskey_sour",
         "image": "https://www.liquor.com/thmb/j68HLUx9ATtBoAvNH5Sv9sMD_XQ=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/whiskey-sour-720x720-primary-v2-4fc831b613964da5a19cdbfda917d7df.jpg",
         "ingredients": ["whiskey", "lemon_juice", "egg_white", "sugar"],
         "flavours": ["sweet", "sour"],
