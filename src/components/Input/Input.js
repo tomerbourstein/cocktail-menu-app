@@ -7,9 +7,10 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import classes from "./Input.module.css";
 const Input = () => {
-  const alcohol = useSelector((state) => state.input.alcohol);
   const amount = useSelector((state) => state.input.amount);
+  const liquers = useSelector((state) => state.cocktails.liquers);
   const dispatch = useDispatch();
+
 
   ///////////// Changing the Alcohol input, and dispatch to redux store to save state.
   const enterAlcoholInputHandler = (event, newValue) => {
@@ -37,7 +38,7 @@ const Input = () => {
       <Box sx={{ width: 210, margin: "auto" }}>
         <Autocomplete
           id="combo-box-demo"
-          options={["Whiskey", "Vodka", "Tequila", "Rum"]}
+          options={liquers}
           autoHighlight
           isOptionEqualToValue={(option, value) => option.id === value.id}
           getOptionLabel={(option) =>
