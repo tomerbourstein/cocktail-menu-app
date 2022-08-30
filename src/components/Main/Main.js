@@ -4,7 +4,7 @@ import classes from "./Main.module.css";
 import Drink from "./Drink";
 import { useEffect } from "react";
 
-const Main = () => {
+const Main = (props) => {
   const dispatch = useDispatch();
   const isGenerated = useSelector((state) => state.menu.generated);
   const filteredByLiquer = useSelector(
@@ -20,11 +20,31 @@ const Main = () => {
     dispatch(menuActions.replaceCocktailsToShow(randomCocktail));
   }, [filteredByLiquer, dispatch]);
 
-
-  const mapCocktails = cocktailsToShow.map(element => <Drink name={element.name} image={element.image}/>);
+  const mapCocktails = cocktailsToShow.map((element) => (
+    <Drink
+      drink={element}
+      // key={element.name}
+      // name={element.name}
+      // ingredients={element.ingredients}
+      // properties={element.properties}
+      // flavours={element.flavours}
+      // garnish={element.garnish}
+      // image={element.image}
+      // preperation={element.preperation}
+      // receipt={element.receipt}
+      // served={element.served}
+      // strength={element.strength}
+    />
+  ));
+  // console.log(cocktailsToShow);
+  // console.log(mapCocktails);
   return (
     <section id="main" className={classes.main}>
-      {isGenerated ? {mapCocktails} : <p>What Would You Like to Drink Tonight?</p>}
+      {isGenerated ? (
+        <div>{mapCocktails}</div>
+      ) : (
+        <p>What Would You Like to Drink Tonight?</p>
+      )}
     </section>
   );
 };

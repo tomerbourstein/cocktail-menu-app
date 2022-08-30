@@ -1,30 +1,59 @@
 import classes from "./Drink.module.css";
 import BloodyMary from "../../media/bloody-mary.png";
-const Drink = () => {
+const Drink = (props) => {
+  const {
+    name,
+    ingredients,
+    properties,
+    flavours,
+    garnish,
+    image,
+    preperation,
+    receipt,
+    served,
+    strength,
+  } = props.drink;
+
   return (
     <div className={classes.drink}>
-      <p>Start with a Bloody Mary</p>
-      <img src={BloodyMary} alt="Bloody-Mary Cocktail"></img>
+      <p>Start with {name}</p>
+      <img src={image} alt={name}></img>
       <div>
-        <span>Vodka</span>
-        <span>Lemon</span>
-        <span>Spices</span>
-        <span>Tabasco</span>
+        {ingredients.map((ingredient) => (
+          <span>{ingredient}</span>
+        ))}
       </div>
 
       <div>
-        <span>Medium Strength</span>
+        <span>strength{strength}</span>
       </div>
 
       <div>
-        <span>Sour</span>
-        <span>Spicey</span>
-        <span>Spiced</span>
+        {flavours.map((flavour) => (
+          <span>{flavour}</span>
+        ))}
       </div>
 
       <div>
-        <span>Heavy</span>
-        <span>Seasoned</span>
+        {properties.map((prop) => (
+          <span>{prop}</span>
+        ))}
+      </div>
+
+      <div>
+        {receipt.map((item) => (
+          <span>{item}</span>
+        ))}
+      </div>
+
+      <div>{preperation}</div>
+
+      <div>{served}</div>
+
+      <div>
+        {garnish.map((item) => (
+          <span>{item}</span>
+        ))}
       </div>
     </div>
   );

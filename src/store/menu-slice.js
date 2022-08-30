@@ -11,7 +11,7 @@ const menuSlice = createSlice({
       if(action.payload === undefined) {
         return;
       }
-      state.cocktailsToShow.push(action.payload);
+      state.cocktailsToShow = [action.payload];
     },
   },
 });
