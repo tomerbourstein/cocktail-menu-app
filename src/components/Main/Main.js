@@ -22,6 +22,7 @@ const Main = (props) => {
 
   const mapCocktails = cocktailsToShow.map((element) => (
     <Drink
+      key={Math.random()}
       drink={element}
       // key={element.name}
       // name={element.name}

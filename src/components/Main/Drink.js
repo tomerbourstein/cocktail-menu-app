@@ -1,5 +1,4 @@
 import classes from "./Drink.module.css";
-import BloodyMary from "../../media/bloody-mary.png";
 const Drink = (props) => {
   const {
     name,
@@ -46,15 +45,10 @@ const Drink = (props) => {
         ))}
       </div>
 
+      <div>{garnish}</div>
       <div>{preperation}</div>
 
       <div>{served}</div>
-
-      <div>
-        {garnish.map((item) => (
-          <span>{item}</span>
-        ))}
-      </div>
     </div>
   );
 };
