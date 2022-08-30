@@ -22,6 +22,7 @@ const dataBaseSlice = createSlice({
       let foundAlcohol = state.dataBase.find(
         (element) => element.main_liquer === action.payload.toLowerCase()
       );
+      state.filteredByLiquer.length = 0;
       for (const key in foundAlcohol.cocktail) {
         state.filteredByLiquer.push(foundAlcohol.cocktail[key]);
       }
