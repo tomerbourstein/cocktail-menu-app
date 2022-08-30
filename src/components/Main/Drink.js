@@ -1,16 +1,16 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+// import CardMedia from "@mui/material/CardMedia";
+// import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import classes from "./Drink.module.css";
 const Drink = (props) => {
   const {
     name,
     ingredients,
-    properties,
-    flavours,
+    // properties,
+    // flavours,
     garnish,
     image,
     preperation,
