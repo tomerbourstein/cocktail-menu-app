@@ -14,10 +14,10 @@
           "refreshing"
         ],
         "receipt": ["1_1/2_oz_vodka", "1/6_oz_lemon_juice", "4_oz_ginger_beer"],
-        "preperation": "Combine vodka and ginger beer in a copper mug or highball glass filled with ice. Add lime juice. Stir gently and garnish with a lime slice.",
+        "preperation": "Combine vodka and ginger beer in a copper mug or highball glass filled with ice. Add lime juice. Stir gently",
         "served": "On the rocks; poured over ice",
         "garnish": ["lime_slice"],
-        "strength": 2
+        "strength": 1
       },
       "bloody_mary": {
         "name": "bloody_mary",
@@ -38,10 +38,143 @@
           "1/2_oz_lemon_juice",
           "3_oz_tomato_juice"
         ],
-        "preperation": "Add dashes of Worcestershire Sauce, Tabasco, salt and pepper into highball glass, then pour all ingredients into highball with ice cubes. Stir gently. Garnish with celery stalk and lemon wedge (optional).",
-        "served": "On the rocks; poured over ice",
+        "preperation": "Add dashes of Worcestershire Sauce, Tabasco, salt and pepper into highball glass, then pour all ingredients into highball with ice cubes. Stir gently",
+        "served": "on_the_rocks",
         "garnish": ["celery_stalk", "cornichon", "lemon_slice"],
+        "strength": 1
+      },
+      "vodka_martini": {
+        "name": "vodka_martini",
+        "image": "https://www.liquor.com/thmb/cTfCy_SXC20xUzKr8Yt0j3Eb_0I=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/vodka-martini-720x720-primary-7bf9f33f067c4f81b53d8f1f73bdd4a2.jpg",
+        "ingredients": ["vodka", "dry_vermouth"],
+        "flavours": ["bitter", "citrus"],
+        "properties": ["citrus", "heavy", "dry"],
+        "receipt": ["3_oz_vodka", "1/2_oz_dry_vermouth"],
+        "preperation": "Pour all ingredients into mixing glass with ice cubes. Stir well. Strain in chilled martini cocktail glass. Squeeze oil from lemon peel onto the drink",
+        "served": "straight_up",
+        "garnish": ["lemon_twist", "olive"],
+        "strength": 3
+      },
+      "negroski": {
+        "name": "negroski",
+        "image": "https://www.liquor.com/thmb/JxTOAr3j6QredEyM1IzcohLDZ80=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2018__05__08110806__negroni-720x720-recipe-7c1b747a616f4659af4008d025ab55df.jpg",
+        "ingredients": ["vodka", "campari", "red_vermouth"],
+        "flavours": ["bitter", "sweet", "citrus"],
+        "properties": ["citrus", "heavy", "strong"],
+        "receipt": ["1_oz_vodka", "1_oz_campari", "1_oz_red_vermouth"],
+        "preperation": "Stir into an old fashioned glass over ice",
+        "served": "on_the_rocks",
+        "garnish": ["orange_twist"],
+        "strength": 3
+      },
+      "vesper": {
+        "name": "vesper",
+        "image": "https://www.liquor.com/thmb/_YduVzA3uhvYyKgC2J-rfmx6pmI=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2018__01__29145254__vesper-720x720-recipe-a8733cdfcfc1495687f1073004e04950.jpg",
+        "ingredients": ["vodka", "gin", "blonde_lillet"],
+        "flavours": ["bitter", "citrus", "tropical"],
+        "properties": ["citrus", "heavy", "strong", "tropical"],
+        "receipt": ["1/2_oz_vodka", "2_oz_gin", "1/4_oz_blonde_lillet"],
+        "preperation": "Shake over ice until well chilled, then strain into a deep goblet",
+        "served": "straight_up",
+        "garnish": ["lemon_twist"],
+        "strength": 3
+      },
+      "the_quad": {
+        "name": "the_quad",
+        "image": "https://cdn.diffords.com/contrib/stock-images/2020/12/5fd33eb911f8d.jpg",
+        "ingredients": [
+          "orange_vodka",
+          "orange_liqueur",
+          "campari",
+          "orange_juice"
+        ],
+        "flavours": ["bitter", "citrus", "sweet"],
+        "properties": ["citrus", "heavy", "strong", "tropical"],
+        "receipt": [
+          "1_1/2_oz_orange_vodka",
+          "2/3_oz_orange_liqueur",
+          "1/4_oz_campari",
+          "5/6_oz_orange_juice"
+        ],
+        "preperation": "Shake all ingredients with ice and fine strain into a chilled glass",
+        "served": "straight_up",
+        "garnish": ["orange_twist"],
+        "strength": 3
+      },
+      "white_russian": {
+        "name": "white_russian",
+        "image": "https://www.liquor.com/thmb/Mt2ukX5YxBA0Yx02G9_Ku4j80sI=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2017__12__20073201__white-russian-720x720-article-cbe4b9a832c64f8da0bb09407caefa7f.jpg",
+        "ingredients": ["vodka", "coffee_liqueur", "heavy_cream"],
+        "flavours": ["coffee", "sweet"],
+        "properties": ["heavy", "strong", "coffee", "thick"],
+        "receipt": ["2_oz_vodka", "1_oz_coffee_liqueur", "1/5_oz_heavy_cream"],
+        "preperation": "Pour coffee liqueur and vodka into an Old Fashioned glass filled with ice. Float fresh cream on top and stir slowly",
+        "served": "on_the_rocks",
+        "garnish": ["grated_nutmeg", "coffee_beans"],
         "strength": 2
+      },
+      "cosmopolitan": {
+        "name": "cosmopolitan",
+        "image": "https://www.liquor.com/thmb/M8Jx63erl7CJ1oPPdakNMEjnzxk=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/cosmopolitan-720x720-primary-0190d40114c741648979dae7e46b6bbf.jpg",
+        "ingredients": [
+          "lemon_vodka",
+          "cranberry_juice",
+          "orange_liqueur",
+          "lime_juice"
+        ],
+        "flavours": ["citrus", "sweet", "sour", "dry"],
+        "properties": ["light", "refreshing", "dry", "citrus"],
+        "receipt": [
+          "1_1/2_oz_lemon_vodka",
+          "1_oz_cranberry_juice",
+          "1/5_oz_orange_liqueur",
+          "1/2_oz_lime_juice"
+        ],
+        "preperation": "Add all ingredients into cocktail shaker filled with ice. Shake well and double strain into large cocktail glass",
+        "served": "straight_up",
+        "garnish": ["lime_twist"],
+        "strength": 2
+      },
+      "espresso_martini": {
+        "name": "espresso_martini",
+        "image": "https://www.thermomixdivarecipes.com/wp-content/uploads/2020/12/Thermomix-Espresso-Martini_1200px_square-720x720.jpg",
+        "ingredients": ["lemon", "espresso", "coffee_liqueur", "simple_syrup"],
+        "flavours": ["coffee", "sweet", "bitter"],
+        "properties": ["thick", "dry", "heavy"],
+        "receipt": [
+          "1_1/2_oz_vodka",
+          "1_oz_espresso",
+          "2/3_oz_coffee_liqueur",
+          "1_teaspoon_simple_syrup"
+        ],
+        "preperation": "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass",
+        "served": "straight_up",
+        "garnish": ["coffee_beans"],
+        "strength": 2
+      },
+      "vodka_tonic": {
+        "name": "vodka_tonic",
+        "image": "https://www.liquor.com/thmb/dEzUPrrQhzn7HRQWo2U0S6vzUqc=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2016__08__18132402__vodka-tonic-720x720-recipe-fafa4f1a65174441a71cf7462ada0db1.jpg",
+        "ingredients": ["vodka", "tonic_water"],
+        "flavours": ["bitter", "citrus"],
+        "properties": ["refreshing", "dry", "sparkling"],
+        "receipt": ["2_oz_vodka", "6_oz_tonic_water"],
+        "preperation": "Add the vodka to a Collins glass, fill the glass with ice, then top with the tonic water and add an optional squeeze of lemon",
+        "served": "on_the_rocks",
+        "garnish": ["lemon_slice", "lemon_wedge", "lemon_twist"],
+        "strength": 1
+      },
+      "screwdriver": {
+        "name": "screwdriver",
+        "image": "https://www.liquor.com/thmb/xQdUxz4hELJFJT7L5MimYSFSqM4=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2017__11__06162348__screwdrvier-720x720-recipe-23e0c0ac47334f108e4fa00b34b7f5bf.jpg",
+        "ingredients": ["vodka", "orange_juice", "bitters"],
+        "flavours": ["bitter", "citrus", "sweet", "sour"],
+        "properties": ["citrus", "light", "refreshing"],
+        "receipt": ["2_oz_vodka", "6_oz_orange_juice", "3_dash_bitters"],
+        "preperation": "Add the vodka to a Collins glass, fill the glass with ice, then top with the orange juice and add 3 dashes of bitters",
+        "served": "on_the_rocks",
+        "garnish": ["lemon_slice", "lemon_wedge"],
+        "strength": 1
       }
     },
     "whiskey": {
@@ -54,13 +187,26 @@
         "receipt": [
           "1_1/2_oz_whiskey",
           "1_teaspoon_brown_sugar",
-          "2_dashes_angostura_bitters"
+          "2_dashes_bitters"
         ],
-        "preperation": "Place sugar in old fashioned glass and saturate with bitters. Muddle until dissolved. Fill the glass with ice cubes and add whiskey. Garnish with orange slice, and a cocktail cherry.",
+        "preperation": "Place sugar in old fashioned glass and saturate with bitters. Muddle until dissolved. Fill the glass with ice cubes and add whiskey",
         "served": "On the rocks; poured over ice",
         "garnish": ["orange_twist", "cherry"],
         "strength": 3
       },
+      "boulevardier": {
+        "name": "boulevardier",
+        "image": "https://www.liquor.com/thmb/jqRjjbQXEt3WPA2RTz21lcu2uiM=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2019__09__12094720__Boulevardier-720x720-recipe-53da547e8cfc4bd79a393ac99891f5ba.jpg",
+        "ingredients": ["whiskey", "campari", "red_vermouth"],
+        "flavours": ["bitter", "sweet", "citrus"],
+        "properties": ["citrus", "heavy", "strong", "sit_and_drink"],
+        "receipt": ["1_oz_whiskey", "1_oz_campari", "1_oz_red_vermouth"],
+        "preperation": "Stir into an old fashioned glass over ice, garnish and serve",
+        "served": "on_the_rocks",
+        "garnish": ["orange_twist"],
+        "strength": 3
+      },
+
       "whiskey_sour": {
         "name": "whiskey_sour",
         "image": "https://www.liquor.com/thmb/j68HLUx9ATtBoAvNH5Sv9sMD_XQ=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/whiskey-sour-720x720-primary-v2-4fc831b613964da5a19cdbfda917d7df.jpg",
@@ -73,7 +219,7 @@
           "1_oz_lemon_juice",
           "1/2_oz_sugar"
         ],
-        "preperation": "Shake with ice. Strain into ice-filled old-fashioned glass to serve `on the rocks`.",
+        "preperation": "Shake with ice. Strain into ice filled old fashioned glass to serve `on the rocks`.",
         "served": "Shaken; on the rocks",
         "garnish": [
           "orange_slice",
@@ -81,6 +227,96 @@
           "lemon_rind",
           "sugared_glass"
         ],
+        "strength": 2
+      },
+      "whiskey_soda": {
+        "name": "whiskey_soda",
+        "image": "https://www.liquor.com/thmb/yjYts_zYlewULZh-Kk6I8dxO88I=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2018__01__29145241__scotch-and-soda-720x720-recipe-48ffc2164b2d403da18d6b90e09692fe.jpg",
+        "ingredients": ["whiskey", "soda"],
+        "flavours": ["bitter", "sour"],
+        "properties": ["light", "simple", "refreshing", "sparkling"],
+        "receipt": ["2_oz_whiskey", "6_soda"],
+        "preperation": "Add the whiskey to a highball glass filled with ice,top with club soda and stir briefly to combine",
+        "served": "on_the_rocks",
+        "garnish": ["lemon_twist", "lemon_slice"],
+        "strength": 1
+      },
+      "whiskey_coke": {
+        "name": "whiskey_coke",
+        "image": "https://hmhub.in/wp-content/uploads/2018/03/Cuba-Libre-720x720-recipe.jpg",
+        "ingredients": ["whiskey", "coca_cola"],
+        "flavours": ["sweet", "sour"],
+        "properties": ["light", "simple", "refreshing", "sparkling"],
+        "receipt": ["2_oz_whiskey", "6_oz_coca_cola"],
+        "preperation": "Add the whiskey to a highball glass filled with ice,top with coca cola and stir briefly to combine",
+        "served": "on_the_rocks",
+        "garnish": ["lemon_twist", "lemon_slice"],
+        "strength": 1
+      },
+      "penicillin": {
+        "name": "penicillin",
+        "image": "https://www.liquor.com/thmb/5NwNg8f-FcP_TN_sYdIFN1Uy_Us=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Penicillin-720x720-primary-fb7edb2327f54814a491da06848df2d2.jpg",
+        "ingredients": [
+          "whiskey",
+          "lemon_juice",
+          "smoked_whiskey",
+          "honey_ginger_syrup"
+        ],
+        "flavours": ["sweet", "sour", "spiced", "spicy", "smokey"],
+        "properties": ["light", "smokey", "refreshing", "ginger"],
+        "receipt": [
+          "2_oz_whiskey",
+          "3/4_oz_lemon_juice",
+          "3/4_oz_honey_giner_syrup",
+          "1/4_oz_smoked_whiskey"
+        ],
+        "preperation": "Add the whiskey, lemon juice and syrup into a shaker with ice, shake until well chilled, strain into a rocks glass over fresh ice. Top with the smoked whiskey. Honey-ginger syrup: Combine 1 cup honey, 1 6-inch piece of peeled and thinly sliced ginger and 1 cup water in a saucepan over high heat, and bring to a boil. Reduce heat to medium, and simmer 5 minutes. Place in the refrigerator to steep overnight. Strain with a cheesecloth",
+        "served": "on_the_rocks",
+        "garnish": ["candied_ginger"],
+        "strength": 2
+      },
+      "whiskey_smash": {
+        "name": "whiskey_smash",
+        "image": "https://www.liquor.com/thmb/Dwht2GMYXtcaaSb2Ht41u_qduxQ=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/whiskey-smash-720x720-recipe-c696cdf017494dbd981e51dca3f4402e.jpg",
+        "ingredients": [
+          "whiskey",
+          "lemon_'wedges",
+          "mint_leaves",
+          "simple_syrup"
+        ],
+        "flavours": ["sweet", "sour"],
+        "properties": ["light", "refreshing", "minty"],
+        "receipt": [
+          "2_oz_whiskey",
+          "3_lemon_wedges",
+          "10_mint_leaves",
+          "1/2_oz_simple_syrup"
+        ],
+        "preperation": "Muddle the lemon wedges in a shaker, add bourbon, simple syrup, mint leaves and ice and shake until well chilled. Double strain into a rocks glass over fresh ice",
+        "served": "on_the_rocks",
+        "garnish": ["mint_sprig"],
+        "strength": 2
+      },
+      "trinidad_sour": {
+        "name": "trinidad_sour",
+        "image": "https://imbibemagazine.com/wp-content/uploads/2014/05/trinidad-sour-whislers-vertical-crdt-justin-stidham.jpg",
+        "ingredients": [
+          "angostura_bitters",
+          "whiskey",
+          "lemon_juice",
+          "orgeat_syrup"
+        ],
+        "flavours": ["sweet", "sour", "spiced", "nut_flavoured"],
+        "properties": ["thick", "full_body", "heavy", "complex", "aromatic"],
+        "receipt": [
+          "1/12_oz_angostura_bitters",
+          "1/2_oz_whiskey",
+          "2/4_lemon_juice",
+          "1_oz_orgeat_syrup"
+        ],
+        "preperation": "Add the Angostura bitters, whiskey, lemon juice and orgeat syrup into a shaker with ice and shake until well-chilled. Double strain into a chilled coupe glass",
+        "served": "straight_up",
+        "garnish": ["lemon_twist"],
         "strength": 2
       }
     }
