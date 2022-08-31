@@ -29,7 +29,9 @@ const Main = (props) => {
       served: "",
       strength: "",
     };
-
+    ////////// get random cocktail from filteredByLiquer array, depends on amount and strengths.
+    ///////// the functions shuffles the items in the array every time.
+    ////////// if the return is empty, and empty object is returned.
     function getRandomCocktails(amount, strengths) {
       let relevantCocktails = filteredByLiquer;
       if (strengths) {
@@ -38,74 +40,48 @@ const Main = (props) => {
         );
       }
       const shuffle = relevantCocktails.sort(() => 0.5 - Math.random());
-      let random =  shuffle.slice(0, amount);
-      if(random.length === 0) {
+      let random = shuffle.slice(0, amount);
+      if (random.length === 0) {
         random.push(emptyCocktail);
         return random;
       }
       return random;
     }
-    /////////// if preferredAmount is "1", a random index is chosen and dispatched to replaceCocktailsToShow.
-    // function random(num) {
-    //   Math.floor(Math.random() * num);
-    //   return num;
-    // }
 
-    // function oneRandomCocktail() {
-    //   const random1 = random(filteredByLiquer.length);
-    //   const randomCocktailOne = filteredByLiquer[random1];
-    //   dispatch(menuActions.replaceCocktailsToShow(randomCocktailOne));
-    // }
-
-    ////////// if preferredAmount is "2", filter to get a new array of "Light" cocktails, then choose one random.
-    ////////// and filter to get a new array of "Strong" cocktails, then choose one random.
-    ////////// push them both into "cart" and dispatch cart to addCocktailsToShow.
-    // function twoRandomCocktails() {
-    //   const foundAlcoholLight = filteredByLiquer.filter(
-    //     (element) => element.strength <= 2
-    //   );
-    //   const random2Light = Math.floor(Math.random() * foundAlcoholLight.length);
-    //   const randomCocktailTwoLight = foundAlcoholLight[random2Light];
-    //   cart.push(randomCocktailTwoLight);
-
-    //   const foundAlcoholStrong = filteredByLiquer.filter(
-    //     (element) => element.strength === 3
-    //   );
-
-    //   ////////// if there are no foundAlcohol then create an empty values object and push to cart and dispatch.
-    // if (foundAlcoholStrong.length === 0) {
-    //   cart.push({
-    // key: "empty",
-    // name: "",
-    // ingredients: "",
-    // properties: "",
-    // flavours: "",
-    // garnish: "",
-    // image: "",
-    // preperation: "Not Enough Data!",
-    // receipt: "",
-    // served: "",
-    // strength: "",
-    //   });
-    //   dispatch(menuActions.addCocktailsToShow(cart));
-    //   return;
-    //   }
-
-    //   const random2Strong = Math.floor(
-    //     Math.random() * foundAlcoholStrong.length
-    //   );
-    //   const randomCocktailTwoStrong = foundAlcoholStrong[random2Strong];
-    //   cart.push(randomCocktailTwoStrong);
-    //   dispatch(menuActions.addCocktailsToShow(cart));
-    // }
+    /////////// if preferredAmount is "1", set cart to getRandomCocktails, amount, array of strengths.
+    /////////// then dispatch to replaceCocktailsToShow.
     if (preferences.preferredAmount === 1) {
       cart = getRandomCocktails(1, [1, 2, 3]);
-
       dispatch(menuActions.replaceCocktailsToShow(cart));
-    } else if (preferences.preferredAmount === 2) {
-      cart = getRandomCocktails(1, [1, 2]);
-      cart = cart.concat(getRandomCocktails(1, [3]));
+    }
 
+    /////////// if preferredAmount is "2", set first and second to getRandomCocktails, amount, array of strengths.
+    /////////// set cart with concat() to add those arrays.
+    /////////// then dispatch to replaceCocktailsToShow.
+    else if (preferences.preferredAmount === 2) {
+      let first = getRandomCocktails(1, [1, 2]);
+      let second = getRandomCocktails(1, [3]);
+      cart = first.concat(second);
+      dispatch(menuActions.replaceCocktailsToShow(cart));
+    }
+    /////////// if preferredAmount is "3", set first, second and third to getRandomCocktails, amount, array of strengths.
+    /////////// set cart with concat() to add those arrays.
+    /////////// then dispatch to replaceCocktailsToShow.
+    else if (preferences.preferredAmount === 3) {
+      let first = getRandomCocktails(1, [1]);
+      let second = getRandomCocktails(1, [2]);
+      let third = getRandomCocktails(1, [3]);
+      cart = first.concat(second, third);
+      dispatch(menuActions.replaceCocktailsToShow(cart));
+    }
+    /////////// if preferredAmount is "4", set first, second_third and fourth to getRandomCocktails, amount, array of strengths.
+    /////////// set cart with concat() to add those arrays.
+    /////////// then dispatch to replaceCocktailsToShow.
+    else if (preferences.preferredAmount === 4) {
+      let first = getRandomCocktails(1, [1]);
+      let second_third = getRandomCocktails(2, [2]);
+      let fourth = getRandomCocktails(1, [3]);
+      cart = first.concat(second_third, fourth);
       dispatch(menuActions.replaceCocktailsToShow(cart));
     }
   }, [filteredByLiquer, dispatch, preferences]);
