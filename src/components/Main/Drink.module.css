@@ -1,3 +1,32 @@
 .drink {
-    height: 55vh;
+    font-size: 0.7rem;
+    margin: 0 auto 3rem;
+    width: 75vw;
+    height: 75vh;
+}
+
+.drinkInfo  {
+    padding: 1rem 2rem;
+}
+.drinkInfo div {
+    padding: 0.3rem;
+}
+.rows {
+    display: flex;
+    justify-content: space-around;
+}
+
+.rows div {
+    display: flex;
+flex-direction: column;
+}
+
+.preperation {
+    font-size: 0.9rem;
+}
+
+
+.check {
+    display: flex;
+    flex-direction: column;
 }

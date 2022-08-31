@@ -1,32 +1,82 @@
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+// import CardMedia from "@mui/material/CardMedia";
+// import Typography from "@mui/material/Typography";
+import Avatar from "@mui/material/Avatar";
 import classes from "./Drink.module.css";
-import BloodyMary from "../../media/bloody-mary.png";
-const Drink = () => {
+const Drink = (props) => {
+  const {
+    name,
+    ingredients,
+    // properties,
+    // flavours,
+    garnish,
+    image,
+    preperation,
+    receipt,
+    served,
+    strength,
+  } = props.drink;
+
+  let cocktailStrength = "";
+
+  if (strength === 3) {
+    cocktailStrength = "Strong";
+  } else if (strength === 2) {
+    cocktailStrength = "Medium";
+  } else if (strength === 1) {
+    cocktailStrength = "Light";
+  }
+
   return (
-    <div className={classes.drink}>
-      <p>Start with a Bloody Mary</p>
-      <img src={BloodyMary} alt="Bloody-Mary Cocktail"></img>
-      <div>
-        <span>Vodka</span>
-        <span>Lemon</span>
-        <span>Spices</span>
-        <span>Tabasco</span>
-      </div>
+    <Card className={classes.drink}>
+      <CardHeader
+        title={name}
+        subheader={cocktailStrength}
+        avatar={
+          <Avatar
+            src={image}
+            alt={name}
+            sx={{ width: 80, height: 80 }}
+          ></Avatar>
+        }
+      />
+      <CardContent className={classes.drinkInfo}>
+        <div className={classes.rows}>
+          <div>
+            {ingredients.map((ingredient) => (
+              <span>{ingredient}</span>
+            ))}
+          </div>
 
-      <div>
-        <span>Medium Strength</span>
-      </div>
+          <div>
+            {receipt.map((item) => (
+              <span>{item}</span>
+            ))}
+          </div>
+        </div>
+        {/* <div>
+          {flavours.map((flavour) => (
+            <span>{flavour}</span>
+          ))}
+        </div> */}
 
-      <div>
-        <span>Sour</span>
-        <span>Spicey</span>
-        <span>Spiced</span>
-      </div>
+        {/* <div>
+          {properties.map((prop) => (
+            <span>{prop}</span>
+          ))}
+        </div> */}
 
-      <div>
-        <span>Heavy</span>
-        <span>Seasoned</span>
-      </div>
-    </div>
+        <div className={classes.preperation}>{preperation}</div>
+
+        <div>{served}</div>
+        
+        <div>
+        <div className={classes.check}>{garnish}</div>
+        </div>
+      </CardContent>
+    </Card>
   );
 };
 
