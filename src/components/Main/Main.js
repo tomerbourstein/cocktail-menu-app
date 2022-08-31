@@ -36,6 +36,25 @@ const Main = (props) => {
       const foundAlcoholStrong = filteredByLiquer.filter(
         (element) => element.strength === 3
       );
+      console.log(foundAlcoholStrong);
+      if (foundAlcoholStrong.length === 0) {
+        cart.push({
+          key: "empty",
+          name: "",
+          ingredients: "",
+          properties: "",
+          flavours: "",
+          garnish: "",
+          image: "",
+          preperation: "Not Enough Data!",
+          receipt: "",
+          served: "",
+          strength: "",
+        });
+        dispatch(menuActions.addCocktailsToShow(cart))
+        return;
+      }
+
       const random2Strong = Math.floor(
         Math.random() * foundAlcoholStrong.length
       );

@@ -44,17 +44,17 @@ const Drink = (props) => {
       />
       <CardContent className={classes.drinkInfo}>
         <div className={classes.rows}>
-          <div>
+          {/* <div>
             {ingredients.map((ingredient) => (
               <span>{ingredient}</span>
             ))}
-          </div>
+          </div> */}
 
-          <div>
+          {/* <div>
             {receipt.map((item) => (
               <span>{item}</span>
             ))}
-          </div>
+          </div> */}
         </div>
         {/* <div>
           {flavours.map((flavour) => (
