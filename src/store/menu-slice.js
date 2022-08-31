@@ -15,7 +15,7 @@ const menuSlice = createSlice({
     },
     addCocktailsToShow(state, action) {
       state.cocktailsToShow = [];
-      state.cocktailsToShow.push(action.payload);
+      state.cocktailsToShow = [...action.payload];
     },
   },
 });

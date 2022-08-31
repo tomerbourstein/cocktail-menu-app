@@ -13,33 +13,38 @@ const Main = (props) => {
   const cocktailsToShow = useSelector((state) => state.menu.cocktailsToShow);
   const preferences = useSelector((state) => state.dataBase.preferences);
 
-  /////////// When filteredByLiquer reducer changes, if preferences.amount is "1",
-  /////////// a random index is chosen and dispatched to replaceCocktailsToShow.
+  /////////// When filteredByLiquer reducer changes useEffect chooses random cocktail for each strength depend on preferences.
   useEffect(() => {
+    let cart = [];
+    /////////// if preferredAmount is "1", a random index is chosen and dispatched to replaceCocktailsToShow.
     if (preferences.preferredAmount === 1) {
-      let randomOne = Math.floor(Math.random() * filteredByLiquer.length);
-      const randomCocktailOne = filteredByLiquer[randomOne];
+      const random1 = Math.floor(Math.random() * filteredByLiquer.length);
+      const randomCocktailOne = filteredByLiquer[random1];
       dispatch(menuActions.replaceCocktailsToShow(randomCocktailOne));
-    } else if (preferences.preferredAmount === 2) {
+    }
+    ////////// if preferredAmount is "2", filter to get a new array of "Light" cocktails, then choose one random.
+    ////////// and filtr to get a new array of "Strong" cocktails, then choose one random.
+    ////////// push them both into "cart" and dispatch cart to addCocktailsToShow.
+    else if (preferences.preferredAmount === 2) {
       const foundAlcoholLight = filteredByLiquer.filter(
         (element) => element.strength <= 2
       );
-      let randomTwoLight = Math.floor(Math.random() * foundAlcoholLight.length);
-      const randomCocktailTwoLight = foundAlcoholLight[randomTwoLight];
-      dispatch(menuActions.addCocktailsToShow(randomCocktailTwoLight));
-
+      const random2Light = Math.floor(Math.random() * foundAlcoholLight.length);
+      const randomCocktailTwoLight = foundAlcoholLight[random2Light];
+      cart.push(randomCocktailTwoLight);
 
       const foundAlcoholStrong = filteredByLiquer.filter(
-        (element) => element.strength > 2
+        (element) => element.strength === 3
       );
-      let randomTwoStrong = Math.floor(Math.random() * foundAlcoholStrong.length);
-      const randomCocktailTwoStrong = foundAlcoholLight[randomTwoStrong];
-      dispatch(menuActions.addCocktailsToShow(randomCocktailTwoStrong));
-      
+      const random2Strong = Math.floor(
+        Math.random() * foundAlcoholStrong.length
+      );
+      const randomCocktailTwoStrong = foundAlcoholStrong[random2Strong];
+      cart.push(randomCocktailTwoStrong);
+      dispatch(menuActions.addCocktailsToShow(cart));
     }
   }, [filteredByLiquer, dispatch, preferences]);
-  
-  console.log(cocktailsToShow);
+
   const mapCocktails = cocktailsToShow.map((element) => (
     <Drink
       key={Math.random()}
@@ -57,8 +62,6 @@ const Main = (props) => {
       // strength={element.strength}
     />
   ));
-  // console.log(cocktailsToShow);
-  // console.log(mapCocktails);
   return (
     <section id="main" className={classes.main}>
       {isGenerated ? (

@@ -20,6 +20,7 @@ const Drink = (props) => {
   } = props.drink;
 
   let cocktailStrength = "";
+
   if (strength === 3) {
     cocktailStrength = "Strong";
   } else if (strength === 2) {
@@ -27,10 +28,6 @@ const Drink = (props) => {
   } else if (strength === 1) {
     cocktailStrength = "Light";
   }
-
-  // strength === 3 ? (cocktailStrength = "Strong") : null;
-  // strength === 2 ? (cocktailStrength = "Medium") : null;
-  // strength === 1 ? (cocktailStrength = "Light") : null;
 
   return (
     <Card className={classes.drink}>
@@ -46,12 +43,8 @@ const Drink = (props) => {
         }
       />
       <CardContent className={classes.drinkInfo}>
-        {/* <div>
-          <span>{cocktailStrength}</span>
-        </div> */}
-
         <div className={classes.rows}>
-          <div >
+          <div>
             {ingredients.map((ingredient) => (
               <span>{ingredient}</span>
             ))}
@@ -78,7 +71,7 @@ const Drink = (props) => {
         <div className={classes.preperation}>{preperation}</div>
 
         <div>{served}</div>
-        
+
         <div>{garnish}</div>
       </CardContent>
     </Card>
