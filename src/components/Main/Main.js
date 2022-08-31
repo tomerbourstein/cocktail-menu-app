@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { menuActions } from "../../store/menu-slice";
 import classes from "./Main.module.css";
 import Drink from "./Drink";
-import { useEffect,  } from "react";
+import { useEffect } from "react";
 
 const Main = (props) => {
   const dispatch = useDispatch();
@@ -38,7 +38,12 @@ const Main = (props) => {
         );
       }
       const shuffle = relevantCocktails.sort(() => 0.5 - Math.random());
-      return shuffle.slice(0, amount);
+      let random =  shuffle.slice(0, amount);
+      if(random.length === 0) {
+        random.push(emptyCocktail);
+        return random;
+      }
+      return random;
     }
     /////////// if preferredAmount is "1", a random index is chosen and dispatched to replaceCocktailsToShow.
     // function random(num) {
@@ -94,28 +99,15 @@ const Main = (props) => {
     //   dispatch(menuActions.addCocktailsToShow(cart));
     // }
     if (preferences.preferredAmount === 1) {
-      cart = getRandomCocktails(1, [1, 2]);
-      if (cart.length === 0) {
-        cart = [
-          {
-            emptyCocktail,
-          },
-        ];
-      }
+      cart = getRandomCocktails(1, [1, 2, 3]);
+
       dispatch(menuActions.replaceCocktailsToShow(cart));
     } else if (preferences.preferredAmount === 2) {
       cart = getRandomCocktails(1, [1, 2]);
       cart = cart.concat(getRandomCocktails(1, [3]));
-      if (cart.length === 0) {
-        cart = [
-          {
-            emptyCocktail,
-          },
-        ];
-      }
+
       dispatch(menuActions.replaceCocktailsToShow(cart));
     }
-    console.log(getRandomCocktails(1, [3]));
   }, [filteredByLiquer, dispatch, preferences]);
 
   const mapCocktails = cocktailsToShow.map((element) => (
