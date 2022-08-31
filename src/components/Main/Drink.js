@@ -8,13 +8,13 @@ import classes from "./Drink.module.css";
 const Drink = (props) => {
   const {
     name,
-    // ingredients,
+    ingredients,
     // properties,
     // flavours,
     garnish,
     image,
     preperation,
-    // receipt,
+    receipt,
     served,
     strength,
   } = props.drink;
@@ -44,17 +44,17 @@ const Drink = (props) => {
       />
       <CardContent className={classes.drinkInfo}>
         <div className={classes.rows}>
-          {/* <div>
+          <div>
             {ingredients.map((ingredient) => (
               <span>{ingredient}</span>
             ))}
-          </div> */}
+          </div>
 
-          {/* <div>
+          <div>
             {receipt.map((item) => (
               <span>{item}</span>
             ))}
-          </div> */}
+          </div>
         </div>
         {/* <div>
           {flavours.map((flavour) => (
@@ -71,8 +71,10 @@ const Drink = (props) => {
         <div className={classes.preperation}>{preperation}</div>
 
         <div>{served}</div>
-
-        <div>{garnish}</div>
+        
+        <div>
+        <div className={classes.check}>{garnish}</div>
+        </div>
       </CardContent>
     </Card>
   );

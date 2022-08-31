@@ -16,7 +16,7 @@
         "receipt": ["1_1/2_oz_vodka", "1/6_oz_lemon_juice", "4_oz_ginger_beer"],
         "preperation": "Combine vodka and ginger beer in a copper mug or highball glass filled with ice. Add lime juice. Stir gently and garnish with a lime slice.",
         "served": "On the rocks; poured over ice",
-        "garnish": "lime_slice",
+        "garnish": ["lime_slice"],
         "strength": 2
       },
       "bloody_mary": {

@@ -13,10 +13,10 @@ const menuSlice = createSlice({
       }
       state.cocktailsToShow = action.payload;
     },
-    addCocktailsToShow(state, action) {
-      state.cocktailsToShow = [];
-      state.cocktailsToShow = [...action.payload];
-    },
+    // addCocktailsToShow(state, action) {
+    //   state.cocktailsToShow = [];
+    //   state.cocktailsToShow = [...action.payload];
+    // },
   },
 });
 

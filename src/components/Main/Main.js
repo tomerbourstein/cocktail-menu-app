@@ -19,13 +19,13 @@ const Main = (props) => {
     const emptyCocktail = {
       key: "empty",
       name: "",
-      ingredients: "",
-      properties: "",
-      flavours: "",
-      garnish: "",
+      ingredients: [""],
+      properties: [""],
+      flavours: [""],
+      garnish: [""],
       image: "",
       preperation: "Not Enough Data!",
-      receipt: "",
+      receipt: [""],
       served: "",
       strength: "",
     };
