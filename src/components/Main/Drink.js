@@ -8,13 +8,13 @@ import classes from "./Drink.module.css";
 const Drink = (props) => {
   const {
     name,
-    ingredients,
+    // ingredients,
     // properties,
     // flavours,
     garnish,
     image,
     preperation,
-    receipt,
+    // receipt,
     served,
     strength,
   } = props.drink;
