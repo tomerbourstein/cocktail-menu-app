@@ -5,7 +5,9 @@ import Header from "./components/Header/Header";
 import Input from "./components/Input/Input";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
+import Favorites from "./components/Favorites/Favorites";
 import "./App.css";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +44,7 @@ function App() {
         <Header />
         <Input />
         <Main />
+        <Favorites />
         <Footer />
       </Fragment>
     </div>
