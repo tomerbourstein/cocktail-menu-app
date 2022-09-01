@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const menuSlice = createSlice({
   name: "menu",
-  initialState: { generated: false, isChecked: false, cocktailsToShow: [], favoritesShow: false, favoritesList: [] },
+  initialState: { generated: false, cocktailsToShow: [], favoritesShow: false, favoritesList: [] },
   reducers: {
     toggleGenerated(state) {
       state.generated = true;
@@ -19,8 +19,11 @@ const menuSlice = createSlice({
     addToFavorites(state, action) {
       state.favoritesList.push(action.payload);
     },
-    toggleChecked(state) {
-      state.isChecked = !state.isChecked;
+    removeFromFavorites(state, action) {
+      
+     let foundCocktail = state.favoritesList.filter(fav => fav.name !== action.payload);
+     state.favoritesList = foundCocktail;
+
     }
   },
 });

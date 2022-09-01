@@ -49,7 +49,6 @@ const Drink = (props) => {
   const addToFavoritesHandler = (event) => {
     let checked = event.target.checked;
     if (checked) {
-      dispatch(menuActions.toggleChecked());
       dispatch(
         menuActions.addToFavorites({
           name,
@@ -64,6 +63,8 @@ const Drink = (props) => {
           strength,
         })
       );
+    } else {
+      dispatch(menuActions.removeFromFavorites(name));
     }
   };
 
