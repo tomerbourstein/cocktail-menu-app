@@ -1,4 +1,5 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { menuActions } from "../../store/menu-slice";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
@@ -7,24 +8,32 @@ import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import Checkbox from "@mui/material/Checkbox";
 import classes from "./Favorites.module.css";
 
 const Favorites = () => {
+  const dispatch = useDispatch();
   const favoritesList = useSelector((state) => state.menu.favoritesList);
-  
-  function strengthTransform (strength) {
-      let cocktailStrength = "";
-      
-      if (strength === 3) {
-          cocktailStrength = "Strong";
-        } else if (strength === 2) {
-            cocktailStrength = "Medium";
-        } else if (strength === 1) {
-            cocktailStrength = "Light";
-        }
-        return cocktailStrength;
-    }
+  let checked = false;
 
+  function strengthTransform(strength) {
+    let cocktailStrength = "";
+
+    if (strength === 3) {
+      cocktailStrength = "Strong";
+    } else if (strength === 2) {
+      cocktailStrength = "Medium";
+    } else if (strength === 1) {
+      cocktailStrength = "Light";
+    }
+    return cocktailStrength;
+  }
+
+  function removeFavoritesHandler(cocktail) {
+    checked = true;
+    console.log(cocktail);
+    dispatch(menuActions.removeFromFavorites(cocktail))
+  }
   return (
     <section className={classes.favorites}>
       <ImageList col={1}>
@@ -43,27 +52,25 @@ const Favorites = () => {
               title={fav.name}
               subtitle={strengthTransform(fav.strength)}
               actionIcon={
-                <IconButton
-                  sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-                  aria-label={`info about ${fav.name}`}
-                >
-                  <InfoIcon />
-                </IconButton>
+                <>
+                  <Checkbox
+                    color={'success'}
+                    icon={<FavoriteIcon color={'error'}/>}
+                    checkedIcon={<FavoriteBorderIcon />}
+                    checked={checked}
+                    onChange={() => removeFavoritesHandler(fav.name)}
+                  ></Checkbox>
+                  <IconButton
+                    sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+                    aria-label={`info about ${fav.name}`}
+                  >
+                    <InfoIcon />
+                  </IconButton>
+                </>
               }
             />
           </ImageListItem>
         ))}
-        {/* {favoritesList.length === 0 ? (
-            <p>Nothing to Show</p>
-        ) :  */}
-        {/* {favoritesList.map((fav) => (
-          <ImageListItem 
-          
-          alt={fav.name} src={fav.image}>
-                <ImageListItem/>
-                
-                ))} */}
-        {/* } */}
       </ImageList>
     </section>
   );
