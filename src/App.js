@@ -8,10 +8,9 @@ import Footer from "./components/Footer/Footer";
 import Favorites from "./components/Favorites/Favorites";
 import "./App.css";
 
-
 function App() {
   const dispatch = useDispatch();
-  const favoritesShow = useSelector( state => state.menu.favoritesShow);
+  const favoritesShow = useSelector((state) => state.menu.favoritesShow);
 
   ////////// Only when page is loaded fetch the data from firebase. then create two arrays
   ////////// 1. Contains the liquers in the db. 2. the entire db.
@@ -43,11 +42,14 @@ function App() {
     <div className="App">
       <Fragment>
         <Header />
-        <Input />
-        {!favoritesShow ? 
-        <Main /> :
-        <Favorites />
-      }
+        {!favoritesShow ? (
+          <>
+            <Input />
+            <Main />
+          </>
+        ) : (
+          <Favorites />
+        )}
         <Footer />
       </Fragment>
     </div>
