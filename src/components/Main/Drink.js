@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from "react-redux";
+import { menuActions } from "../../store/menu-slice";
+
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
@@ -8,12 +11,15 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Avatar from "@mui/material/Avatar";
 import classes from "./Drink.module.css";
+
 const Drink = (props) => {
+  const dispatch = useDispatch();
+  const favoritesList = useSelector((state) => state.menu.favoritesList);
   const {
     name,
     ingredients,
-    // properties,
-    // flavours,
+    properties,
+    flavours,
     garnish,
     image,
     preperation,
@@ -22,6 +28,7 @@ const Drink = (props) => {
     strength,
   } = props.drink;
 
+  let checked = false;
   let cocktailStrength = "";
 
   if (strength === 3) {
@@ -32,6 +39,35 @@ const Drink = (props) => {
     cocktailStrength = "Light";
   }
 
+  const checkFavorites = () => {
+    let foundCocktail = favoritesList.find((element) => element.name === name);
+    if (foundCocktail) {
+      checked = true;
+    }
+  };
+
+  const addToFavoritesHandler = (event) => {
+    let checked = event.target.checked;
+    if (checked) {
+      dispatch(menuActions.toggleChecked());
+      dispatch(
+        menuActions.addToFavorites({
+          name,
+          ingredients,
+          properties,
+          flavours,
+          garnish,
+          image,
+          preperation,
+          receipt,
+          served,
+          strength,
+        })
+      );
+    }
+  };
+
+  checkFavorites();
   return (
     <Card className={classes.drink}>
       <CardHeader
@@ -81,8 +117,10 @@ const Drink = (props) => {
 
         <div>
           <Checkbox
+            checked={checked}
             icon={<FavoriteBorderIcon />}
             checkedIcon={<FavoriteIcon />}
+            onChange={addToFavoritesHandler}
           ></Checkbox>
         </div>
       </CardContent>
