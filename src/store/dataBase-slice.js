@@ -28,7 +28,7 @@ const dataBaseSlice = createSlice({
         state.filteredByLiquer.push(foundAlcohol.cocktail[key]);
       }
     },
-    setCocktailsToShow(state, action) {
+    setCocktailsToShow(state) {
       const emptyCocktail = {
         key: "empty",
         name: "",
@@ -62,7 +62,6 @@ const dataBaseSlice = createSlice({
       /////////// then dispatch to replaceCocktailsToShow.
       if (state.preferences.preferredAmount === 1) {
         state.cocktailsToShow = getRandomCocktails(1, [1, 2, 3]);
-        // dispatch(menuActions.replaceCocktailsToShow(cart));
       }
 
       /////////// if preferredAmount is "2", set first and second to getRandomCocktails, amount, array of strengths.
@@ -72,7 +71,6 @@ const dataBaseSlice = createSlice({
         let first = getRandomCocktails(1, [1, 2]);
         let second = getRandomCocktails(1, [3]);
         state.cocktailsToShow = first.concat(second);
-        // dispatch(menuActions.replaceCocktailsToShow(cart));
       }
 
       /////////// if preferredAmount is "3", set first, second and third to getRandomCocktails, amount, array of strengths.
@@ -83,8 +81,8 @@ const dataBaseSlice = createSlice({
         let second = getRandomCocktails(1, [2]);
         let third = getRandomCocktails(1, [3]);
         state.cocktailsToShow = first.concat(second, third);
-        // dispatch(menuActions.replaceCocktailsToShow(cart));
       }
+
       /////////// if preferredAmount is "4", set first, second_third and fourth to getRandomCocktails, amount, array of strengths.
       /////////// set cart with concat() to add those arrays.
       /////////// then dispatch to replaceCocktailsToShow.
@@ -93,7 +91,6 @@ const dataBaseSlice = createSlice({
         let second_third = getRandomCocktails(2, [2]);
         let fourth = getRandomCocktails(1, [3]);
         state.cocktailsToShow = first.concat(second_third, fourth);
-        // dispatch(menuActions.replaceCocktailsToShow(cart));
       }
     },
   },
