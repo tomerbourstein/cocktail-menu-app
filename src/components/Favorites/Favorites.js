@@ -1,6 +1,7 @@
+import classes from "./Favorites.module.css";
 const Favorites = () => {
     return(
-        <section>
+        <section className={classes.favorites}>
             <p>My Favorite Cocktails</p>
         </section>
     )

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const menuSlice = createSlice({
   name: "menu",
-  initialState: { generated: false, cocktailsToShow: [] },
+  initialState: { generated: false, cocktailsToShow: [], favoritesShow: false },
   reducers: {
     toggleGenerated(state) {
       state.generated = true;
@@ -13,10 +13,9 @@ const menuSlice = createSlice({
       }
       state.cocktailsToShow = action.payload;
     },
-    // addCocktailsToShow(state, action) {
-    //   state.cocktailsToShow = [];
-    //   state.cocktailsToShow = [...action.payload];
-    // },
+    toggleFavorites(state) {
+      state.favoritesShow = !state.favoritesShow;
+    }
   },
 });
 
