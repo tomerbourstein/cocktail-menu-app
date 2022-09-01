@@ -11,10 +11,12 @@ const Input = () => {
   const alcohol = useSelector((state) => state.input.onChangeAlcohol);
   const amount = useSelector((state) => state.input.onChangeAmount);
   const liquers = useSelector((state) => state.dataBase.liquers);
+  const error = useSelector((state) => state.input.error);
   const dispatch = useDispatch();
 
   ///////////// Changing the Alcohol input, and dispatch to redux store to save state.
   const enterAlcoholInputHandler = (event, newValue) => {
+    dispatch(inputActions.setError(false));
     dispatch(inputActions.enterAlcohol({ alcohol: newValue }));
   };
 
@@ -35,13 +37,27 @@ const Input = () => {
   /////////////// dispatch preferences to set the filtered array cocktails.
   const generateMenuHandler = (event) => {
     event.preventDefault();
+    if (alcohol === "" || alcohol === null) {
+      dispatch(inputActions.setError(true));
+      return;
+    }
+
     dispatch(menuActions.toggleGenerated());
-    dispatch(
-      dataBaseActions.setPreference({
-        preferredAlcohol: alcohol,
-        preferredAmount: amount,
-      })
-    );
+    if (amount === "") {
+      dispatch(
+        dataBaseActions.setPreference({
+          preferredAlcohol: alcohol,
+          preferredAmount: 1,
+        })
+      );
+    } else {
+      dispatch(
+        dataBaseActions.setPreference({
+          preferredAlcohol: alcohol,
+          preferredAmount: amount,
+        })
+      );
+    }
     dispatch(dataBaseActions.filterByLiquer(alcohol));
     dispatch(dataBaseActions.setCocktailsToShow());
   };
@@ -67,7 +83,13 @@ const Input = () => {
             typeof option === "string" || option instanceof String ? option : ""
           }
           onChange={enterAlcoholInputHandler}
-          renderInput={(params) => <TextField {...params} label="Liquer" />}
+          renderInput={(params) => (
+            <TextField
+              error={error.isError}
+              {...params}
+              label={error.message}
+            />
+          )}
         />
       </Box>
       <div>
@@ -75,6 +97,7 @@ const Input = () => {
           -
         </button>
         <TextField
+          hidden
           autoComplete="off"
           id="outlined-basic"
           label="How Many?"
