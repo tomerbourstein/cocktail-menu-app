@@ -3,6 +3,9 @@ import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 // import CardMedia from "@mui/material/CardMedia";
 // import Typography from "@mui/material/Typography";
+import Checkbox from "@mui/material/Checkbox";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Avatar from "@mui/material/Avatar";
 import classes from "./Drink.module.css";
 const Drink = (props) => {
@@ -71,9 +74,16 @@ const Drink = (props) => {
         <div className={classes.preperation}>{preperation}</div>
 
         <div>{served}</div>
-        
+
         <div>
-        <div className={classes.check}>{garnish}</div>
+          <div className={classes.check}>{garnish}</div>
+        </div>
+
+        <div>
+          <Checkbox
+            icon={<FavoriteBorderIcon />}
+            checkedIcon={<FavoriteIcon />}
+          ></Checkbox>
         </div>
       </CardContent>
     </Card>
