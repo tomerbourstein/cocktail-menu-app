@@ -314,10 +314,99 @@
           "2/4_lemon_juice",
           "1_oz_orgeat_syrup"
         ],
-        "preperation": "Add the Angostura bitters, whiskey, lemon juice and orgeat syrup into a shaker with ice and shake until well-chilled. Double strain into a chilled coupe glass",
+        "preperation": "Add the Angostura bitters, whiskey, lemon juice and orgeat syrup into a shaker with ice and shake until well chilled. Double strain into a chilled coupe glass",
         "served": "straight_up",
         "garnish": ["lemon_twist"],
         "strength": 2
+      },
+      "rob_roy": {
+        "name": "rob_roy",
+        "image": "https://www.liquor.com/thmb/-U45UVlFmNMAbu0l0IHHQsb4xpk=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/rob-roy-720x720-primary-e1fe784774a049f49dd534f0596c2d07.jpg",
+        "ingredients": ["smoked_whiskey", "red_vermouth", "angostura_bitters"],
+        "flavours": ["sweet", "bitter", "smokey"],
+        "properties": ["strong", "sit_and_drink", "heavy", "aromatic"],
+        "receipt": [
+          "2_oz_smoked_whiskey",
+          "3/4_oz_red_vermouth",
+          "3_dash_angostura_bitters"
+        ],
+        "preperation": "Add the bitters, whiskey and vermouth into a mixing glass with ice and stir until well chilled. Strain into a chilled coupe glass",
+        "served": "straight_up",
+        "garnish": ["orange_twist", "cherry"],
+        "strength": 3
+      },
+      "toronto": {
+        "name": "toronto",
+        "image": "https://www.liquor.com/thmb/dvvc-62KRInGwr75OpafjwyCS4Y=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/toronto-720x720-primary-7933e62c279648c8bfb3f162b0da676e.jpg",
+        "ingredients": [
+          "whiskey",
+          "fernet_branca",
+          "angostura_bitters",
+          "maple_syrup"
+        ],
+        "flavours": ["sweet", "bitter", "herbacious"],
+        "properties": ["strong", "sit_and_drink", "heavy", "aromatic", "dry"],
+        "receipt": [
+          "2_oz_whiskey",
+          "1/4_oz_fernet_branca",
+          "1/4_oz_maple_syrup",
+          "2_dash_angostura_bitters"
+        ],
+        "preperation": "Add the whiskey, Fernet Branca, maple syrup into a mixing glass with ice and stir until well chilled. Strain into a chilled coupe glass",
+        "served": "straight_up",
+        "garnish": ["orange_twist"],
+        "strength": 3
+      },
+      "sazerac": {
+        "name": "sazerac",
+        "image": "https://www.liquor.com/thmb/oUupHk9lQ5bzhuHzJ7zLeHLSEq8=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2018__05__10145323__sazerac-720x720-recipe-2c78066a77ab453481aceb83c219d78f.jpg",
+        "ingredients": [
+          "whiskey",
+          "cognac",
+          "absinthe",
+          "simple_syrup",
+          "creole_bitters",
+          "angostura_bitters",
+          "chilled_water"
+        ],
+        "flavours": ["sweet", "bitter", "herbacious", "anise"],
+        "properties": [
+          "strong",
+          "sit_and_drink",
+          "heavy",
+          "aromatic",
+          "dry",
+          "complex"
+        ],
+        "receipt": [
+          "1_1/3_oz_whiskey",
+          "2/3_oz_cognac",
+          "1/3_oz_absinthe",
+          "1/3_oz_simple_syrup",
+          "3_dash_creole_bitters",
+          "1_dash_angostura_bitters",
+          "2_2/3_oz_chilled_water"
+        ],
+        "preperation": "Rinse a chilled rocks glass with absinthe, strain the in to a chilled shot glass to be served as an optional extra alongside the main event. Set both aside. In a mixing glass, muddle the simple syrup and the creole and Angostura bitters. Add the whiskey and cognac, fill the mixing glass with ice and stir until well chilled. Strain into the prepared rocks glass. Twist the lemon peel over the drink’s surface to express the peel’s oils",
+        "served": "straight_up",
+        "garnish": ["lemon_twist"],
+        "strength": 3
+      },
+      "manhattan": {
+        "name": "manhattan",
+        "image": "https://www.liquor.com/thmb/juGAUFgLo8gEc_ri0dRVzNwS8ic=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2018__05__10144903__Manhattan-720x720-recipe-9497922907c14d91898f557cb51f2ea3.jpg",
+        "ingredients": ["whiskey", "red_vermouth", "angostura_bitters"],
+        "flavours": ["sweet", "bitter"],
+        "properties": ["strong", "sit_and_drink", "heavy", "aromatic"],
+        "receipt": [
+          "2_oz_whiskey",
+          "1_oz_red_vermouth",
+          "2_dash_angostura_bitters"
+        ],
+        "preperation": "Add the bitters, whiskey and vermouth into a mixing glass with ice and stir until well chilled. Strain into a chilled coupe glass",
+        "served": "straight_up",
+        "garnish": ["orange_twist", "cherry"],
+        "strength": 3
       }
     }
   }
