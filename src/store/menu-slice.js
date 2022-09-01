@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const menuSlice = createSlice({
   name: "menu",
-  initialState: { generated: false, cocktailsToShow: [] },
+  initialState: { generated: false, cocktailsToShow: [], favoritesShow: false, favoritesList: [] },
   reducers: {
     toggleGenerated(state) {
       state.generated = true;
@@ -13,10 +13,18 @@ const menuSlice = createSlice({
       }
       state.cocktailsToShow = action.payload;
     },
-    // addCocktailsToShow(state, action) {
-    //   state.cocktailsToShow = [];
-    //   state.cocktailsToShow = [...action.payload];
-    // },
+    toggleFavorites(state) {
+      state.favoritesShow = !state.favoritesShow;
+    },
+    addToFavorites(state, action) {
+      state.favoritesList.push(action.payload);
+    },
+    removeFromFavorites(state, action) {
+      
+     let foundCocktail = state.favoritesList.filter(fav => fav.name !== action.payload);
+     state.favoritesList = foundCocktail;
+
+    }
   },
 });
 
