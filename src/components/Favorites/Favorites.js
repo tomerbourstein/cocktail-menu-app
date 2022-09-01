@@ -1,3 +1,4 @@
+import React,{ Fragment, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { menuActions } from "../../store/menu-slice";
 import ImageList from "@mui/material/ImageList";
@@ -9,10 +10,15 @@ import InfoIcon from "@mui/icons-material/Info";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Checkbox from "@mui/material/Checkbox";
+
+import Dialog from "./DialogBackDrop";
+
+
 import classes from "./Favorites.module.css";
 
 const Favorites = () => {
   const dispatch = useDispatch();
+const open = useSelector(state=>state.menu.dialog);
   const favoritesList = useSelector((state) => state.menu.favoritesList);
   let checked = false;
 
@@ -32,8 +38,15 @@ const Favorites = () => {
   function removeFavoritesHandler(cocktail) {
     checked = true;
     console.log(cocktail);
-    dispatch(menuActions.removeFromFavorites(cocktail))
+    dispatch(menuActions.removeFromFavorites(cocktail));
   }
+
+  function handleOpen() {
+   dispatch(menuActions.toggleDialog());
+  }
+
+
+
   return (
     <section className={classes.favorites}>
       <ImageList col={1}>
@@ -41,35 +54,40 @@ const Favorites = () => {
           <ListSubheader component="div">My Favorite Cocktails</ListSubheader>
         </ImageListItem>
         {favoritesList.map((fav) => (
-          <ImageListItem key={fav.image}>
-            <img
-              src={`${fav.image}?w=248&fit=crop&auto=format`}
-              srcSet={`${fav.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
-              alt={fav.name}
-              loading="lazy"
-            />
-            <ImageListItemBar
-              title={fav.name}
-              subtitle={strengthTransform(fav.strength)}
-              actionIcon={
-                <>
-                  <Checkbox
-                    color={'success'}
-                    icon={<FavoriteIcon color={'error'}/>}
-                    checkedIcon={<FavoriteBorderIcon />}
-                    checked={checked}
-                    onChange={() => removeFavoritesHandler(fav.name)}
-                  ></Checkbox>
-                  <IconButton
-                    sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-                    aria-label={`info about ${fav.name}`}
-                  >
-                    <InfoIcon />
-                  </IconButton>
-                </>
-              }
-            />
-          </ImageListItem>
+          <Fragment>
+            <ImageListItem key={fav.image}>
+              <img
+                src={`${fav.image}?w=248&fit=crop&auto=format`}
+                srcSet={`${fav.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                alt={fav.name}
+                loading="lazy"
+              />
+              <ImageListItemBar
+                title={fav.name}
+                subtitle={strengthTransform(fav.strength)}
+                actionIcon={
+                  <>
+                    <Checkbox
+                      color={"success"}
+                      icon={<FavoriteIcon color={"error"} />}
+                      checkedIcon={<FavoriteBorderIcon />}
+                      checked={checked}
+                      onChange={() => removeFavoritesHandler(fav.name)}
+                    ></Checkbox>
+                    <IconButton
+                    onClick={handleOpen}
+                      sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+                      aria-label={`info about ${fav.name}`}
+                    >
+                      <InfoIcon />
+                    </IconButton>
+                  </>
+                }
+              />
+            </ImageListItem>
+                <Dialog cocktail={fav} />
+          
+          </Fragment>
         ))}
       </ImageList>
     </section>
