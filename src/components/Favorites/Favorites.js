@@ -1,4 +1,4 @@
-import React,{ Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { menuActions } from "../../store/menu-slice";
 import ImageList from "@mui/material/ImageList";
@@ -13,15 +13,15 @@ import Checkbox from "@mui/material/Checkbox";
 
 import Dialog from "./DialogBackDrop";
 
-
 import classes from "./Favorites.module.css";
 
 const Favorites = () => {
   const dispatch = useDispatch();
-const open = useSelector(state=>state.menu.dialog);
+  const visible = useSelector(state=>state.menu.visible);
   const favoritesList = useSelector((state) => state.menu.favoritesList);
   let checked = false;
 
+  const fadeOut = visible ?  classes.fadeOut : null;
   function strengthTransform(strength) {
     let cocktailStrength = "";
 
@@ -37,15 +37,14 @@ const open = useSelector(state=>state.menu.dialog);
 
   function removeFavoritesHandler(cocktail) {
     checked = true;
-    console.log(cocktail);
-    dispatch(menuActions.removeFromFavorites(cocktail));
+    // dispatch(menuActions.fadeFavorites())
+    setTimeout(dispatch(menuActions.removeFromFavorites(cocktail)), 5000);
+    
   }
 
   function handleOpen() {
-   dispatch(menuActions.toggleDialog());
+    dispatch(menuActions.toggleDialog());
   }
-
-
 
   return (
     <section className={classes.favorites}>
@@ -55,7 +54,7 @@ const open = useSelector(state=>state.menu.dialog);
         </ImageListItem>
         {favoritesList.map((fav) => (
           <Fragment>
-            <ImageListItem key={fav.image}>
+            <ImageListItem key={fav.image} className={fadeOut}>
               <img
                 src={`${fav.image}?w=248&fit=crop&auto=format`}
                 srcSet={`${fav.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
@@ -75,7 +74,7 @@ const open = useSelector(state=>state.menu.dialog);
                       onChange={() => removeFavoritesHandler(fav.name)}
                     ></Checkbox>
                     <IconButton
-                    onClick={handleOpen}
+                      onClick={handleOpen}
                       sx={{ color: "rgba(255, 255, 255, 0.54)" }}
                       aria-label={`info about ${fav.name}`}
                     >
@@ -85,8 +84,7 @@ const open = useSelector(state=>state.menu.dialog);
                 }
               />
             </ImageListItem>
-                <Dialog cocktail={fav} />
-          
+            <Dialog cocktail={fav} />
           </Fragment>
         ))}
       </ImageList>

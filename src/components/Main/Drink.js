@@ -115,15 +115,17 @@ const Drink = (props) => {
         <div>
           <div className={classes.check}>{garnish}</div>
         </div>
-
-        <div>
+        {(name !== "") ? 
+        (<div>
           <Checkbox
             checked={checked}
             icon={<FavoriteBorderIcon />}
             checkedIcon={<FavoriteIcon />}
             onChange={addToFavoritesHandler}
           ></Checkbox>
-        </div>
+        </div>)
+        : null
+      }
       </CardContent>
     </Card>
   );
