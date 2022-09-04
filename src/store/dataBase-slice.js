@@ -106,6 +106,46 @@ const dataBaseSlice = createSlice({
         }
       }
     },
+    filterCocktails(state, action) {
+      let removedProp = action.payload;
+      let removedCocktails = state.cocktailsToShow.filter(
+        (cocktail) =>
+          cocktail.flavours.includes(removedProp) ||
+          cocktail.properties.includes(removedProp)
+      );
+      let remainingCocktails = state.cocktailsToShow.filter(
+        (cocktail) =>
+          !cocktail.flavours.includes(removedProp) &&
+          !cocktail.properties.includes(removedProp)
+      );
+
+      function getRandomCocktails(amount, strengths) {
+        let relevantCocktails = state.filteredByLiquer;
+        if (strengths) {
+          relevantCocktails = state.filteredByLiquer.filter(
+            (cocktail) => strengths === cocktail.strength
+          );
+        }
+        let newRelevant = relevantCocktails.filter(
+          (cocktail) =>
+            !relevantCocktails.includes(removedCocktails) &&
+            !relevantCocktails.includes(remainingCocktails)
+        );
+        const shuffle = newRelevant.sort(() => 0.5 - Math.random());
+        let random = shuffle.slice(0, amount);
+
+        return random;
+      }
+
+      let arr = [];
+      for (const cocktail in removedCocktails) {
+        let foundStrength = removedCocktails[cocktail].strength;
+        let newCocktail = getRandomCocktails(1, foundStrength);
+        arr = arr.concat(newCocktail);
+      }
+
+      state.cocktailsToShow = remainingCocktails.concat(arr);
+    },
   },
 });
 

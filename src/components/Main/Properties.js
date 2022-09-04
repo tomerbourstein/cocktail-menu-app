@@ -1,11 +1,16 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { dataBaseActions } from "../../store/dataBase-slice";
 import Box from "@mui/material/Box";
+
 import Chip from "@mui/material/Chip";
 
 const Properties = (props) => {
+  const dispatch = useDispatch();
   const propsToShow = useSelector((state) => state.dataBase.properties);
+
   const handleDelete = (property) => {
     console.info(`You clicked the delete ${property} icon.`);
+    dispatch(dataBaseActions.filterCocktails(property));
   };
   return (
     <Box
@@ -25,7 +30,7 @@ const Properties = (props) => {
           size="small"
           sx={{ m: 0.3 }}
           onDelete={() => handleDelete(property)}
-          />
+        />
       ))}
     </Box>
   );
