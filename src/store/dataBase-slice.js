@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const dataBaseSlice = createSlice({
   name: "dataBase",
@@ -8,6 +8,7 @@ const dataBaseSlice = createSlice({
     preferences: "",
     filteredByLiquer: [],
     cocktailsToShow: [],
+    properties: [],
   },
   reducers: {
     fetchData(state, action) {
@@ -92,6 +93,19 @@ const dataBaseSlice = createSlice({
         let fourth = getRandomCocktails(1, [3]);
         state.cocktailsToShow = first.concat(second_third, fourth);
       }
+    },
+    setPropsList(state, action) {
+      state.properties = [];
+      for (const key in state.cocktailsToShow) {
+        let flavours = state.cocktailsToShow[key].flavours;
+        let props = state.cocktailsToShow[key].properties;
+        if (!flavours.includes("") && !props.includes("")) {
+          let flavoursAndProps = state.properties.concat(flavours, props);
+
+          state.properties = [...new Set([...flavoursAndProps])];
+        }
+      }
+      console.log(state.properties);
     },
   },
 });

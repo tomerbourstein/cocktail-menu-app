@@ -86,13 +86,13 @@ const Drink = (props) => {
         <div className={classes.rows}>
           <div>
             {ingredients.map((ingredient) => (
-              <span key={ingredient.length}>{ingredient}</span>
+              <span key={ingredients.indexOf(ingredient)}>{ingredient}</span>
             ))}
           </div>
 
           <div>
             {receipt.map((item) => (
-              <span key={item.length}>{item}</span>
+              <span key={receipt.indexOf(item)}>{item}</span>
             ))}
           </div>
         </div>

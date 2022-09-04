@@ -60,6 +60,7 @@ const Input = () => {
     }
     dispatch(dataBaseActions.filterByLiquer(alcohol));
     dispatch(dataBaseActions.setCocktailsToShow());
+    dispatch(dataBaseActions.setPropsList());
   };
 
   ////////////// On button click dispatch increment by 1 reducer.
