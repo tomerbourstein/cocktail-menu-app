@@ -105,7 +105,6 @@ const dataBaseSlice = createSlice({
           state.properties = [...new Set([...flavoursAndProps])];
         }
       }
-      console.log(state.properties);
     },
   },
 });
