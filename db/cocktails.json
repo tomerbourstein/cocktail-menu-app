@@ -235,7 +235,7 @@
         "ingredients": ["whiskey", "soda"],
         "flavours": ["bitter", "sour"],
         "properties": ["light", "simple", "refreshing", "sparkling"],
-        "receipt": ["2_oz_whiskey", "6_soda"],
+        "receipt": ["2_oz_whiskey", "6_oz_soda"],
         "preperation": "Add the whiskey to a highball glass filled with ice,top with club soda and stir briefly to combine",
         "served": "on_the_rocks",
         "garnish": ["lemon_twist", "lemon_slice"],
@@ -407,6 +407,118 @@
         "served": "straight_up",
         "garnish": ["orange_twist", "cherry"],
         "strength": 3
+      },
+      "clara_bow": {
+        "name": "clara_bow",
+        "image": "https://mymixologist.com/wp-content/uploads/2021/01/Clara-Bow-Whiskey-Cocktails.jpg",
+        "ingredients": [
+          "whiskey",
+          "elderflower_liqueur",
+          "lime",
+          "grenadine",
+          "mint"
+        ],
+        "flavours": ["sweet", "sour"],
+        "properties": "refreshing",
+        "receipt": [
+          "1_1/2_oz_bourbon",
+          "1/2_oz_elderflower_liqueur",
+          "3/4_oz_lime_juice",
+          "1/2_oz_grenadine",
+          "6_mint_leaves"
+        ],
+        "preperation": "Add all ingredients with ice and shake. Double strain into a coupe glass",
+        "served": "straight_up",
+        "garnish": "mint",
+        "strength": 2
+      }
+    },
+    "gin": {
+      "classic_martini": {
+        "name": "classic_martini",
+        "image": "https://www.liquor.com/thmb/Ez5kA2bplafKmzh7Qf24TavWfAk=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/dry-martini-720x720-primary-a6de08f8cd584ad88520287922578bcb.jpg",
+        "ingredients": ["gin", "dry_vermouth"],
+        "flavours": ["bitter", "citrus"],
+        "properties": ["strong", "simple", "sit_and_drink"],
+        "receipt": ["2_oz_gin", "1/2_oz_dry_vermouth"],
+        "preperation": "Add the gin and dry vermouth into a mixing glass with ice and stir until well chilled. Strain into a chilled martini glass",
+        "served": "straight_up",
+        "garnish": ["lemon_twist", "olive"],
+        "strength": 3
+      },
+      "wet_martini": {
+        "name": "wet_martini",
+        "image": "https://www.liquor.com/thmb/RcxJ-awCU8jQ13MR_AhOb8m6n64=/720x720/smart/filters:no_upscale()/50-50-martini-720x720-primary-6b661db5d92b48d9ab1fb31470f01992.jpg",
+        "ingredients": ["gin", "dry_vermouth"],
+        "flavours": ["bitter", "citrus", "sweet"],
+        "properties": ["strong", "simple", "sit_and_drink"],
+        "receipt": ["1_1/2_oz_gin", "1_1/2_oz_dry_vermouth"],
+        "preperation": "Add the gin and dry vermouth into a mixing glass with ice and stir well chilled. Strain into a chilled martini glass",
+        "served": "straight_up",
+        "garnish": ["lemon_twist", "olive"],
+        "strength": 3
+      },
+      "dirty_martini": {
+        "name": "dirty_martini",
+        "image": "https://www.liquor.com/thmb/hLRcAeSWqWR0DEGfbh7NfSLwTgM=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2011__04__15150034__dirty-martini-720x720-recipe-7127449167d548c981c6103fd60f49b0.jpg",
+        "ingredients": ["gin", "dry_vermouth", "olive_juice"],
+        "flavours": ["bitter", "citrus", "salty"],
+        "properties": ["strong", "heavy", "sit_and_drink"],
+        "receipt": [
+          "1_1/2_oz_gin",
+          "1/2_oz_dry_vermouth",
+          "1/2_oz_olive_juice"
+        ],
+        "preperation": "Add all ingredients into a mixing glass with ice and stir well chilled. Strain into a chilled martini glass",
+        "served": "straight_up",
+        "garnish": ["skewer_of_olives"],
+        "strength": 3
+      },
+      "negroni": {
+        "name": "negroni",
+        "image": "https://www.liquor.com/thmb/JxTOAr3j6QredEyM1IzcohLDZ80=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2018__05__08110806__negroni-720x720-recipe-7c1b747a616f4659af4008d025ab55df.jpg",
+        "ingredients": ["gin", "campari", "red_vermouth"],
+        "flavours": ["bitter", "sweet", "citrus"],
+        "properties": ["citrus", "heavy", "strong", "sit_and_drink"],
+        "receipt": ["1_oz_gin", "1_oz_campari", "1_oz_red_vermouth"],
+        "preperation": "Stir into an old fashioned glass over ice",
+        "served": "on_the_rocks",
+        "garnish": ["orange_twist"],
+        "strength": 3
+      },
+      "jasmin": {
+        "name": "jasmin",
+        "image": "https://www.liquor.com/thmb/yMnyj7kVl8FBYjztpnVLuVla6tY=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2016__09__12154233__jasmine-720x720-recipe-10e72d5324b44f04b8d3059a01098dec.jpg",
+        "ingredients": ["gin", "campari", "orange_liqueur", "lemon_juice"],
+        "flavours": ["bitter", "citrus", "sour"],
+        "properties": ["citrus", "medium", "refreshing"],
+        "receipt": [
+          "1_1/2_oz_gin",
+          "1/4_oz_campari",
+          "1/4_oz_orange_liqueur",
+          "1/4_oz_lemon_juice"
+        ],
+        "preperation": "Shake all ingredients with ice and strain into a chilled cocktail glass",
+        "served": "straight_up",
+        "garnish": "lemon_twist",
+        "strength": 2
+      },
+      "basil_smash": {
+        "name": "basil_smash",
+        "image": "https://www.liquor.com/thmb/u1y0DDUZ5Fyh6IMwhcIgcYzlLzc=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/space-gin-smash-720x720-primary-4f2ad16c6edc4b3d933d8354a9175d65.jpg",
+        "ingredients": ["gin", "lemon_juice", "simple_syrup", "basil"],
+        "flavours": ["bitter", "sour", "sweet"],
+        "properties": ["herbaceous", "basil", "aromatic"],
+        "receipt": [
+          "2_oz_dry_gin",
+          "3/4_oz_lemon_juice",
+          "1/3_oz_sugar_syrup",
+          "10_basil_leaves"
+        ],
+        "preperation": "Smash the basil leaves in the shaker. Add all ingredients with ice and shake well. Double strain into an ice filled old fashioned glass",
+        "served": "on_the_rocks",
+        "garnish": ["basil_leaves"],
+        "strength": 2
       }
     }
   }
