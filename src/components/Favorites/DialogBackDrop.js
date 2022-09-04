@@ -50,7 +50,7 @@ const DialogBackDrop = (props) => {
         aria-describedby="cocktail-receipt"
       >
           <DialogTitle id="scroll-dialog-title">{name}{strengthTransform(strength)}</DialogTitle>
-          <DialogContent dividers={'paper'}>
+          <DialogContent >
               <DialogContentText>
                   {receipt}
                   {ingredients}
