@@ -16,12 +16,13 @@ import Dialog from "./DialogBackDrop";
 import classes from "./Favorites.module.css";
 
 const Favorites = () => {
-  const dispatch = useDispatch();
-  const visible = useSelector(state=>state.menu.visible);
+  const [favorite, setFavorite] = useState("");
+//   const visible = useSelector((state) => state.menu.visible);
   const favoritesList = useSelector((state) => state.menu.favoritesList);
+  const dispatch = useDispatch();
   let checked = false;
 
-  const fadeOut = visible ?  classes.fadeOut : null;
+//   const fade = !visible ? classes.fadeOut : classes.noFade;
   function strengthTransform(strength) {
     let cocktailStrength = "";
 
@@ -37,12 +38,17 @@ const Favorites = () => {
 
   function removeFavoritesHandler(cocktail) {
     checked = true;
-    // dispatch(menuActions.fadeFavorites())
-    setTimeout(dispatch(menuActions.removeFromFavorites(cocktail)), 5000);
-    
+    // dispatch(menuActions.fadeFavorites(cocktail));
+    // const timeout = setTimeout(
+      dispatch(menuActions.removeFromFavorites(cocktail))
+    //   ,
+    //   5000
+    // );
+    // clearTimeout(timeout);
   }
 
-  function handleOpen() {
+  function handleOpen(cocktail) {
+    setFavorite(cocktail);
     dispatch(menuActions.toggleDialog());
   }
 
@@ -52,9 +58,9 @@ const Favorites = () => {
         <ImageListItem key="Subheader" cols={2}>
           <ListSubheader component="div">My Favorite Cocktails</ListSubheader>
         </ImageListItem>
-        {favoritesList.map((fav) => (
-          <Fragment>
-            <ImageListItem key={fav.image} className={fadeOut}>
+        <Fragment>
+          {favoritesList.map((fav) => (
+            <ImageListItem key={fav.image}>
               <img
                 src={`${fav.image}?w=248&fit=crop&auto=format`}
                 srcSet={`${fav.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
@@ -74,7 +80,7 @@ const Favorites = () => {
                       onChange={() => removeFavoritesHandler(fav.name)}
                     ></Checkbox>
                     <IconButton
-                      onClick={handleOpen}
+                      onClick={() => handleOpen(fav)}
                       sx={{ color: "rgba(255, 255, 255, 0.54)" }}
                       aria-label={`info about ${fav.name}`}
                     >
@@ -84,9 +90,9 @@ const Favorites = () => {
                 }
               />
             </ImageListItem>
-            <Dialog cocktail={fav} />
-          </Fragment>
-        ))}
+          ))}
+          <Dialog cocktail={favorite} />
+        </Fragment>
       </ImageList>
     </section>
   );
