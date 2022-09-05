@@ -70,7 +70,6 @@ const Properties = (props) => {
          else if(b.strength === "") return -1;    
          else return a.strength - b.strength;
     });
-    console.log(newCocktailsToShow);
     console.log(sortedCocktailsToShow);
 
     // 5. change real cocktailsToShow to the filtered one.

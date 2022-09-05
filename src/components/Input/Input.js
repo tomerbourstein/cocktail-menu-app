@@ -7,11 +7,13 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import classes from "./Input.module.css";
+import { useEffect } from "react";
 const Input = () => {
   const alcohol = useSelector((state) => state.input.onChangeAlcohol);
   const amount = useSelector((state) => state.input.onChangeAmount);
   const liquers = useSelector((state) => state.dataBase.liquers);
   const error = useSelector((state) => state.input.error);
+  const cocktailsToShow = useSelector(state=>state.dataBase.cocktailsToShow);
   const dispatch = useDispatch();
 
   ///////////// Changing the Alcohol input, and dispatch to redux store to save state.
@@ -60,9 +62,12 @@ const Input = () => {
     }
     dispatch(dataBaseActions.filterByLiquer(alcohol));
     dispatch(dataBaseActions.setCocktailsToShow());
-    dispatch(dataBaseActions.setPropsList());
   };
-
+  
+  useEffect(()=> {
+    dispatch(dataBaseActions.setPropsList());
+  },[dispatch, cocktailsToShow])
+  
   ////////////// On button click dispatch increment by 1 reducer.
   const plusButtonHandler = () => {
     dispatch(inputActions.increment());
