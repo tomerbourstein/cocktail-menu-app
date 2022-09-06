@@ -6,12 +6,12 @@ import Chip from "@mui/material/Chip";
 const Properties = (props) => {
   const dispatch = useDispatch();
   const propsToShow = useSelector((state) => state.dataBase.properties);
-  const filteredByLiquer = useSelector(
-    (state) => state.dataBase.filteredByLiquer
-  );
-  const cocktailsToShow = useSelector(
-    (state) => state.dataBase.cocktailsToShow
-  );
+  // const filteredByLiquer = useSelector(
+  //   (state) => state.dataBase.filteredByLiquer
+  // );
+  // const cocktailsToShow = useSelector(
+  //   (state) => state.dataBase.cocktailsToShow
+  // );
 
   const handleDelete = (removedProperty) => {
     // console.info(`You clicked the delete ${removedProperty} icon.`);

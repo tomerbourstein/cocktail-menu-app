@@ -95,7 +95,6 @@ const dataBaseSlice = createSlice({
         let fourth = getRandomCocktails(1, [3]);
         state.cocktailsToShow = first.concat(second_third, fourth);
       }
-      console.log(state.cocktailsToShow);
     },
     setPropsList(state, action) {
       state.properties = [];
@@ -181,7 +180,6 @@ const dataBaseSlice = createSlice({
         else return a.strength - b.strength;
       });
       sortedCocktailsToShow = [...new Set([...sortedCocktailsToShow])];
-      console.log(sortedCocktailsToShow);
 
       // 6. change real cocktailsToShow to the filtered one.
       state.cocktailsToShow = sortedCocktailsToShow;
