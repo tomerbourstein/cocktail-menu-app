@@ -30,6 +30,7 @@ const dataBaseSlice = createSlice({
       }
     },
     setCocktailsToShow(state) {
+      state.cocktailsToShow = [];
       const emptyCocktail = {
         key: "empty",
         name: "",
@@ -93,6 +94,8 @@ const dataBaseSlice = createSlice({
         let fourth = getRandomCocktails(1, [3]);
         state.cocktailsToShow = first.concat(second_third, fourth);
       }
+      console.log(state.cocktailsToShow);
+
     },
     setPropsList(state, action) {
       state.properties = [];

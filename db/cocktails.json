@@ -419,7 +419,7 @@
           "mint"
         ],
         "flavours": ["sweet", "sour"],
-        "properties": "refreshing",
+        "properties": ["refreshing", "floral", "fragrant"],
         "receipt": [
           "1_1/2_oz_bourbon",
           "1/2_oz_elderflower_liqueur",
