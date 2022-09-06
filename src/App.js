@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Input from "./components/Input/Input";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
+import CustomCocktails from "./components/CustomCocktails/CustomCocktails";
 import Favorites from "./components/Favorites/Favorites";
 import "./App.css";
 
@@ -48,7 +49,10 @@ function App() {
             <Main />
           </>
         ) : (
+          <>
+          <CustomCocktails />
           <Favorites />
+          </>
         )}
         <Footer />
       </Fragment>
