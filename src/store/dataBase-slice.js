@@ -8,6 +8,8 @@ const dataBaseSlice = createSlice({
     preferences: "",
     filteredByLiquer: [],
     cocktailsToShow: [],
+    properties: [],
+    filteredByProps: [],
   },
   reducers: {
     fetchData(state, action) {
@@ -29,6 +31,7 @@ const dataBaseSlice = createSlice({
       }
     },
     setCocktailsToShow(state) {
+      state.cocktailsToShow = [];
       const emptyCocktail = {
         key: "empty",
         name: "",
@@ -92,6 +95,94 @@ const dataBaseSlice = createSlice({
         let fourth = getRandomCocktails(1, [3]);
         state.cocktailsToShow = first.concat(second_third, fourth);
       }
+    },
+    setPropsList(state, action) {
+      state.properties = [];
+      for (const key in state.cocktailsToShow) {
+        let flavours = state.cocktailsToShow[key].flavours;
+        let props = state.cocktailsToShow[key].properties;
+        if (!flavours.includes("") && !props.includes("")) {
+          let flavoursAndProps = state.properties.concat(flavours, props);
+
+          state.properties = [...new Set([...flavoursAndProps])];
+        }
+      }
+    },
+    filterCocktails(state, action) {
+      let removedProperty = action.payload;
+      console.info(`You clicked the delete ${removedProperty} icon.`);
+      const emptyCocktail = {
+        key: "empty",
+        name: "",
+        ingredients: [""],
+        properties: [""],
+        flavours: [""],
+        garnish: [""],
+        image: "",
+        preperation: "Not Enough Data!",
+        receipt: [""],
+        served: "",
+        strength: "",
+      };
+
+      // 0. find removed and remaining from cocktailsToShow that has the matching deleted property.
+      const filterRemoved = state.cocktailsToShow.filter(
+        (i) =>
+          i.flavours.includes(removedProperty) ||
+          i.properties.includes(removedProperty)
+      );
+      const filterRemaining = state.cocktailsToShow.filter(
+        (i) =>
+          !i.flavours.includes(removedProperty) &&
+          !i.properties.includes(removedProperty)
+      );
+
+      // 1. filter filteredByLiquer to delete cocktailsToShow.
+      const filterNotShown = state.filteredByLiquer.filter(
+        (i) => !state.cocktailsToShow.includes(i)
+      );
+
+      // 2. filter filterNotShown to delete elements equals to property deleted.
+      const filterNoProperty = filterNotShown.filter(
+        (i) =>
+          !i.flavours.includes(removedProperty) &&
+          !i.properties.includes(removedProperty)
+      );
+
+      // 3. create a function that filter if the elements deleted match their strength with new cocktail.strength.
+      function getRandomCocktails(amount, strengths) {
+        let relevantCocktails = filterNoProperty;
+        if (strengths) {
+          relevantCocktails = filterNoProperty.filter(
+            (cocktail) => strengths === cocktail.strength
+          );
+        }
+        const shuffle = relevantCocktails.sort(() => 0.5 - Math.random());
+        let random = shuffle.slice(0, amount);
+        return random;
+      }
+
+      // 4. from filterNoProperty get the amount of cocktails deleted that are equals to the deleted cocktails strengths.
+      let arr = [];
+      for (const c in filterRemoved) {
+        let foundStrength = filterRemoved[c].strength;
+        let newCocktail = getRandomCocktails(1, foundStrength);
+        if (newCocktail.length === 0) {
+          newCocktail = [emptyCocktail];
+        }
+        arr = arr.concat(newCocktail);
+      }
+      // 5. add all to one array and sort it by strength.
+      let newCocktailsToShow = [...filterRemaining, ...arr];
+      let sortedCocktailsToShow = newCocktailsToShow.sort(function (a, b) {
+        if (a.strength === "") return 1;
+        else if (b.strength === "") return -1;
+        else return a.strength - b.strength;
+      });
+      sortedCocktailsToShow = [...new Set([...sortedCocktailsToShow])];
+
+      // 6. change real cocktailsToShow to the filtered one.
+      state.cocktailsToShow = sortedCocktailsToShow;
     },
   },
 });

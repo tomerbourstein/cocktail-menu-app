@@ -419,7 +419,7 @@
           "mint"
         ],
         "flavours": ["sweet", "sour"],
-        "properties": "refreshing",
+        "properties": ["refreshing", "floral", "fragrant"],
         "receipt": [
           "1_1/2_oz_bourbon",
           "1/2_oz_elderflower_liqueur",
@@ -507,7 +507,7 @@
         "name": "basil_smash",
         "image": "https://www.liquor.com/thmb/u1y0DDUZ5Fyh6IMwhcIgcYzlLzc=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/space-gin-smash-720x720-primary-4f2ad16c6edc4b3d933d8354a9175d65.jpg",
         "ingredients": ["gin", "lemon_juice", "simple_syrup", "basil"],
-        "flavours": ["bitter", "sour", "sweet"],
+        "flavours": ["sour", "sweet"],
         "properties": ["herbaceous", "basil", "aromatic"],
         "receipt": [
           "2_oz_dry_gin",
@@ -523,3 +523,4 @@
     }
   }
 }
+

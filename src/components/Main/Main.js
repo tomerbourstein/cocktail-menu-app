@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 
 import classes from "./Main.module.css";
+import Properties from "./Properties";
 import Drink from "./Drink";
-
 const Main = (props) => {
   const isGenerated = useSelector((state) => state.menu.generated);
   const cocktailsToShow = useSelector(
@@ -14,6 +14,7 @@ const Main = (props) => {
   ));
   return (
     <section id="main" className={classes.main}>
+      <Properties />
       {isGenerated ? (
         <div>{mapCocktails}</div>
       ) : (

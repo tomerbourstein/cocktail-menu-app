@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { menuActions } from "../../store/menu-slice";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
+// import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-import classes from "./DialogBackDrop.module.css";
+// import classes from "./DialogBackDrop.module.css";
 
 const DialogBackDrop = (props) => {
     const dispatch = useDispatch();
@@ -15,10 +15,10 @@ const DialogBackDrop = (props) => {
     const {
         name,
         ingredients,
-        properties,
-        flavours,
+        // properties,
+        // flavours,
         garnish,
-        image,
+        // image,
         preperation,
         receipt,
         served,
@@ -50,7 +50,7 @@ const DialogBackDrop = (props) => {
         aria-describedby="cocktail-receipt"
       >
           <DialogTitle id="scroll-dialog-title">{name}{strengthTransform(strength)}</DialogTitle>
-          <DialogContent dividers={'paper'}>
+          <DialogContent >
               <DialogContentText>
                   {receipt}
                   {ingredients}
