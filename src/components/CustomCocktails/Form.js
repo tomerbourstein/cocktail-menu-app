@@ -119,6 +119,35 @@ const Form = () => {
   ) {
     formIsValid = true;
   }
+
+  const mainLiqueurHelper = !mainLiqueurHasError
+    ? "Cocktail's Main Spirit"
+    : "Enter Something";
+  const nameHelper = !nameHasError ? "How do you call it?" : "Enter Something";
+  const ingredientsHelper = !ingredientsHasError
+    ? "What are the ingredients?"
+    : "Enter Something";
+  const flavoursHelper = !flavoursHasError
+    ? "How does it tastes like?"
+    : "Enter Something";
+  const propertiesHelper = !propertiesHasError
+    ? "How would you describe it?"
+    : "Enter Something";
+  const receiptHelper = !receiptHasError
+    ? "Tell me the quantities"
+    : "Enter Something";
+  const preperationHelper = !preperationHasError
+    ? "What are the steps?"
+    : "Enter Something";
+  const servedHelper = !servedHasError
+    ? "How Is It Served?"
+    : "Enter Something";
+  const garnishHelper = !garnishHasError
+    ? "How To Decorate?"
+    : "Enter Something";
+  const imageHelper = !imageHasError
+    ? "Image Should be 720*720"
+    : "Enter Something";
   const marks = [
     {
       value: 0,
@@ -180,6 +209,7 @@ const Form = () => {
     garnishResetHandler();
     imageResetHandler();
   };
+
   return (
     <Box>
       <form onSubmit={submitHandler}>
@@ -188,6 +218,7 @@ const Form = () => {
           label="Main Liqueur"
           variant="standard"
           required
+          helperText={mainLiqueurHelper}
           error={mainLiqueurHasError}
           value={enteredMainLiqueur}
           onBlur={mainLiqueurBlurHandler}
@@ -198,6 +229,8 @@ const Form = () => {
           label="Cocktail Name"
           variant="standard"
           required
+          helperText={nameHelper}
+
           error={nameHasError}
           value={enteredName}
           onBlur={nameBlurHandler}
@@ -208,6 +241,7 @@ const Form = () => {
           label="Ingredients"
           variant="standard"
           required
+          helperText={ingredientsHelper}
           error={ingredientsHasError}
           value={enteredIngredients}
           onBlur={ingredientsBlurHandler}
@@ -218,6 +252,7 @@ const Form = () => {
           label="Flavours"
           variant="standard"
           required
+          helperText={flavoursHelper}
           error={flavoursHasError}
           value={enteredFlavours}
           onBlur={flavoursBlurHandler}
@@ -228,6 +263,7 @@ const Form = () => {
           label="Properties"
           variant="standard"
           required
+          helperText={propertiesHelper}
           error={propertiesHasError}
           value={enteredProperties}
           onBlur={propertiesBlurHandler}
@@ -238,16 +274,21 @@ const Form = () => {
           label="Reciept"
           variant="standard"
           required
+          helperText={receiptHelper}
           error={receiptHasError}
           value={enteredReceipt}
           onBlur={receiptBlurHandler}
           onChange={receiptChangeHandler}
         />
         <TextField
-          sx={{ m: 1 }}
+          sx={{ m: 1, width: 370 }}
           label="Preperation"
           variant="standard"
           required
+          multiline
+          minRows={2}
+          maxRows={5}
+          helperText={preperationHelper}
           error={preperationHasError}
           value={enteredPreperation}
           onBlur={preperationBlurHandler}
@@ -258,6 +299,7 @@ const Form = () => {
           label="Served"
           variant="standard"
           required
+          helperText={servedHelper}
           error={servedHasError}
           value={enteredServed}
           onBlur={servedBlurHandler}
@@ -268,6 +310,7 @@ const Form = () => {
           label="Garnish"
           variant="standard"
           required
+          helperText={garnishHelper}
           error={garnishHasError}
           onChange={garnishChangeHandler}
           value={enteredGarnish}
@@ -279,6 +322,8 @@ const Form = () => {
           variant="standard"
           placeholder="720*720"
           required
+          type="url"
+          helperText={imageHelper}
           error={imageHasError}
           value={enteredImage}
           onBlur={imageBlurHandler}
