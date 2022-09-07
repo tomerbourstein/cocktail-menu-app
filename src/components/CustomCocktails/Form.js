@@ -4,7 +4,8 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Slider from "@mui/material/Slider";
 import Button from "@mui/material/Button";
-
+import IconButton from "@mui/material/IconButton";
+import AddIcon from "@mui/icons-material/Add";
 const Form = () => {
   const {
     value: enteredMainLiqueur,
@@ -230,23 +231,32 @@ const Form = () => {
           variant="standard"
           required
           helperText={nameHelper}
-
           error={nameHasError}
           value={enteredName}
           onBlur={nameBlurHandler}
           onChange={nameChangeHandler}
         />
-        <TextField
-          sx={{ m: 1 }}
-          label="Ingredients"
-          variant="standard"
-          required
-          helperText={ingredientsHelper}
-          error={ingredientsHasError}
-          value={enteredIngredients}
-          onBlur={ingredientsBlurHandler}
-          onChange={ingredientsChangeHandler}
-        />
+
+        <Box sx={{ display: "flex", alignItems: "center", pl: 2 }}>
+          <TextField
+            sx={{ m: 1 }}
+            label="Ingredients"
+            variant="standard"
+            required
+            helperText={ingredientsHelper}
+            error={ingredientsHasError}
+            value={enteredIngredients}
+            onBlur={ingredientsBlurHandler}
+            onChange={ingredientsChangeHandler}
+          />
+
+
+            <IconButton size="medium" color="success" aria-label="add">
+              <AddIcon />
+            </IconButton>
+
+        </Box>
+
         <TextField
           sx={{ m: 1 }}
           label="Flavours"
