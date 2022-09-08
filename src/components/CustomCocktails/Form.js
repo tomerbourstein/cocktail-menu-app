@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useInput from "../../hooks/use-input";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -6,7 +6,15 @@ import Slider from "@mui/material/Slider";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
+import Chip from "@mui/material/Chip";
+
 const Form = () => {
+  const [ingredientsList, setIngredientsList] = useState([]);
+  const [flavoursList, setFlavoursList] = useState([]);
+  const [propertiesList, setPropertiesList] = useState([]);
+  const [receiptList, setReceiptList] = useState([]);
+  const [garnishList, setGarnishList] = useState([]);
+
   const {
     value: enteredMainLiqueur,
     isValid: mainLiqueurIsValid,
@@ -32,7 +40,7 @@ const Form = () => {
     valueChangeHandler: ingredientsChangeHandler,
     valueBlurHandler: ingredientsBlurHandler,
     reset: ingredientsResetHandler,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput((value) => value.trim() !== "" || ingredientsList.length !== 0);
 
   const {
     value: enteredFlavours,
@@ -41,7 +49,7 @@ const Form = () => {
     valueChangeHandler: flavoursChangeHandler,
     valueBlurHandler: flavoursBlurHandler,
     reset: flavoursResetHandler,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput((value) => value.trim() !== "" || flavoursList.length !== 0);
 
   const {
     value: enteredProperties,
@@ -50,7 +58,7 @@ const Form = () => {
     valueChangeHandler: propertiesChangeHandler,
     valueBlurHandler: propertiesBlurHandler,
     reset: propertiesResetHandler,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput((value) => value.trim() !== "" || propertiesList.length !== 0);
 
   const {
     value: enteredServed,
@@ -68,7 +76,7 @@ const Form = () => {
     valueChangeHandler: receiptChangeHandler,
     valueBlurHandler: receiptBlurHandler,
     reset: receiptResetHandler,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput((value) => value.trim() !== "" || receiptList.length !== 0);
 
   const {
     value: enteredPreperation,
@@ -86,7 +94,7 @@ const Form = () => {
     valueChangeHandler: garnishChangeHandler,
     valueBlurHandler: garnishBlurHandler,
     reset: garnishResetHandler,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput((value) => value.trim() !== "" || garnishList.length !== 0);
 
   const {
     value: enteredImage,
@@ -188,7 +196,7 @@ const Form = () => {
     const data = {
       main_liqueur: enteredMainLiqueur,
       name: enteredName,
-      ingredients: [enteredIngredients],
+      ingredients: ingredientsList,
       flavours: [enteredFlavours],
       properties: [enteredProperties],
       preperation: enteredPreperation,
@@ -211,14 +219,28 @@ const Form = () => {
     imageResetHandler();
   };
 
+  const handleAdd = (value, cb, reset, state) => {
+    if (value !== "") {
+      if (!state.includes(value)) {
+        cb((prevState) => [...prevState, value]);
+      }
+    }
+    reset();
+  };
+  const handleDelete = (item, index, list, cb) => {
+    let arr = [...list];
+    arr.splice(index, 1);
+    console.log(item);
+    cb(arr);
+  };
+
   return (
-    <Box>
-      <form onSubmit={submitHandler}>
+    <Box component="form" onSubmit={submitHandler} sx={{ width: 433 }}>
+      <Box sx={{ display: "flex", justifyContent: "space-around" }}>
         <TextField
           sx={{ m: 1 }}
           label="Main Liqueur"
           variant="standard"
-          required
           helperText={mainLiqueurHelper}
           error={mainLiqueurHasError}
           value={enteredMainLiqueur}
@@ -229,20 +251,20 @@ const Form = () => {
           sx={{ m: 1 }}
           label="Cocktail Name"
           variant="standard"
-          required
           helperText={nameHelper}
           error={nameHasError}
           value={enteredName}
           onBlur={nameBlurHandler}
           onChange={nameChangeHandler}
         />
+      </Box>
 
-        <Box sx={{ display: "flex", alignItems: "center", pl: 2 }}>
+      <Box sx={{ display: "flex", alignItems: "center", pl: 2 }}>
+        <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
           <TextField
             sx={{ m: 1 }}
             label="Ingredients"
             variant="standard"
-            required
             helperText={ingredientsHelper}
             error={ingredientsHasError}
             value={enteredIngredients}
@@ -250,51 +272,183 @@ const Form = () => {
             onChange={ingredientsChangeHandler}
           />
 
-
-            <IconButton size="medium" color="success" aria-label="add">
-              <AddIcon />
-            </IconButton>
-
+          <IconButton
+            size="medium"
+            color="success"
+            aria-label="add"
+            onClick={() =>
+              handleAdd(
+                enteredIngredients,
+                setIngredientsList,
+                ingredientsResetHandler,
+                ingredientsList
+              )
+            }
+          >
+            <AddIcon />
+          </IconButton>
         </Box>
 
+        <Box sx={{ width: 168, display: "flex", flexWrap: "wrap" }}>
+          {ingredientsList.map((ingredient, index) => (
+            <Chip
+              size="small"
+              sx={{ m: 0.3 }}
+              key={index}
+              label={ingredient}
+              onDelete={() =>
+                handleDelete(
+                  ingredient,
+                  index,
+                  ingredientsList,
+                  setIngredientsList
+                )
+              }
+            />
+          ))}
+        </Box>
+      </Box>
+
+      <Box sx={{ display: "flex", alignItems: "center", pl: 2 }}>
+        <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+          <TextField
+            sx={{ m: 1 }}
+            label="Flavours"
+            variant="standard"
+            helperText={flavoursHelper}
+            error={flavoursHasError}
+            value={enteredFlavours}
+            onBlur={flavoursBlurHandler}
+            onChange={flavoursChangeHandler}
+          />
+
+          <IconButton
+            size="medium"
+            color="success"
+            aria-label="add"
+            onClick={() =>
+              handleAdd(
+                enteredFlavours,
+                setFlavoursList,
+                flavoursResetHandler,
+                flavoursList
+              )
+            }
+          >
+            <AddIcon />
+          </IconButton>
+        </Box>
+
+        <Box sx={{ width: 168, display: "flex", flexWrap: "wrap" }}>
+          {flavoursList.map((flavour, index) => (
+            <Chip
+              size="small"
+              sx={{ m: 0.3 }}
+              key={index}
+              label={flavour}
+              onDelete={() =>
+                handleDelete(flavour, index, flavoursList, setFlavoursList)
+              }
+            />
+          ))}
+        </Box>
+      </Box>
+
+      <Box sx={{ display: "flex", alignItems: "center", pl: 2 }}>
+        <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+          <TextField
+            sx={{ m: 1 }}
+            label="Properties"
+            variant="standard"
+            helperText={propertiesHelper}
+            error={propertiesHasError}
+            value={enteredProperties}
+            onBlur={propertiesBlurHandler}
+            onChange={propertiesChangeHandler}
+          />
+
+          <IconButton
+            size="medium"
+            color="success"
+            aria-label="add"
+            onClick={() =>
+              handleAdd(
+                enteredProperties,
+                setPropertiesList,
+                propertiesResetHandler,
+                propertiesList
+              )
+            }
+          >
+            <AddIcon />
+          </IconButton>
+        </Box>
+
+        <Box sx={{ width: 168, display: "flex", flexWrap: "wrap" }}>
+          {propertiesList.map((property, index) => (
+            <Chip
+              size="small"
+              sx={{ m: 0.3 }}
+              key={index}
+              label={property}
+              onDelete={() =>
+                handleDelete(property, index, propertiesList, setPropertiesList)
+              }
+            />
+          ))}
+        </Box>
+      </Box>
+
+      <Box sx={{ display: "flex", alignItems: "center", pl: 2 }}>
+        <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+          <TextField
+            sx={{ m: 1 }}
+            label="Reciept"
+            variant="standard"
+            helperText={receiptHelper}
+            error={receiptHasError}
+            value={enteredReceipt}
+            onBlur={receiptBlurHandler}
+            onChange={receiptChangeHandler}
+          />
+
+          <IconButton
+            size="medium"
+            color="success"
+            aria-label="add"
+            onClick={() =>
+              handleAdd(
+                enteredReceipt,
+                setReceiptList,
+                receiptResetHandler,
+                receiptList
+              )
+            }
+          >
+            <AddIcon />
+          </IconButton>
+        </Box>
+
+        <Box sx={{ width: 168, display: "flex", flexWrap: "wrap" }}>
+          {receiptList.map((rec, index) => (
+            <Chip
+              size="small"
+              sx={{ m: 0.3 }}
+              key={index}
+              label={rec}
+              onDelete={() =>
+                handleDelete(rec, index, receiptList, setReceiptList)
+              }
+            />
+          ))}
+        </Box>
+      </Box>
+
+      <Box>
         <TextField
-          sx={{ m: 1 }}
-          label="Flavours"
-          variant="standard"
-          required
-          helperText={flavoursHelper}
-          error={flavoursHasError}
-          value={enteredFlavours}
-          onBlur={flavoursBlurHandler}
-          onChange={flavoursChangeHandler}
-        />
-        <TextField
-          sx={{ m: 1 }}
-          label="Properties"
-          variant="standard"
-          required
-          helperText={propertiesHelper}
-          error={propertiesHasError}
-          value={enteredProperties}
-          onBlur={propertiesBlurHandler}
-          onChange={propertiesChangeHandler}
-        />
-        <TextField
-          sx={{ m: 1 }}
-          label="Reciept"
-          variant="standard"
-          required
-          helperText={receiptHelper}
-          error={receiptHasError}
-          value={enteredReceipt}
-          onBlur={receiptBlurHandler}
-          onChange={receiptChangeHandler}
-        />
-        <TextField
-          sx={{ m: 1, width: 370 }}
+          sx={{ m: 1, width: 380 }}
           label="Preperation"
           variant="standard"
-          required
           multiline
           minRows={2}
           maxRows={5}
@@ -304,34 +458,71 @@ const Form = () => {
           onBlur={preperationBlurHandler}
           onChange={preperationChangeHandler}
         />
+      </Box>
+
+      <Box>
         <TextField
-          sx={{ m: 1 }}
+          sx={{ m: 1, width: 380 }}
           label="Served"
           variant="standard"
-          required
           helperText={servedHelper}
           error={servedHasError}
           value={enteredServed}
           onBlur={servedBlurHandler}
           onChange={servedChangeHandler}
         />
+      </Box>
+
+      <Box sx={{ display: "flex", alignItems: "center", pl: 2 }}>
+        <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+          <TextField
+            sx={{ m: 1 }}
+            label="Garnish"
+            variant="standard"
+            helperText={garnishHelper}
+            error={garnishHasError}
+            onChange={garnishChangeHandler}
+            value={enteredGarnish}
+            onBlur={garnishBlurHandler}
+          />
+
+          <IconButton
+            size="medium"
+            color="success"
+            aria-label="add"
+            onClick={() =>
+              handleAdd(
+                enteredGarnish,
+                setGarnishList,
+                garnishResetHandler,
+                garnishList
+              )
+            }
+          >
+            <AddIcon />
+          </IconButton>
+        </Box>
+
+        <Box sx={{ width: 168, display: "flex", flexWrap: "wrap" }}>
+          {garnishList.map((item, index) => (
+            <Chip
+              size="small"
+              sx={{ m: 0.3 }}
+              key={index}
+              label={item}
+              onDelete={() =>
+                handleDelete(item, index, garnishList, setGarnishList)
+              }
+            />
+          ))}
+        </Box>
+      </Box>
+      <Box>
         <TextField
-          sx={{ m: 1 }}
-          label="Garnish"
-          variant="standard"
-          required
-          helperText={garnishHelper}
-          error={garnishHasError}
-          onChange={garnishChangeHandler}
-          value={enteredGarnish}
-          onBlur={garnishBlurHandler}
-        />
-        <TextField
-          sx={{ m: 1 }}
+          sx={{ m: 1, width: 380 }}
           label="Image Link"
           variant="standard"
           placeholder="720*720"
-          required
           type="url"
           helperText={imageHelper}
           error={imageHasError}
@@ -339,22 +530,22 @@ const Form = () => {
           onBlur={imageBlurHandler}
           onChange={imageChangeHandler}
         />
+      </Box>
 
-        <Slider
-          sx={{ width: 300 }}
-          aria-label="Strength"
-          defaultValue={0}
-          step={1}
-          marks={marks}
-          min={0}
-          max={3}
-          onChange={sliderChangeHandler}
-          value={strength}
-        />
-        <Button disabled={!formIsValid} type="submit" variant="contained">
-          Publish Cocktail
-        </Button>
-      </form>
+      <Slider
+        sx={{ width: 300 }}
+        aria-label="Strength"
+        defaultValue={0}
+        step={1}
+        marks={marks}
+        min={0}
+        max={3}
+        onChange={sliderChangeHandler}
+        value={strength}
+      />
+      <Button disabled={!formIsValid} type="submit" variant="contained">
+        Publish Cocktail
+      </Button>
     </Box>
   );
 };
