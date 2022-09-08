@@ -76,7 +76,7 @@ const Form = () => {
     valueChangeHandler: receiptChangeHandler,
     valueBlurHandler: receiptBlurHandler,
     reset: receiptResetHandler,
-  } = useInput((value) => value.trim() !== "" || receiptList.length !== 0);
+  } = useInput((value) => value.trim() !== "");
 
   const {
     value: enteredPreperation,
@@ -130,11 +130,11 @@ const Form = () => {
   }
 
   const mainLiqueurHelper = !mainLiqueurHasError
-    ? "Cocktail's Main Spirit"
+    ? "Cocktail's main spirit"
     : "Enter Something";
   const nameHelper = !nameHasError ? "How do you call it?" : "Enter Something";
   const ingredientsHelper = !ingredientsHasError
-    ? "What are the ingredients?"
+    ? "What would you use?"
     : "Enter Something";
   const flavoursHelper = !flavoursHasError
     ? "How does it tastes like?"
@@ -143,13 +143,13 @@ const Form = () => {
     ? "How would you describe it?"
     : "Enter Something";
   const receiptHelper = !receiptHasError
-    ? "Tell me the quantities"
-    : "Enter Something";
+    ? "In oz"
+    :   "In oz";
   const preperationHelper = !preperationHasError
-    ? "What are the steps?"
+    ? "What are the steps for making this amazing cocktail?"
     : "Enter Something";
   const servedHelper = !servedHasError
-    ? "How Is It Served?"
+    ? "On The Rocks? Straight Up?"
     : "Enter Something";
   const garnishHelper = !garnishHasError
     ? "How To Decorate?"
@@ -225,13 +225,16 @@ const Form = () => {
     setGarnishList([]);
   };
 
-  const handleAdd = (value, cb, reset, state) => {
-    if (value !== "") {
+  const handleAdd = (value, cb1, reset, state,value2, cb2, reset2, state2) => {
+    if (value !== "" && value2 !== "") {
       if (!state.includes(value)) {
-        cb((prevState) => [...prevState, value]);
+        cb1((prevState) => [...prevState, value]);
       }
+      cb2((prevState) => [...prevState,value2])
+      console.log(state2);
     }
     reset();
+    reset2();
   };
   const handleDelete = (item, index, list, cb) => {
     let arr = [...list];
@@ -267,6 +270,17 @@ const Form = () => {
 
       <Box sx={{ display: "flex", alignItems: "center", pl: 2 }}>
         <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+        <TextField
+            id="receipt"
+            sx={{width:50, m: 1 }}
+            label="oz"
+            variant="standard"
+            helperText={receiptHelper}
+            error={receiptHasError}
+            value={enteredReceipt}
+            onBlur={receiptBlurHandler}
+            onChange={receiptChangeHandler}
+          />
           <TextField
             sx={{ m: 1 }}
             label="Ingredients"
@@ -287,7 +301,11 @@ const Form = () => {
                 enteredIngredients,
                 setIngredientsList,
                 ingredientsResetHandler,
-                ingredientsList
+                ingredientsList,
+                enteredReceipt,
+                setReceiptList,
+                receiptResetHandler,
+                receiptList
               )
             }
           >
@@ -408,8 +426,9 @@ const Form = () => {
       <Box sx={{ display: "flex", alignItems: "center", pl: 2 }}>
         <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
           <TextField
+            id="receipt"
             sx={{ m: 1 }}
-            label="Reciept"
+            label="oz"
             variant="standard"
             helperText={receiptHelper}
             error={receiptHasError}
