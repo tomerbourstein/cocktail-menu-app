@@ -40,7 +40,7 @@ const Form = () => {
     valueChangeHandler: ingredientsChangeHandler,
     valueBlurHandler: ingredientsBlurHandler,
     reset: ingredientsResetHandler,
-  } = useInput((value) => value.trim() !== "" || ingredientsList.length !== 0);
+  } = useInput((value) => ingredientsList.length !== 0);
 
   const {
     value: enteredFlavours,
@@ -49,7 +49,7 @@ const Form = () => {
     valueChangeHandler: flavoursChangeHandler,
     valueBlurHandler: flavoursBlurHandler,
     reset: flavoursResetHandler,
-  } = useInput((value) => value.trim() !== "" || flavoursList.length !== 0);
+  } = useInput((value) => flavoursList.length !== 0);
 
   const {
     value: enteredProperties,
@@ -58,7 +58,7 @@ const Form = () => {
     valueChangeHandler: propertiesChangeHandler,
     valueBlurHandler: propertiesBlurHandler,
     reset: propertiesResetHandler,
-  } = useInput((value) => value.trim() !== "" || propertiesList.length !== 0);
+  } = useInput((value) => propertiesList.length !== 0);
 
   const {
     value: enteredServed,
@@ -76,7 +76,7 @@ const Form = () => {
     valueChangeHandler: receiptChangeHandler,
     valueBlurHandler: receiptBlurHandler,
     reset: receiptResetHandler,
-  } = useInput((value) => value.trim() !== "");
+  } = useInput((value) => ingredientsList.length !== 0);
 
   const {
     value: enteredPreperation,
@@ -142,9 +142,7 @@ const Form = () => {
   const propertiesHelper = !propertiesHasError
     ? "How would you describe it?"
     : "Enter Something";
-  const receiptHelper = !receiptHasError
-    ? "In oz"
-    :   "In oz";
+  const receiptHelper = !receiptHasError ? "In oz" : "In oz";
   const preperationHelper = !preperationHasError
     ? "What are the steps for making this amazing cocktail?"
     : "Enter Something";
@@ -200,7 +198,9 @@ const Form = () => {
       flavours: flavoursList,
       properties: propertiesList,
       preperation: enteredPreperation,
-      receipt: receiptList,
+      receipt: receiptList.map(
+        (rec, index) => rec + " oz " + ingredientsList[index]
+      ),
       served: enteredServed,
       garnish: garnishList,
       image: enteredImage,
@@ -225,16 +225,22 @@ const Form = () => {
     setGarnishList([]);
   };
 
-  const handleAdd = (value, cb1, reset, state,value2, cb2, reset2, state2) => {
+  const handleAdd = (value, cb1, reset, state, value2, cb2, reset2, state2) => {
     if (value !== "" && value2 !== "") {
       if (!state.includes(value)) {
         cb1((prevState) => [...prevState, value]);
       }
-      cb2((prevState) => [...prevState,value2])
-      console.log(state2);
+      if (
+        typeof value2 !== "undefined" &&
+        typeof cb2 !== "undefined" &&
+        typeof reset2 !== "undefined" &&
+        typeof state2 !== "undefined"
+      ) {
+        cb2((prevState) => [...prevState, value2]);
+        reset2();
+      }
     }
     reset();
-    reset2();
   };
   const handleDelete = (item, index, list, cb) => {
     let arr = [...list];
@@ -245,7 +251,7 @@ const Form = () => {
 
   return (
     <Box component="form" onSubmit={submitHandler} sx={{ width: 433 }}>
-      <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+      <Box sx={{ml:1, display: "flex", justifyContent: "space-around" }}>
         <TextField
           sx={{ m: 1 }}
           label="Main Liqueur"
@@ -270,9 +276,9 @@ const Form = () => {
 
       <Box sx={{ display: "flex", alignItems: "center", pl: 2 }}>
         <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
-        <TextField
+          <TextField
             id="receipt"
-            sx={{width:50, m: 1 }}
+            sx={{ width: 50, m: 1, mr:0.5 }}
             label="oz"
             variant="standard"
             helperText={receiptHelper}
@@ -282,7 +288,7 @@ const Form = () => {
             onChange={receiptChangeHandler}
           />
           <TextField
-            sx={{ m: 1 }}
+            sx={{width:130, m: 1, ml:0 }}
             label="Ingredients"
             variant="standard"
             helperText={ingredientsHelper}
@@ -417,52 +423,6 @@ const Form = () => {
               label={property}
               onDelete={() =>
                 handleDelete(property, index, propertiesList, setPropertiesList)
-              }
-            />
-          ))}
-        </Box>
-      </Box>
-
-      <Box sx={{ display: "flex", alignItems: "center", pl: 2 }}>
-        <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
-          <TextField
-            id="receipt"
-            sx={{ m: 1 }}
-            label="oz"
-            variant="standard"
-            helperText={receiptHelper}
-            error={receiptHasError}
-            value={enteredReceipt}
-            onBlur={receiptBlurHandler}
-            onChange={receiptChangeHandler}
-          />
-
-          <IconButton
-            size="medium"
-            color="success"
-            aria-label="add"
-            onClick={() =>
-              handleAdd(
-                enteredReceipt,
-                setReceiptList,
-                receiptResetHandler,
-                receiptList
-              )
-            }
-          >
-            <AddIcon />
-          </IconButton>
-        </Box>
-
-        <Box sx={{ width: 168, display: "flex", flexWrap: "wrap" }}>
-          {receiptList.map((rec, index) => (
-            <Chip
-              size="small"
-              sx={{ m: 0.3 }}
-              key={index}
-              label={rec}
-              onDelete={() =>
-                handleDelete(rec, index, receiptList, setReceiptList)
               }
             />
           ))}
