@@ -197,12 +197,12 @@ const Form = () => {
       main_liqueur: enteredMainLiqueur,
       name: enteredName,
       ingredients: ingredientsList,
-      flavours: [enteredFlavours],
-      properties: [enteredProperties],
+      flavours: flavoursList,
+      properties: propertiesList,
       preperation: enteredPreperation,
-      receipt: [enteredReceipt],
+      receipt: receiptList,
       served: enteredServed,
-      garnish: [enteredGarnish],
+      garnish: garnishList,
       image: enteredImage,
       strength,
     };
@@ -217,6 +217,12 @@ const Form = () => {
     servedResetHandler();
     garnishResetHandler();
     imageResetHandler();
+
+    setIngredientsList([]);
+    setFlavoursList([]);
+    setPropertiesList([]);
+    setReceiptList([]);
+    setGarnishList([]);
   };
 
   const handleAdd = (value, cb, reset, state) => {
