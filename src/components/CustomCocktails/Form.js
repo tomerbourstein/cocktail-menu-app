@@ -225,10 +225,26 @@ const Form = () => {
     setGarnishList([]);
   };
 
-  const handleAdd = (value, cb1, reset, state, value2, cb2, reset2, state2) => {
+  const handleAdd = (
+    value,
+    cb,
+    reset,
+    state,
+    blur,
+    value2,
+    cb2,
+    reset2,
+    state2,
+    blur2
+  ) => {
+    blur();
+    blur2();
+    // if (blur2 !== "undefined") {
+    // }
+
     if (value !== "" && value2 !== "") {
       if (!state.includes(value)) {
-        cb1((prevState) => [...prevState, value]);
+        cb((prevState) => [...prevState, value]);
       }
       if (
         typeof value2 !== "undefined" &&
@@ -251,7 +267,7 @@ const Form = () => {
 
   return (
     <Box component="form" onSubmit={submitHandler} sx={{ width: 433 }}>
-      <Box sx={{ml:1, display: "flex", justifyContent: "space-around" }}>
+      <Box sx={{ ml: 1, display: "flex", justifyContent: "space-around" }}>
         <TextField
           sx={{ m: 1 }}
           label="Main Liqueur"
@@ -278,7 +294,7 @@ const Form = () => {
         <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
           <TextField
             id="receipt"
-            sx={{ width: 50, m: 1, mr:0.5 }}
+            sx={{ width: 50, m: 1, mr: 0.5 }}
             label="oz"
             variant="standard"
             helperText={receiptHelper}
@@ -288,7 +304,7 @@ const Form = () => {
             onChange={receiptChangeHandler}
           />
           <TextField
-            sx={{width:130, m: 1, ml:0 }}
+            sx={{ width: 130, m: 1, ml: 0 }}
             label="Ingredients"
             variant="standard"
             helperText={ingredientsHelper}
@@ -308,10 +324,12 @@ const Form = () => {
                 setIngredientsList,
                 ingredientsResetHandler,
                 ingredientsList,
+                ingredientsBlurHandler,
                 enteredReceipt,
                 setReceiptList,
                 receiptResetHandler,
-                receiptList
+                receiptList,
+                receiptBlurHandler
               )
             }
           >
@@ -361,7 +379,8 @@ const Form = () => {
                 enteredFlavours,
                 setFlavoursList,
                 flavoursResetHandler,
-                flavoursList
+                flavoursList,
+                flavoursBlurHandler
               )
             }
           >
@@ -406,7 +425,8 @@ const Form = () => {
                 enteredProperties,
                 setPropertiesList,
                 propertiesResetHandler,
-                propertiesList
+                propertiesList,
+                propertiesBlurHandler
               )
             }
           >
@@ -480,7 +500,8 @@ const Form = () => {
                 enteredGarnish,
                 setGarnishList,
                 garnishResetHandler,
-                garnishList
+                garnishList,
+                garnishBlurHandler
               )
             }
           >
