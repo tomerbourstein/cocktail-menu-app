@@ -2,13 +2,25 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const menuSlice = createSlice({
   name: "menu",
-  initialState: { generated: false, favoritesShow: false, favoritesList: [], dialog: false, visible: true },
+  initialState: { generated: false, favoritesShow: false, favoritesList: [], dialog: false, customCocktailShow: false, menuShow: true },
   reducers: {
     toggleGenerated(state) {
       state.generated = true;
     },
-    toggleFavorites(state) {
-      state.favoritesShow = !state.favoritesShow;
+    openFavorites(state) {
+      state.favoritesShow =  true;
+      state.customCocktailShow =  false;
+      state.menuShow = false;
+    },
+    openMenu(state) {
+      state.menuShow = true;
+      state.favoritesShow = false;
+      state.customCocktailShow = false;
+    },
+    openCustomCocktails(state) {
+      state.customCocktailShow = true;
+      state.favoritesShow  = false;
+      state.menuShow = false;
     },
     addToFavorites(state, action) {
       state.favoritesList.push(action.payload);
@@ -20,15 +32,6 @@ const menuSlice = createSlice({
       console.log(foundCocktail);
       state.favoritesList = foundCocktail;
     },
-    // fadeFavorites(state, action) {
-    //   console.log(current(state.favoritesList));
-    //   let foundCocktail = state.favoritesList.find(
-    //     (fav) => fav.name === action.payload
-    //   );
-    //   if(foundCocktail) {
-    //     state.visible = false;
-    //   }
-    // },
     toggleDialog(state) {
       state.dialog = !state.dialog;
     }
