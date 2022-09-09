@@ -180,16 +180,6 @@ const Form = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    mainLiqueurBlurHandler();
-    nameBlurHandler();
-    ingredientsBlurHandler();
-    flavoursBlurHandler();
-    propertiesBlurHandler();
-    receiptBlurHandler();
-    preperationBlurHandler();
-    servedBlurHandler();
-    garnishBlurHandler();
-    imageBlurHandler();
 
     const data = {
       main_liqueur: enteredMainLiqueur,
@@ -237,10 +227,7 @@ const Form = () => {
     state2,
     blur2
   ) => {
-    blur();
-    blur2();
-    // if (blur2 !== "undefined") {
-    // }
+    console.log(typeof blur2);
 
     if (value !== "" && value2 !== "") {
       if (!state.includes(value)) {
@@ -254,6 +241,15 @@ const Form = () => {
       ) {
         cb2((prevState) => [...prevState, value2]);
         reset2();
+      }
+    } else {
+      if (typeof blur2 !== "undefined") {
+        blur();
+        blur2();
+        return;
+      } else {
+        blur();
+        return;
       }
     }
     reset();
