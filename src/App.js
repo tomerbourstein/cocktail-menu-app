@@ -13,9 +13,16 @@ function App() {
   const dispatch = useDispatch();
   const menuShow = useSelector((state) => state.menu.menuShow);
   const favoritesShow = useSelector((state) => state.menu.favoritesShow);
-  const customCocktailsShow = useSelector(
-    (state) => state.menu.customCocktailsShow
+  const customCocktailShow = useSelector(
+    (state) => state.menu.customCocktailShow
   );
+  let output = (
+    <>
+      <Input />
+      <Main />
+    </>
+  );
+
 
   ////////// Only when page is loaded fetch the data from firebase. then create two arrays
   ////////// 1. Contains the liquers in the db. 2. the entire db.
@@ -55,8 +62,7 @@ function App() {
         ) : null}
         {favoritesShow ? <Favorites /> : null}
 
-        {customCocktailsShow ? <CustomCocktails /> : null}
-
+        {!customCocktailShow ? null : <CustomCocktails />}
         <Footer />
       </Fragment>
     </div>

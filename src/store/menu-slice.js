@@ -18,6 +18,7 @@ const menuSlice = createSlice({
       state.customCocktailShow = false;
     },
     openCustomCocktails(state) {
+      // state.customCocktailShow = true;
       state.customCocktailShow = true;
       state.favoritesShow  = false;
       state.menuShow = false;
