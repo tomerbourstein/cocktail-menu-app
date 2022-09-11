@@ -7,7 +7,9 @@ import IconButton from "@mui/material/IconButton";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+import LogoutIcon from "@mui/icons-material/Logout";
 import classes from "./Header.module.css";
+import { display } from "@mui/system";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -26,10 +28,14 @@ const Header = () => {
   const showCustomCocktailsHandler = () => {
     dispatch(menuActions.openCustomCocktails());
   };
+
+  const showLoginPageHandler = () => {
+    dispatch(menuActions.openLoginPage());
+  };
   return (
     <Box className={classes.navigation}>
       <AppBar position="static" color="transparent">
-        <Toolbar>
+        <Toolbar sx={{ display: "flex", justifyContent: "start" }}>
           <IconButton
             size="large"
             aria-label="menu-page"
@@ -50,6 +56,13 @@ const Header = () => {
             onClick={showCustomCocktailsHandler}
           >
             <PlaylistAddIcon />
+          </IconButton>
+          <IconButton
+            size="large"
+            aria-label="logout"
+            onClick={showLoginPageHandler}
+          >
+            <LogoutIcon />
           </IconButton>
         </Toolbar>
       </AppBar>

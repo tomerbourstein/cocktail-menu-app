@@ -17,6 +17,7 @@ function App() {
   const customCocktailShow = useSelector(
     (state) => state.menu.customCocktailShow
   );
+  const loginPageShow = useSelector((state) => state.menu.loginPageShow);
 
   ////////// Only when page is loaded fetch the data from firebase. then create two arrays
   ////////// 1. Contains the liquers in the db. 2. the entire db.
@@ -48,7 +49,7 @@ function App() {
     <div className="App">
       <Fragment>
         <Header />
-        <LoginPage />
+        {loginPageShow ? <LoginPage /> : null}
         {menuShow ? (
           <>
             <Input />

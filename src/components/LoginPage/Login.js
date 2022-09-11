@@ -9,8 +9,9 @@ import Button from "@mui/material/Button";
 const Login = () => {
   return (
     <section>
-      <Box component="form">
+      <Box component="form" >
         <TextField
+        sx={{width:300}}
           label="Username"
           InputProps={{
             endAdornment: (
@@ -23,6 +24,7 @@ const Login = () => {
       </Box>
       <Box>
         <TextField
+        sx={{width:300}}
           label="Password"
           InputProps={{
             endAdornment: (
@@ -37,7 +39,7 @@ const Login = () => {
       </Box>
 
       <Box>
-        <Button type="submit">Login</Button>
+        <Button type="submit" variant="contained" sx={{width:300}}>Login</Button>
       </Box>
     </section>
   );
