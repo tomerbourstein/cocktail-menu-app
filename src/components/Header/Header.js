@@ -30,12 +30,12 @@ const Header = () => {
     <Box className={classes.navigation}>
       <AppBar position="static" color="transparent">
         <Toolbar>
-          <IconButton>
-            <MenuBookIcon
-              size="large"
-              aria-label="menu-page"
-              onClick={showMenuHandler}
-            />
+          <IconButton
+            size="large"
+            aria-label="menu-page"
+            onClick={showMenuHandler}
+          >
+            <MenuBookIcon />
           </IconButton>
           <IconButton
             size="large"
@@ -44,12 +44,12 @@ const Header = () => {
           >
             <FavoriteIcon />
           </IconButton>
-          <IconButton>
-            <PlaylistAddIcon
-              size="large"
-              aria-label="custom-cocktail"
-              onClick={showCustomCocktailsHandler}
-            />
+          <IconButton
+            size="large"
+            aria-label="custom-cocktail"
+            onClick={showCustomCocktailsHandler}
+          >
+            <PlaylistAddIcon />
           </IconButton>
         </Toolbar>
       </AppBar>

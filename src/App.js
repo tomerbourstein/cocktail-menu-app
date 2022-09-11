@@ -16,13 +16,6 @@ function App() {
   const customCocktailShow = useSelector(
     (state) => state.menu.customCocktailShow
   );
-  let output = (
-    <>
-      <Input />
-      <Main />
-    </>
-  );
-
 
   ////////// Only when page is loaded fetch the data from firebase. then create two arrays
   ////////// 1. Contains the liquers in the db. 2. the entire db.

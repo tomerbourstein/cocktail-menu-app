@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useInput from "../../hooks/use-input";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -8,7 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import Chip from "@mui/material/Chip";
 
-const Form = () => {
+const Form = (props) => {
   const [ingredientsList, setIngredientsList] = useState([]);
   const [flavoursList, setFlavoursList] = useState([]);
   const [propertiesList, setPropertiesList] = useState([]);
@@ -196,7 +196,8 @@ const Form = () => {
       image: enteredImage,
       strength,
     };
-    console.log(data);
+    props.postHandler(data);
+
     mainLiqueurResetHandler();
     nameResetHandler();
     ingredientsResetHandler();
