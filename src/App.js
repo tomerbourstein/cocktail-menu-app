@@ -2,6 +2,7 @@ import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dataBaseActions } from "./store/dataBase-slice";
 import Header from "./components/Header/Header";
+import LoginPage from "./components/LoginPage/LoginPage";
 import Input from "./components/Input/Input";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
@@ -47,6 +48,7 @@ function App() {
     <div className="App">
       <Fragment>
         <Header />
+        <LoginPage />
         {menuShow ? (
           <>
             <Input />
