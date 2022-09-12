@@ -36,7 +36,7 @@ const Register = () => {
   async function postProfileHandler(profile) {
     const { username } = profile;
     const requestOptions = {
-      method: "POST",
+      method: "PATCH",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(profile),
     };
