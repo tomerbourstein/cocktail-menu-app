@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { profileActions } from "../../store/profile-slice";
+import { menuActions } from "../../store/menu-slice";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -32,13 +33,33 @@ const Register = () => {
     setShowPassword(!showPassword);
   };
 
+  async function postProfileHandler(profile) {
+    const { username } = profile;
+    const requestOptions = {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(profile),
+    };
+    const response = await fetch(
+      `https://cocktail-menu-app-default-rtdb.firebaseio.com/users/${username}.json`,
+      requestOptions
+    );
+
+    if (!response.ok) {
+      throw new Error("Something Went Wrong!");
+    }
+    const data = await response.json();
+    console.log(data);
+  }
   const createAccountSubmitHandler = (event) => {
     event.preventDefault();
-    const data = {
+    const profile = {
       username,
       password,
     };
-    console.log(data);
+    postProfileHandler(profile);
+    dispatch(profileActions.login(profile.username));
+    dispatch(menuActions.openMenu());
   };
   return (
     <section>

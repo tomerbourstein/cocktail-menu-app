@@ -10,6 +10,7 @@ import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import LogoutIcon from "@mui/icons-material/Logout";
 import classes from "./Header.module.css";
 import { display } from "@mui/system";
+import { profileActions } from "../../store/profile-slice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const Header = () => {
 
   const showLoginPageHandler = () => {
     dispatch(menuActions.openLoginPage());
+    dispatch(profileActions.logout());
   };
   return (
     <Box className={classes.navigation}>
