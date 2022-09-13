@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { profileActions } from "../../store/profile-slice";
 import { menuActions } from "../../store/menu-slice";
@@ -8,10 +8,13 @@ import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
+import Skeleton from "@mui/material/Skeleton";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
   const isRegisterForm = useSelector((state) => state.profile.isRegisterForm);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     dispatch(profileActions.resetRegisterForm());
@@ -21,31 +24,44 @@ const LoginPage = () => {
   };
 
   const submitHandler = async (email, password) => {
-    dispatch(menuActions.openMenu());
+    let url;
+    setIsLoading(true);
+
     if (!isRegisterForm) {
+      url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCMi_EzPtLxG-9zjQl34XoqQPGwqGs__wU";
+      //.....
     } else {
-      const response = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCMi_EzPtLxG-9zjQl34XoqQPGwqGs__wU",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            email,
-            password,
-            returnSecureToken: true,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const data = await response.json();
-        if(response.ok) {
-            // ....
-        } else {
-            // show error modal
-            console.log(data);
-        }
+      url =
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCMi_EzPtLxG-9zjQl34XoqQPGwqGs__wU";
     }
+    const response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password,
+        returnSecureToken: true,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    setIsLoading(false);
+    if (!response.ok) {
+        // ....
+        alert(data.error.message);
+    }  else {
+        
+        console.log(data);
+    dispatch(menuActions.openMenu());
+    }
+    // let errorMesage = "Authentication Failed!";
+    // if (data && data.error & data.error.message) {
+        //   errorMesage = data.error.message;
+        // }
+        // show error modal
+        
   };
   return (
     <Box sx={{ width: 300, m: "auto" }}>
@@ -56,6 +72,12 @@ const LoginPage = () => {
         <Login submitHandler={submitHandler} />
       ) : (
         <Register submitHandler={submitHandler} />
+      )}
+      {isLoading && (
+        <Stack spacing={1}>
+          <Skeleton variant="rounded" width={210} height={60} />
+          <Skeleton variant="rounded" width={210} height={60} />
+        </Stack>
       )}
       <Divider sx={{ my: 2 }}>or</Divider>
       <Button
