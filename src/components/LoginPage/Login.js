@@ -56,21 +56,21 @@ const Login = () => {
 
   const loginHandler = (event) => {
     event.preventDefault();
+    console.log("logged in");
+    if (!passwordIsValid || !usernameIsValid) {
+      return;
+    }
+    dispatch(menuActions.openMenu());
     usernameResetHandler();
     passwordResetHandler();
-
-    // if (!passwordIsValid || !usernameIsValid) {
-    //   return;
-    // }
-    dispatch(menuActions.openMenu());
   };
 
   const showPasswordHandler = () => {
     setShowPassword(!showPassword);
   };
   return (
-    <section>
-      <Box component="form" onSubmit={loginHandler}>
+    <Box component="form" onSubmit={loginHandler}>
+      <Box>
         <TextField
           sx={{ width: 300 }}
           label="Username"
@@ -117,7 +117,7 @@ const Login = () => {
           Login
         </Button>
       </Box>
-    </section>
+    </Box>
   );
 };
 

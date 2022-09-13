@@ -10,6 +10,9 @@ const profileSlice = createSlice({
     toggleRegisterForm(state) {
       state.isRegisterForm = !state.isRegisterForm;
     },
+    resetRegisterForm(state) {
+      state.isRegisterForm = false;
+    },
     logout(state) {
       state.loggedIn = false;
       state.currentProfile = null;

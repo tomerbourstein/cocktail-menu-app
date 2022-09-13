@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { profileActions } from "../../store/profile-slice";
 import { menuActions } from "../../store/menu-slice";
+import useInput from "../../hooks/use-input";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -13,17 +13,25 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const Register = () => {
   const dispatch = useDispatch();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const usernameChangeHandler = (event) => {
-    setUsername(event.target.value);
-  };
+  const {
+    value: enteredUsername,
+    isValid: usernameIsValid,
+    hasError: usernameHasError,
+    valueChangeHandler: usernameChangeHandler,
+    valueBlurHandler: usernameBlurHandler,
+    reset: usernameResetHandler,
+  } = useInput((value) => value.trim() !== "");
 
-  const passwordChangeHandler = (event) => {
-    setPassword(event.target.value);
-  };
+  const {
+    value: enteredPassword,
+    isValid: passwordIsValid,
+    hasError: passwordHasError,
+    valueChangeHandler: passwordChangeHandler,
+    valueBlurHandler: passwordBlurHandler,
+    reset: passwordResetHandler,
+  } = useInput((value) => value.trim() !== "");
 
   const showPasswordHandler = () => {
     setShowPassword(!showPassword);
@@ -50,63 +58,70 @@ const Register = () => {
 
   const createAccountSubmitHandler = (event) => {
     event.preventDefault();
+    if (!passwordIsValid || !usernameIsValid) {
+      return;
+    }
     const profile = {
-      username,
-      password,
+      enteredUsername,
+      enteredPassword,
     };
-
+    console.log("signed up");
+    dispatch(menuActions.openMenu());
+    usernameResetHandler();
+    passwordResetHandler();
     console.log(profile);
- 
   };
   return (
-    <section>
-      <Box component="form" onSubmit={createAccountSubmitHandler}>
-        <Box>
-          <TextField
-            sx={{ width: 300 }}
-            label="Username"
-            value={username}
-            onChange={usernameChangeHandler}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <AccountCircle />
-                </InputAdornment>
-              ),
-            }}
-          />
-        </Box>
-
-        <Box>
-          <TextField
-            sx={{ width: 300 }}
-            label="Password"
-            value={password}
-            onChange={passwordChangeHandler}
-            type={showPassword ? "text" : "password"}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={showPasswordHandler}
-                    aria-label="toggle-password-visibility"
-                    edge="end"
-                  >
-                    {!showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-        </Box>
-
-        <Box>
-          <Button type="submit" variant="contained" sx={{ width: 300 }}>
-            Create Account
-          </Button>
-        </Box>
+    <Box component="form" onSubmit={createAccountSubmitHandler}>
+      <Box>
+        <TextField
+          sx={{ width: 300 }}
+          label="Username"
+          value={enteredUsername}
+          error={usernameHasError}
+          onBlur={usernameBlurHandler}
+          onChange={usernameChangeHandler}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <AccountCircle />
+              </InputAdornment>
+            ),
+          }}
+        />
       </Box>
-    </section>
+
+      <Box>
+        <TextField
+          sx={{ width: 300 }}
+          label="Password"
+          value={enteredPassword}
+          error={passwordHasError}
+          onBlur={passwordBlurHandler}
+          onChange={passwordChangeHandler}
+          type={showPassword ? "text" : "password"}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={showPasswordHandler}
+                  aria-label="toggle-password-visibility"
+                  edge="end"
+                >
+                  {!showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
+      </Box>
+
+      <Box>
+        <Button type="submit" variant="contained" sx={{ width: 300 }}>
+          Create Account
+        </Button>
+      </Box>
+    </Box>
   );
 };
 

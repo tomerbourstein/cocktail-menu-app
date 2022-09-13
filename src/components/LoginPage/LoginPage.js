@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { profileActions } from "../../store/profile-slice";
 import Login from "./Login";
@@ -10,6 +11,9 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const isRegisterForm = useSelector((state) => state.profile.isRegisterForm);
 
+  useEffect(() => {
+    dispatch(profileActions.resetRegisterForm());
+  }, [dispatch]);
   const toggleRegisterFormHandler = () => {
     dispatch(profileActions.toggleRegisterForm());
   };
