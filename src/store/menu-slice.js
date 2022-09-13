@@ -9,30 +9,30 @@ const menuSlice = createSlice({
     },
     openFavorites(state) {
       state.favoritesShow =  true;
-      state.customCocktailShow =  false;
       state.menuShow = false;
+      state.customCocktailShow =  false;
       state.loginPageShow = false;
 
     },
     openMenu(state) {
-      state.menuShow = true;
       state.favoritesShow = false;
+      state.menuShow = true;
       state.customCocktailShow = false;
       state.loginPageShow = false;
 
     },
     openCustomCocktails(state) {
-      state.customCocktailShow = true;
       state.favoritesShow  = false;
       state.menuShow = false;
+      state.customCocktailShow = true;
       state.loginPageShow = false;
 
     },
     openLoginPage(state) {
-      state.loginPageShow = true;
-      state.menuShow = false;
       state.favoritesShow = false;
+      state.menuShow = false;
       state.customCocktailShow = false;
+      state.loginPageShow = true;
     },
     addToFavorites(state, action) {
       state.favoritesList.push(action.payload);
