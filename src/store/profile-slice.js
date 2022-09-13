@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const profileSlice = createSlice({
   name: "profile",
-  initialState: { loggedIn: false, registerForm: false, currentProfile: null },
+  initialState: { loggedIn: false, isRegisterForm: false, currentProfile: null },
   reducers: {
     login(state) {
       state.loggedIn = true;
     },
-    showRegisterForm(state, action) {
-      state.registerForm = action.payload;
+    toggleRegisterForm(state) {
+      state.isRegisterForm = !state.isRegisterForm;
     },
     logout(state) {
       state.loggedIn = false;

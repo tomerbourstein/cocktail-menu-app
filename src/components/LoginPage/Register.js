@@ -17,10 +17,6 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const cancelSignUpHandler = () => {
-    dispatch(profileActions.showRegisterForm(false));
-  };
-
   const usernameChangeHandler = (event) => {
     setUsername(event.target.value);
   };
@@ -33,33 +29,34 @@ const Register = () => {
     setShowPassword(!showPassword);
   };
 
-  async function postProfileHandler(profile) {
-    const { username } = profile;
-    const requestOptions = {
-      method: "PATCH",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(profile),
-    };
-    const response = await fetch(
-      `https://cocktail-menu-app-default-rtdb.firebaseio.com/users/${username}.json`,
-      requestOptions
-    );
+  //   async function postProfileHandler(profile) {
+  //     const { username } = profile;
+  //     const requestOptions = {
+  //       method: "PATCH",
+  //       headers: { "content-type": "application/json" },
+  //       body: JSON.stringify(profile),
+  //     };
+  //     const response = await fetch(
+  //       `https://cocktail-menu-app-default-rtdb.firebaseio.com/users/${username}.json`,
+  //       requestOptions
+  //     );
 
-    if (!response.ok) {
-      throw new Error("Something Went Wrong!");
-    }
-    const data = await response.json();
-    console.log(data);
-  }
+  //     if (!response.ok) {
+  //       throw new Error("Something Went Wrong!");
+  //     }
+  //     const data = await response.json();
+  //     console.log(data);
+  //   }
+
   const createAccountSubmitHandler = (event) => {
     event.preventDefault();
     const profile = {
       username,
       password,
     };
-    postProfileHandler(profile);
-    dispatch(profileActions.login(profile.username));
-    dispatch(menuActions.openMenu());
+
+    console.log(profile);
+ 
   };
   return (
     <section>
@@ -109,14 +106,6 @@ const Register = () => {
           </Button>
         </Box>
       </Box>
-      <Button
-        type="submit"
-        variant="outlined"
-        sx={{ width: 300 }}
-        onClick={cancelSignUpHandler}
-      >
-        Go Back
-      </Button>
     </section>
   );
 };

@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { menuActions } from "../../store/menu-slice";
+import { profileActions } from "../../store/profile-slice";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -9,8 +10,6 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import LogoutIcon from "@mui/icons-material/Logout";
 import classes from "./Header.module.css";
-import { display } from "@mui/system";
-import { profileActions } from "../../store/profile-slice";
 
 const Header = () => {
   const dispatch = useDispatch();

@@ -1,4 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { menuActions } from "../../store/menu-slice";
+import useInput from "../../hooks/use-input";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -9,37 +12,57 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
-  useEffect(() => {
-    async function getUsernames() {
-      const response = await fetch(
-        `https://cocktail-menu-app-default-rtdb.firebaseio.com/users.json`
-      );
-      if (!response.ok) {
-        throw new Error("Could not fetch data!");
-      }
-      const data = await response.json();
-      const usernameList = [];
-      for (const key in data) {
-        usernameList.push({
-          id: key,
-          username: data[key].username,
-          password: data[key].password,
-        });
-      }
-      console.log(usernameList);
-    }
-    getUsernames();
-  }, []);
-  const usernameChangeHandler = (event) => {
-    setUsername(event.target.value);
-  };
+  const {
+    value: enteredUsername,
+    isValid: usernameIsValid,
+    hasError: usernameHasError,
+    valueChangeHandler: usernameChangeHandler,
+    valueBlurHandler: usernameBlurHandler,
+    reset: usernameResetHandler,
+  } = useInput((value) => value.trim() !== "");
 
-  const passwordChangeHandler = (event) => {
-    setPassword(event.target.value);
+  const {
+    value: enteredPassword,
+    isValid: passwordIsValid,
+    hasError: passwordHasError,
+    valueChangeHandler: passwordChangeHandler,
+    valueBlurHandler: passwordBlurHandler,
+    reset: passwordResetHandler,
+  } = useInput((value) => value.trim() !== "");
+
+  // useEffect(() => {
+  //   async function getUsernames() {
+  //     const response = await fetch(
+  //       `https://cocktail-menu-app-default-rtdb.firebaseio.com/users.json`
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error("Could not fetch data!");
+  //     }
+  //     const data = await response.json();
+  //     for (const key in data) {
+  //       usernameList.push({
+  //         id: key,
+  //         username: data[key].username,
+  //         password: data[key].password,
+  //       });
+  //     }
+  //     console.log(usernameList);
+  //   }
+  //   getUsernames();
+  // }, [usernameList]);
+
+  const loginHandler = (event) => {
+    event.preventDefault();
+    usernameResetHandler();
+    passwordResetHandler();
+
+    // if (!passwordIsValid || !usernameIsValid) {
+    //   return;
+    // }
+    dispatch(menuActions.openMenu());
   };
 
   const showPasswordHandler = () => {
@@ -47,11 +70,13 @@ const Login = () => {
   };
   return (
     <section>
-      <Box component="form">
+      <Box component="form" onSubmit={loginHandler}>
         <TextField
           sx={{ width: 300 }}
           label="Username"
-          value={username}
+          value={enteredUsername}
+          error={usernameHasError}
+          onBlur={usernameBlurHandler}
           onChange={usernameChangeHandler}
           InputProps={{
             endAdornment: (
@@ -66,7 +91,9 @@ const Login = () => {
         <TextField
           sx={{ width: 300 }}
           label="Password"
-          value={password}
+          value={enteredPassword}
+          error={passwordHasError}
+          onBlur={passwordBlurHandler}
           onChange={passwordChangeHandler}
           type={showPassword ? "text" : "password"}
           InputProps={{
