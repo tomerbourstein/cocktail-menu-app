@@ -49,19 +49,18 @@ const LoginPage = () => {
     const data = await response.json();
     setIsLoading(false);
     if (!response.ok) {
-        // ....
-        alert(data.error.message);
-    }  else {
-        
-        console.log(data);
-    dispatch(menuActions.openMenu());
+      // ....
+      alert(data.error.message);
+    } else {
+      dispatch(profileActions.login(data.idToken));
+      console.log(data);
+      dispatch(menuActions.openMenu());
     }
     // let errorMesage = "Authentication Failed!";
     // if (data && data.error & data.error.message) {
-        //   errorMesage = data.error.message;
-        // }
-        // show error modal
-        
+    //   errorMesage = data.error.message;
+    // }
+    // show error modal
   };
   return (
     <Box sx={{ width: 300, m: "auto" }}>
