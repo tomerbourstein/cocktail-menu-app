@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { menuActions } from "../../store/menu-slice";
 import useInput from "../../hooks/use-input";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -11,17 +9,16 @@ import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-const Register = () => {
-  const dispatch = useDispatch();
+const Register = (props) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const {
-    value: enteredUsername,
-    isValid: usernameIsValid,
-    hasError: usernameHasError,
-    valueChangeHandler: usernameChangeHandler,
-    valueBlurHandler: usernameBlurHandler,
-    reset: usernameResetHandler,
+    value: enteredEmail,
+    isValid: emailIsValid,
+    hasError: emailHasError,
+    valueChangeHandler: emailChangeHandler,
+    valueBlurHandler: emailBlurHandler,
+    reset: emailResetHandler,
   } = useInput((value) => value.trim() !== "");
 
   const {
@@ -58,29 +55,23 @@ const Register = () => {
 
   const createAccountSubmitHandler = (event) => {
     event.preventDefault();
-    if (!passwordIsValid || !usernameIsValid) {
+    if (!passwordIsValid || !emailIsValid) {
       return;
     }
-    const profile = {
-      enteredUsername,
-      enteredPassword,
-    };
-    console.log("signed up");
-    dispatch(menuActions.openMenu());
-    usernameResetHandler();
+    props.submitHandler(enteredEmail, enteredPassword);
+    emailResetHandler();
     passwordResetHandler();
-    console.log(profile);
   };
   return (
     <Box component="form" onSubmit={createAccountSubmitHandler}>
       <Box>
         <TextField
           sx={{ width: 300 }}
-          label="Username"
-          value={enteredUsername}
-          error={usernameHasError}
-          onBlur={usernameBlurHandler}
-          onChange={usernameChangeHandler}
+          label="E-Mail"
+          value={enteredEmail}
+          error={emailHasError}
+          onBlur={emailBlurHandler}
+          onChange={emailChangeHandler}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
