@@ -14,7 +14,7 @@ import classes from "./Header.module.css";
 const Header = () => {
   const dispatch = useDispatch();
   const loggedIn = useSelector((state) => state.profile.loggedIn);
-  const token = useSelector((state) => state.profile.token);
+
 
   ////////// On click dispatch open Favorite  s.
   const showFavoritesHandler = () => {
@@ -32,6 +32,7 @@ const Header = () => {
   };
 
   const showLoginPageHandler = () => {
+    localStorage.removeItem("token");
     dispatch(menuActions.openLoginPage());
     dispatch(profileActions.logout());
   };

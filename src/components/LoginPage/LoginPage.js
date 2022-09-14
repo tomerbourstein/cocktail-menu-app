@@ -53,6 +53,7 @@ const LoginPage = () => {
       alert(data.error.message);
     } else {
       dispatch(profileActions.login(data.idToken));
+      localStorage.setItem('token', data.idToken)
       console.log(data);
       dispatch(menuActions.openMenu());
     }
