@@ -1,6 +1,8 @@
 import { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dataBaseActions } from "./store/dataBase-slice";
+import { profileActions } from "./store/profile-slice";
+import { menuActions } from "./store/menu-slice";
 import Header from "./components/Header/Header";
 import LoginPage from "./components/LoginPage/LoginPage";
 import Input from "./components/Input/Input";
@@ -43,6 +45,12 @@ function App() {
       dispatch(dataBaseActions.fetchData({ dataBase, liquers }));
     };
     handleFetchData();
+    const initialToken = localStorage.getItem("token");
+    console.log(initialToken);
+    if (initialToken) {
+      dispatch(profileActions.login(initialToken));
+      dispatch(menuActions.openMenu());
+    }
   }, [dispatch]);
 
   return (
