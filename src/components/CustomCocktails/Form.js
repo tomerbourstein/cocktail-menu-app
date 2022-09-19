@@ -228,7 +228,6 @@ const Form = (props) => {
     state2,
     blur2
   ) => {
-    console.log(typeof blur2);
 
     if (value !== "" && value2 !== "") {
       if (!state.includes(value)) {

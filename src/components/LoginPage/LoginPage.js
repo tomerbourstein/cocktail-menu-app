@@ -24,8 +24,8 @@ const LoginPage = () => {
     dispatch(profileActions.toggleRegisterForm());
   };
 
-  const loginHandler = (token, expirationTime) => {
-    dispatch(profileActions.login({ token: token, loggedIn: true }));
+  const loginHandler = (token, email, expirationTime) => {
+    dispatch(profileActions.login({ token: token,email: email, loggedIn: true }));
     localStorage.setItem("token", token);
     const remainingTime = calculateRemainingTime(expirationTime);
     // window.location.reload();
@@ -73,7 +73,7 @@ const LoginPage = () => {
       alert(data.error.message);
     } else {
       console.log(data);
-      loginHandler(data.idToken, expirationTime.toISOString());
+      loginHandler(data.idToken, data.email, expirationTime.toISOString());
     }
     // let errorMesage = "Authentication Failed!";
     // if (data && data.error & data.error.message) {

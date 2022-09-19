@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { menuActions } from "../../store/menu-slice";
 import { profileActions } from "../../store/profile-slice";
 import AppBar from "@mui/material/AppBar";
@@ -13,7 +13,7 @@ import classes from "./Header.module.css";
 
 const Header = () => {
   const dispatch = useDispatch();
-  // const loggedIn = useSelector((state) => state.profile.loggedIn);
+  // const loggedIn = useSelector((state) => state.profile.logged);
   
   // console.log(loggedIn);
 
