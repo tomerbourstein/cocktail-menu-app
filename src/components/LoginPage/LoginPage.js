@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { profileActions } from "../../store/profile-slice";
-import { menuActions } from "../../store/menu-slice";
 import Login from "./Login";
 import Register from "./Register";
 import Divider from "@mui/material/Divider";
@@ -10,6 +9,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Skeleton from "@mui/material/Skeleton";
+import { menuActions } from "../../store/menu-slice";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,8 @@ const LoginPage = () => {
     dispatch(profileActions.login({ token: token, loggedIn: true }));
     localStorage.setItem("token", token);
     const remainingTime = calculateRemainingTime(expirationTime);
-    window.location.reload();
+    // window.location.reload();
+    dispatch(menuActions.openMenu());
     setTimeout(dispatch(profileActions.logout()), remainingTime);
   };
 
@@ -66,11 +67,12 @@ const LoginPage = () => {
     const expirationTime = new Date(
       new Date().getTime() + +data.expiresIn * 1000
     );
-    // setIsLoading(false);
+    setIsLoading(false);
     if (!response.ok) {
       // ....
       alert(data.error.message);
     } else {
+      console.log(data);
       loginHandler(data.idToken, expirationTime.toISOString());
     }
     // let errorMesage = "Authentication Failed!";

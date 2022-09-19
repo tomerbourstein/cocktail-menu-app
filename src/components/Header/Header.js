@@ -13,7 +13,7 @@ import classes from "./Header.module.css";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const loggedIn = useSelector((state) => state.profile.loggedIn);
+  // const loggedIn = useSelector((state) => state.profile.loggedIn);
   
   // console.log(loggedIn);
 
@@ -41,8 +41,8 @@ const Header = () => {
     <Box className={classes.navigation}>
       <AppBar position="static" color="transparent">
         <Toolbar sx={{ display: "flex", justifyContent: "start" }}>
-          {loggedIn && (
-            <>
+          {/* {loggedIn && (
+            <> */}
               <IconButton
                 size="large"
                 aria-label="menu-page"
@@ -71,8 +71,8 @@ const Header = () => {
               >
                 <LogoutIcon />
               </IconButton>
-            </>
-          )}
+            {/* </>
+          )} */}
         </Toolbar>
       </AppBar>
     </Box>
