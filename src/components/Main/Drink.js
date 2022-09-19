@@ -15,6 +15,9 @@ import classes from "./Drink.module.css";
 const Drink = (props) => {
   const dispatch = useDispatch();
   const favoritesList = useSelector((state) => state.menu.favoritesList);
+  const email = useSelector(state => state.profile.profileEmail);
+  const user = email.substring(0,email.indexOf("@"));
+
   const {
     name,
     ingredients,
@@ -46,9 +49,31 @@ const Drink = (props) => {
     }
   };
 
+  async function addFavorite(enteredData) {
+    const { name } = enteredData;
+    console.log(name);
+    const requestOptions = {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(enteredData),
+    };
+
+    const response = await fetch(
+      `https://cocktail-menu-app-default-rtdb.firebaseio.com/USERS/${user}/favorites.json`,
+      requestOptions
+    );
+    if (!response.ok) {
+      throw new Error("Something Went Wrong!");
+    }
+    const data = await response.json();
+    console.log(data);
+  }
+
+
   const addToFavoritesHandler = (event) => {
     let checked = event.target.checked;
     if (checked) {
+      addFavorite(props.drink);
       dispatch(
         menuActions.addToFavorites({
           name,

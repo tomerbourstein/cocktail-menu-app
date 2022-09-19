@@ -44,6 +44,9 @@ const menuSlice = createSlice({
       console.log(foundCocktail);
       state.favoritesList = foundCocktail;
     },
+    replaceFavorites(state,action) {
+      state.favoritesList = action.payload;
+    },
     toggleDialog(state) {
       state.dialog = !state.dialog;
     }
