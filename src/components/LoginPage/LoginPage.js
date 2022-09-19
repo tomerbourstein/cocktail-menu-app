@@ -19,8 +19,24 @@ const LoginPage = () => {
   useEffect(() => {
     dispatch(profileActions.resetRegisterForm());
   }, [dispatch]);
+
   const toggleRegisterFormHandler = () => {
     dispatch(profileActions.toggleRegisterForm());
+  };
+
+  const loginHandler = (token, expirationTime) => {
+    dispatch(profileActions.login({ token: token, loggedIn: true }));
+    localStorage.setItem("token", token);
+    const remainingTime = calculateRemainingTime(expirationTime);
+    window.location.reload();
+    setTimeout(dispatch(profileActions.logout()), remainingTime);
+  };
+
+  const calculateRemainingTime = (expirationTime) => {
+    const currentTime = new Date().getTime();
+    const adjExpirationTime = new Date(expirationTime).getTime();
+    const remainingDuration = adjExpirationTime - currentTime;
+    return remainingDuration;
   };
 
   const submitHandler = async (email, password) => {
@@ -47,15 +63,15 @@ const LoginPage = () => {
       },
     });
     const data = await response.json();
-    setIsLoading(false);
+    const expirationTime = new Date(
+      new Date().getTime() + +data.expiresIn * 1000
+    );
+    // setIsLoading(false);
     if (!response.ok) {
       // ....
       alert(data.error.message);
     } else {
-      dispatch(profileActions.login(data.idToken));
-      localStorage.setItem("token", data.idToken);
-      console.log(data);
-      dispatch(menuActions.openMenu());
+      loginHandler(data.idToken, expirationTime.toISOString());
     }
     // let errorMesage = "Authentication Failed!";
     // if (data && data.error & data.error.message) {

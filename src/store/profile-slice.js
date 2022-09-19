@@ -4,11 +4,10 @@ const profileSlice = createSlice({
   name: "profile",
   initialState: { loggedIn: false, token: null, isRegisterForm: false },
   reducers: {
+
     login(state, action) {
-      state.token = action.payload
-      if(state.token) {
-        state.loggedIn = true;
-      }
+      state.token = action.payload.token;
+      state.loggedIn = action.payload.loggedIn;
     },
     toggleRegisterForm(state) {
       state.isRegisterForm = !state.isRegisterForm;

@@ -14,7 +14,8 @@ import classes from "./Header.module.css";
 const Header = () => {
   const dispatch = useDispatch();
   const loggedIn = useSelector((state) => state.profile.loggedIn);
-
+  
+  // console.log(loggedIn);
 
   ////////// On click dispatch open Favorite  s.
   const showFavoritesHandler = () => {

@@ -46,9 +46,8 @@ function App() {
     };
     handleFetchData();
     const initialToken = localStorage.getItem("token");
-    console.log(initialToken);
     if (initialToken) {
-      dispatch(profileActions.login(initialToken));
+      dispatch(profileActions.login({ token: initialToken, loggedIn: true }));
       dispatch(menuActions.openMenu());
     }
   }, [dispatch]);
