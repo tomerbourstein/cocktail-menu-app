@@ -51,7 +51,7 @@ const Favorites = () => {
           <ListSubheader component="div">My Favorite Cocktails</ListSubheader>
         </ImageListItem>
         <Fragment>
-          {favoritesList.map((fav) => (
+          {favoritesList.lenngth === 0 ? <p>No Favoties to Show!</p> :  favoritesList.map((fav) => (
             <ImageListItem key={fav.image}>
               <img
                 src={`${fav.image}?w=248&fit=crop&auto=format`}
@@ -83,6 +83,7 @@ const Favorites = () => {
               />
             </ImageListItem>
           ))}
+          
           <Dialog cocktail={favorite} />
         </Fragment>
       </ImageList>

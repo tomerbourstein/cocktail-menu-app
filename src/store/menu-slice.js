@@ -53,7 +53,11 @@ const menuSlice = createSlice({
       state.favoritesList = foundCocktail;
     },
     replaceFavorites(state, action) {
-      state.favoritesList = action.payload;
+      if (action.payload === null) {
+        state.favoritesList = [];
+      } else {
+        state.favoritesList = action.payload;
+      }
     },
     toggleDialog(state) {
       state.dialog = !state.dialog;

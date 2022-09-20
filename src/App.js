@@ -25,7 +25,7 @@ function App() {
   const favoritesList = useSelector((state) => state.menu.favoritesList);
   const isChanged = useSelector((state) => state.menu.changed);
   const email = localStorage.getItem("email");
-  const user = email.substring(0, email.indexOf("@"));
+  const user =email ? email.substring(0, email.indexOf("@")) : "";
 
   ////////// Only when page is loaded fetch the data from firebase. then create two arrays
   ////////// 1. Contains the liquers in the db. 2. the entire db.
