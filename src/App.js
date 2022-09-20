@@ -12,6 +12,8 @@ import CustomCocktails from "./components/CustomCocktails/CustomCocktails";
 import Favorites from "./components/Favorites/Favorites";
 import "./App.css";
 
+let isInitial = true;
+
 function App() {
   const dispatch = useDispatch();
   const menuShow = useSelector((state) => state.menu.menuShow);
@@ -20,6 +22,10 @@ function App() {
     (state) => state.menu.customCocktailShow
   );
   const loginPageShow = useSelector((state) => state.menu.loginPageShow);
+  const favoritesList = useSelector((state) => state.menu.favoritesList);
+  const isChanged = useSelector((state) => state.menu.changed);
+  const email = localStorage.getItem("email");
+  const user = email.substring(0, email.indexOf("@"));
 
   ////////// Only when page is loaded fetch the data from firebase. then create two arrays
   ////////// 1. Contains the liquers in the db. 2. the entire db.
@@ -47,11 +53,63 @@ function App() {
     handleFetchData();
     const initialToken = localStorage.getItem("token");
     if (initialToken) {
-      dispatch(profileActions.login({ token: initialToken, loggedIn: true }));
+      dispatch(
+        profileActions.login({
+          token: initialToken,
+          email: email,
+          loggedIn: true,
+        })
+      );
       dispatch(menuActions.openMenu());
     }
-  }, [dispatch]);
+  }, [dispatch, email]);
 
+  useEffect(() => {
+    if (isInitial) {
+      isInitial = false;
+      return;
+    }
+    if (isChanged) {
+      async function postFavorites(enteredData) {
+        // const { name } = enteredData;
+        const requestOptions = {
+          method: "PUT",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(enteredData),
+        };
+
+        const response = await fetch(
+          `https://cocktail-menu-app-default-rtdb.firebaseio.com/USERS/${user}/favorites.json`,
+          requestOptions
+        );
+        if (!response.ok) {
+          throw new Error("Something Went Wrong!");
+        }
+      }
+      postFavorites(favoritesList);
+    }
+  }, [favoritesList, user, isChanged]);
+
+useEffect(() => {
+    const handleFetchData = async () => {
+      const response = await fetch(
+        `https://cocktail-menu-app-default-rtdb.firebaseio.com/USERS/${user}/favorites.json`
+      );
+      if (!response.ok) {
+        throw new Error("Could not fetch data!");
+      }
+      const data = await response.json();
+      console.log(data);
+      // const fetchedFavorites = [];
+      dispatch(menuActions.replaceFavorites(data));
+      // for (const key in data) {
+        // fetchedFavorites.push(data[key]);
+      // }
+    };
+    handleFetchData();
+  }, [dispatch, user]);
+
+  console.log(favoritesList);
   return (
     <div className="App">
       <Fragment>

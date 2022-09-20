@@ -25,8 +25,12 @@ const LoginPage = () => {
   };
 
   const loginHandler = (token, email, expirationTime) => {
-    dispatch(profileActions.login({ token: token,email: email, loggedIn: true }));
+    dispatch(
+      profileActions.login({ token: token, email: email, loggedIn: true })
+    );
     localStorage.setItem("token", token);
+    localStorage.setItem("email", email);
+
     const remainingTime = calculateRemainingTime(expirationTime);
     // window.location.reload();
     dispatch(menuActions.openMenu());

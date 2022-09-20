@@ -34,6 +34,8 @@ const Header = () => {
 
   const showLoginPageHandler = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("email");
+
     dispatch(menuActions.openLoginPage());
     dispatch(profileActions.logout());
   };

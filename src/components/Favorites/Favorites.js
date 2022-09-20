@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { menuActions } from "../../store/menu-slice";
 import ImageList from "@mui/material/ImageList";
@@ -15,14 +15,11 @@ import classes from "./Favorites.module.css";
 
 const Favorites = () => {
   const [favorite, setFavorite] = useState("");
-//   const visible = useSelector((state) => state.menu.visible);
   const favoritesList = useSelector((state) => state.menu.favoritesList);
   const dispatch = useDispatch();
-  const email = useSelector(state => state.profile.profileEmail);
-  const user = email.substring(0,email.indexOf("@"));
+
   let checked = false;
- console.log(email);
-//   const fade = !visible ? classes.fadeOut : classes.noFade;
+
   function strengthTransform(strength) {
     let cocktailStrength = "";
 
@@ -38,13 +35,8 @@ const Favorites = () => {
 
   function removeFavoritesHandler(cocktail) {
     checked = true;
-    // dispatch(menuActions.fadeFavorites(cocktail));
-    // const timeout = setTimeout(
-      dispatch(menuActions.removeFromFavorites(cocktail))
-    //   ,
-    //   5000
-    // );
-    // clearTimeout(timeout);
+
+    dispatch(menuActions.removeFromFavorites(cocktail));
   }
 
   function handleOpen(cocktail) {
@@ -52,28 +44,6 @@ const Favorites = () => {
     dispatch(menuActions.toggleDialog());
   }
 
-
-
-  useEffect(()=>{
-    const handleFetchData = async () => {
-      const response = await fetch(
-        `https://cocktail-menu-app-default-rtdb.firebaseio.com/USERS/${user}/favorites.json`
-      );
-      if (!response.ok) {
-        throw new Error("Could not fetch data!");
-      }
-      const data = await response.json();
-      const fetchedFavorites = [];
-      for (const key in data) {
-        fetchedFavorites.push({
-          id: key,
-          cocktail: data[key],
-        });
-      }
-      dispatch(menuActions.replaceFavorites(fetchedFavorites));
-    };
-    handleFetchData();
-  },[dispatch, user])
   return (
     <section className={classes.favorites}>
       <ImageList col={1}>

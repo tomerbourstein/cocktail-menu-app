@@ -2,9 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const profileSlice = createSlice({
   name: "profile",
-  initialState: { logged: false, token: null,profileEmail: "", isRegisterForm: false },
+  initialState: {
+    logged: false,
+    token: null,
+    profileEmail: "",
+    isRegisterForm: false,
+  },
   reducers: {
-
     login(state, action) {
       state.token = action.payload.token;
       state.logged = action.payload.loggedIn;
@@ -20,6 +24,7 @@ const profileSlice = createSlice({
     logout(state) {
       state.token = null;
       state.logged = false;
+      state.profileEmail = "";
     },
   },
 });
