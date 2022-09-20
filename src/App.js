@@ -25,7 +25,7 @@ function App() {
   const favoritesList = useSelector((state) => state.menu.favoritesList);
   const isChanged = useSelector((state) => state.menu.changed);
   const email = localStorage.getItem("email");
-  const user =email ? email.substring(0, email.indexOf("@")) : "";
+  const user = email ? email.substring(0, email.indexOf("@")) : "";
 
   ////////// Only when page is loaded fetch the data from firebase. then create two arrays
   ////////// 1. Contains the liquers in the db. 2. the entire db.
@@ -90,26 +90,21 @@ function App() {
     }
   }, [favoritesList, user, isChanged]);
 
-useEffect(() => {
+  useEffect(() => {
     const handleFetchData = async () => {
       const response = await fetch(
-        `https://cocktail-menu-app-default-rtdb.firebaseio.com/USERS/${user}/favorites.json`
+        `https://cocktail-menu-app-default-rtdb.firebaseio.com/USERS/${user}.json`
       );
       if (!response.ok) {
         throw new Error("Could not fetch data!");
       }
       const data = await response.json();
-      console.log(data);
-      // const fetchedFavorites = [];
-      dispatch(menuActions.replaceFavorites(data));
-      // for (const key in data) {
-        // fetchedFavorites.push(data[key]);
-      // }
+      dispatch(dataBaseActions.setUserCustomCocktails(data.custom));
+      dispatch(menuActions.replaceFavorites(data.favorites));
     };
     handleFetchData();
   }, [dispatch, user]);
 
-  console.log(favoritesList);
   return (
     <div className="App">
       <Fragment>

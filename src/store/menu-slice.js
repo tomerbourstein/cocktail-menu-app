@@ -13,8 +13,8 @@ const menuSlice = createSlice({
     loginPageShow: true,
   },
   reducers: {
-    toggleGenerated(state) {
-      state.generated = true;
+    toggleGenerated(state,action) {
+      state.generated = action.payload;
     },
     openFavorites(state) {
       state.favoritesShow = true;
@@ -49,7 +49,6 @@ const menuSlice = createSlice({
       let foundCocktail = state.favoritesList.filter(
         (fav) => fav.name !== action.payload
       );
-      console.log(foundCocktail);
       state.favoritesList = foundCocktail;
     },
     replaceFavorites(state, action) {

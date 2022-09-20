@@ -1,3 +1,6 @@
+import * as React from "react";
+import { useEffect, useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux/";
 import { inputActions } from "../../store/input-slice";
 import { menuActions } from "../../store/menu-slice";
@@ -6,15 +9,21 @@ import { dataBaseActions } from "../../store/dataBase-slice";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import Switch from "@mui/material/Switch";
+
 import classes from "./Input.module.css";
-import { useEffect } from "react";
+
 const Input = () => {
   const alcohol = useSelector((state) => state.input.onChangeAlcohol);
   const amount = useSelector((state) => state.input.onChangeAmount);
   const liquers = useSelector((state) => state.dataBase.liquers);
   const error = useSelector((state) => state.input.error);
-  const cocktailsToShow = useSelector(state=>state.dataBase.cocktailsToShow);
+  const cocktailsToShow = useSelector(
+    (state) => state.dataBase.cocktailsToShow
+  );
   const dispatch = useDispatch();
+
+  const [switchIsChecked, setSwitchIsChecked] = useState(false);
 
   ///////////// Changing the Alcohol input, and dispatch to redux store to save state.
   const enterAlcoholInputHandler = (event, newValue) => {
@@ -44,7 +53,7 @@ const Input = () => {
       return;
     }
 
-    dispatch(menuActions.toggleGenerated());
+    dispatch(menuActions.toggleGenerated(true));
     if (amount === "") {
       dispatch(
         dataBaseActions.setPreference({
@@ -63,11 +72,11 @@ const Input = () => {
     dispatch(dataBaseActions.filterByLiquer(alcohol));
     dispatch(dataBaseActions.setCocktailsToShow());
   };
-  
-  useEffect(()=> {
+
+  useEffect(() => {
     dispatch(dataBaseActions.setPropsList());
-  },[dispatch, cocktailsToShow])
-  
+  }, [dispatch, cocktailsToShow]);
+
   ////////////// On button click dispatch increment by 1 reducer.
   const plusButtonHandler = () => {
     dispatch(inputActions.increment());
@@ -76,6 +85,10 @@ const Input = () => {
   ////////////// On button click dispatch decrement by 1 reducer.
   const minusButtonHandler = () => {
     dispatch(inputActions.decrement());
+  };
+
+  const includeCustomCocktailsHandler = (event) => {
+    setSwitchIsChecked(event.target.checked);
   };
   return (
     <form onSubmit={generateMenuHandler} className={classes.inputField}>
@@ -116,6 +129,12 @@ const Input = () => {
         </button>
       </div>
       <button type="submit">Generate</button>
+
+      <p>Include Custom</p>
+      <Switch
+        checked={switchIsChecked}
+        onChange={includeCustomCocktailsHandler}
+      />
     </form>
   );
 };

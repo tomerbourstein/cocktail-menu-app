@@ -76,7 +76,6 @@ const LoginPage = () => {
       // ....
       alert(data.error.message);
     } else {
-      console.log(data);
       loginHandler(data.idToken, data.email, expirationTime.toISOString());
     }
     // let errorMesage = "Authentication Failed!";

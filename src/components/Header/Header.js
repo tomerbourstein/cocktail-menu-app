@@ -14,7 +14,7 @@ import classes from "./Header.module.css";
 const Header = () => {
   const dispatch = useDispatch();
   // const loggedIn = useSelector((state) => state.profile.logged);
-  
+
   // console.log(loggedIn);
 
   ////////// On click dispatch open Favorite  s.
@@ -37,44 +37,41 @@ const Header = () => {
     localStorage.removeItem("email");
 
     dispatch(menuActions.openLoginPage());
+    dispatch(menuActions.toggleGenerated(false));
     dispatch(profileActions.logout());
   };
   return (
     <Box className={classes.navigation}>
       <AppBar position="static" color="transparent">
         <Toolbar sx={{ display: "flex", justifyContent: "start" }}>
-          {/* {loggedIn && (
-            <> */}
-              <IconButton
-                size="large"
-                aria-label="menu-page"
-                onClick={showMenuHandler}
-              >
-                <MenuBookIcon />
-              </IconButton>
-              <IconButton
-                size="large"
-                aria-label="favorite"
-                onClick={showFavoritesHandler}
-              >
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton
-                size="large"
-                aria-label="custom-cocktail"
-                onClick={showCustomCocktailsHandler}
-              >
-                <PlaylistAddIcon />
-              </IconButton>
-              <IconButton
-                size="large"
-                aria-label="logout"
-                onClick={showLoginPageHandler}
-              >
-                <LogoutIcon />
-              </IconButton>
-            {/* </>
-          )} */}
+          <IconButton
+            size="large"
+            aria-label="menu-page"
+            onClick={showMenuHandler}
+          >
+            <MenuBookIcon />
+          </IconButton>
+          <IconButton
+            size="large"
+            aria-label="favorite"
+            onClick={showFavoritesHandler}
+          >
+            <FavoriteIcon />
+          </IconButton>
+          <IconButton
+            size="large"
+            aria-label="custom-cocktail"
+            onClick={showCustomCocktailsHandler}
+          >
+            <PlaylistAddIcon />
+          </IconButton>
+          <IconButton
+            size="large"
+            aria-label="logout"
+            onClick={showLoginPageHandler}
+          >
+            <LogoutIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
     </Box>

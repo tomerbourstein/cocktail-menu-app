@@ -5,6 +5,7 @@ const dataBaseSlice = createSlice({
   initialState: {
     dataBase: [],
     liquers: [],
+    userCustomCocktails: [],
     preferences: "",
     filteredByLiquer: [],
     cocktailsToShow: [],
@@ -20,6 +21,9 @@ const dataBaseSlice = createSlice({
     },
     setPreference(state, action) {
       state.preferences = action.payload;
+    },
+    setUserCustomCocktails(state, action) {
+      state.userCustomCocktails = action.payload;
     },
     filterByLiquer(state, action) {
       let foundAlcohol = state.dataBase.find(
