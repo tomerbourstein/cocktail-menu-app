@@ -1,9 +1,11 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { dataBaseActions } from "../../store/dataBase-slice";
 import Form from "./Form";
 
 const CustomCocktails = () => {
-  const email = useSelector(state => state.profile.profileEmail);
-const user = email.substring(0,email.indexOf("@"));
+  const dispatch = useDispatch();
+  const email = useSelector((state) => state.profile.profileEmail);
+  const user = email.substring(0, email.indexOf("@"));
 
   async function postHandler(enteredData) {
     const { main_liqueur } = enteredData;
@@ -22,6 +24,7 @@ const user = email.substring(0,email.indexOf("@"));
       throw new Error("Something Went Wrong!");
     }
     const data = await response.json();
+    dispatch(dataBaseActions.addCustomCocktails());
     console.log(data);
   }
 

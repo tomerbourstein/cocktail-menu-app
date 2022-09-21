@@ -69,7 +69,12 @@ const Input = () => {
         })
       );
     }
-    dispatch(dataBaseActions.filterByLiquer(alcohol));
+    dispatch(
+      dataBaseActions.filterByLiquer({
+        alcohol: alcohol,
+        switchIsChecked: switchIsChecked,
+      })
+    );
     dispatch(dataBaseActions.setCocktailsToShow());
   };
 

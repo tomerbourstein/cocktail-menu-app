@@ -24,9 +24,13 @@ function App() {
   const loginPageShow = useSelector((state) => state.menu.loginPageShow);
   const favoritesList = useSelector((state) => state.menu.favoritesList);
   const isChanged = useSelector((state) => state.menu.changed);
+  const updatedCustomDb = useSelector(
+    (state) => state.dataBase.updatedCustomDb
+  );
   const email = localStorage.getItem("email");
   const user = email ? email.substring(0, email.indexOf("@")) : "";
 
+  console.log(updatedCustomDb);
   ////////// Only when page is loaded fetch the data from firebase. then create two arrays
   ////////// 1. Contains the liquers in the db. 2. the entire db.
   useEffect(() => {
@@ -48,6 +52,7 @@ function App() {
         });
         liquers.push(key);
       }
+      console.log(dataBase);
       dispatch(dataBaseActions.fetchData({ dataBase, liquers }));
     };
     handleFetchData();
@@ -99,11 +104,20 @@ function App() {
         throw new Error("Could not fetch data!");
       }
       const data = await response.json();
-      dispatch(dataBaseActions.setUserCustomCocktails(data.custom));
+      let customCocktails = [];
+      for (const key in data.custom) {
+        customCocktails.push({
+          id: key,
+          main_liquer: key,
+          cocktail: data.custom[key],
+        });
+      }
+      console.log(customCocktails);
+      dispatch(dataBaseActions.setUserCustomCocktails(customCocktails));
       dispatch(menuActions.replaceFavorites(data.favorites));
     };
     handleFetchData();
-  }, [dispatch, user]);
+  }, [dispatch, user, updatedCustomDb]);
 
   return (
     <div className="App">

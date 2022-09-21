@@ -13,7 +13,7 @@ const menuSlice = createSlice({
     loginPageShow: true,
   },
   reducers: {
-    toggleGenerated(state,action) {
+    toggleGenerated(state, action) {
       state.generated = action.payload;
     },
     openFavorites(state) {
