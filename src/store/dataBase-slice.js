@@ -42,9 +42,11 @@ const dataBaseSlice = createSlice({
       for (const key in foundAlcohol.cocktail) {
         state.filteredByLiquer.push(foundAlcohol.cocktail[key]);
       }
-      if (foundCustomAlcohol) {
-        for (const key in foundCustomAlcohol.cocktail) {
-          state.filteredByLiquer.push(foundCustomAlcohol.cocktail[key]);
+      if (action.payload.switchIsChecked) {
+        if (foundCustomAlcohol) {
+          for (const key in foundCustomAlcohol.cocktail) {
+            state.filteredByLiquer.push(foundCustomAlcohol.cocktail[key]);
+          }
         }
       }
     },
