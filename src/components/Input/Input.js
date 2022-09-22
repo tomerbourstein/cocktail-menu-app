@@ -25,6 +25,12 @@ const Input = () => {
 
   const [switchIsChecked, setSwitchIsChecked] = useState(false);
 
+///////////// To re-render the properties list everytime cocktailsToShow changes.
+  useEffect(() => {
+    dispatch(dataBaseActions.setPropsList());
+  }, [dispatch, cocktailsToShow]);
+
+  
   ///////////// Changing the Alcohol input, and dispatch to redux store to save state.
   const enterAlcoholInputHandler = (event, newValue) => {
     dispatch(inputActions.setError(false));
@@ -78,9 +84,6 @@ const Input = () => {
     dispatch(dataBaseActions.setCocktailsToShow());
   };
 
-  useEffect(() => {
-    dispatch(dataBaseActions.setPropsList());
-  }, [dispatch, cocktailsToShow]);
 
   ////////////// On button click dispatch increment by 1 reducer.
   const plusButtonHandler = () => {

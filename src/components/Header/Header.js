@@ -17,7 +17,7 @@ const Header = () => {
 
   // console.log(loggedIn);
 
-  ////////// On click dispatch open Favorite  s.
+  ////////// On click dispatch open Favorites.
   const showFavoritesHandler = () => {
     dispatch(menuActions.openFavorites());
   };
