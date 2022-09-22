@@ -12,6 +12,7 @@ const menuSlice = createSlice({
     menuShow: false,
     loginPageShow: true,
     isLoading: false,
+    playAnimation: null,
   },
   reducers: {
     toggleGenerated(state, action) {
@@ -64,6 +65,9 @@ const menuSlice = createSlice({
     },
     setLoadingState(state, action) {
       state.isLoading = action.payload;
+    },
+    setAnimation(state, action) {
+      state.playAnimation = action.payload;
     }
   },
 });

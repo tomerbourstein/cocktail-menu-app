@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { menuActions } from "../../store/menu-slice";
 import ImageList from "@mui/material/ImageList";
@@ -50,7 +50,6 @@ const Favorites = () => {
         <ImageListItem key="Subheader" cols={2}>
           <ListSubheader component="div">My Favorite Cocktails</ListSubheader>
         </ImageListItem>
-        <Fragment>
           {favoritesList === undefined || favoritesList.length === 0 ? (
             <p>No Favoties to Show!</p>
           ) : (
@@ -89,7 +88,6 @@ const Favorites = () => {
           )}
 
           <Dialog cocktail={favorite} />
-        </Fragment>
       </ImageList>
     </section>
   );

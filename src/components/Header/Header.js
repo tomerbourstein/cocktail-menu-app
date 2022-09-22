@@ -26,25 +26,49 @@ const Header = () => {
 
   ////////// On click dispatch open Favorites.
   const showFavoritesHandler = () => {
-    dispatch(menuActions.openFavorites());
+    dispatch(menuActions.setAnimation(true));
+
+    setTimeout(() => {
+      dispatch(menuActions.openFavorites());
+    }, 800);
+    setTimeout(() => {
+      dispatch(menuActions.setAnimation(null));
+    }, 1700);
   };
 
   ////////// On click dispatch open Menu.
   const showMenuHandler = () => {
-    dispatch(menuActions.openMenu());
+    dispatch(menuActions.setAnimation(true));
+
+    setTimeout(() => {
+      dispatch(menuActions.openMenu());
+    }, 800);
+    setTimeout(() => {
+      dispatch(menuActions.setAnimation(null));
+    }, 1700);
   };
 
   ////////// On click dispatch open CustomCocktails.
   const showCustomCocktailsHandler = () => {
-    dispatch(menuActions.openCustomCocktails());
+    dispatch(menuActions.setAnimation(true));
+
+    setTimeout(() => {
+      dispatch(menuActions.openCustomCocktails());
+    }, 800);
+    setTimeout(() => {
+      dispatch(menuActions.setAnimation(null));
+    }, 1700);
   };
 
+////////// logout the user to reset all local storage back to login / signup menu.
   const showLoginPageHandler = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("email");
-    dispatch(menuActions.setLoadingState(true))
-    
-    setTimeout(() => {dispatch(menuActions.setLoadingState(false))}, 1300);
+    dispatch(menuActions.setLoadingState(true));
+
+    setTimeout(() => {
+      dispatch(menuActions.setLoadingState(false));
+    }, 1300);
     dispatch(menuActions.openLoginPage());
     dispatch(menuActions.toggleGenerated(false));
     dispatch(profileActions.logout());

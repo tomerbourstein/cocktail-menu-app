@@ -31,6 +31,7 @@ function App() {
     (state) => state.dataBase.updatedCustomDb
   );
   const isLoading = useSelector((state) => state.menu.isLoading);
+  const playAnimation = useSelector(state=>state.menu.playAnimation);
 
   const email = localStorage.getItem("email");
   const user = email ? email.substring(0, email.indexOf("@")) : "";
@@ -134,17 +135,19 @@ function App() {
     <div className="App">
       <Fragment>
         <Header />
-      {isLoading &&   <Loading /> }
-        {loginPageShow ? <LoginPage /> : null}
-        {menuShow ? (
-          <>
-            <Input />
-            <Main />
-          </>
-        ) : null}
-        {favoritesShow ? <Favorites /> : null}
+        <div className={playAnimation && "animate_content"}>
+          {isLoading && <Loading />}
+          {loginPageShow ? <LoginPage /> : null}
+          {menuShow ? (
+            <>
+              <Input />
+              <Main />
+            </>
+          ) : null}
+          {favoritesShow ? <Favorites /> : null}
 
-        {!customCocktailShow ? null : <CustomCocktails />}
+          {!customCocktailShow ? null : <CustomCocktails />}
+        </div>
         <Footer />
       </Fragment>
     </div>
