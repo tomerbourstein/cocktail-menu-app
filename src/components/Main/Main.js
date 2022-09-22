@@ -14,7 +14,7 @@ const Main = (props) => {
   ));
   return (
     <section id="main" className={classes.main}>
-      <Properties />
+      {isGenerated && <Properties />}
       {isGenerated ? (
         <div>{mapCocktails}</div>
       ) : (

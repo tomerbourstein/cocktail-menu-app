@@ -5,11 +5,13 @@ const dataBaseSlice = createSlice({
   initialState: {
     dataBase: [],
     liquers: [],
+    userCustomCocktails: [],
     preferences: "",
     filteredByLiquer: [],
     cocktailsToShow: [],
     properties: [],
     filteredByProps: [],
+    updatedCustomDb: false,
   },
   reducers: {
     fetchData(state, action) {
@@ -21,13 +23,31 @@ const dataBaseSlice = createSlice({
     setPreference(state, action) {
       state.preferences = action.payload;
     },
+    setUserCustomCocktails(state, action) {
+      state.userCustomCocktails = action.payload;
+    },
+    addCustomCocktails(state) {
+      state.updatedCustomDb = !state.updatedCustomDb;
+    },
     filterByLiquer(state, action) {
       let foundAlcohol = state.dataBase.find(
-        (element) => element.main_liquer === action.payload.toLowerCase()
+        (element) =>
+          element.main_liquer === action.payload.alcohol.toLowerCase()
+      );
+      let foundCustomAlcohol = state.userCustomCocktails.find(
+        (element) =>
+          element.main_liquer === action.payload.alcohol.toLowerCase()
       );
       state.filteredByLiquer.length = 0;
       for (const key in foundAlcohol.cocktail) {
         state.filteredByLiquer.push(foundAlcohol.cocktail[key]);
+      }
+      if (action.payload.switchIsChecked) {
+        if (foundCustomAlcohol) {
+          for (const key in foundCustomAlcohol.cocktail) {
+            state.filteredByLiquer.push(foundCustomAlcohol.cocktail[key]);
+          }
+        }
       }
     },
     setCocktailsToShow(state) {

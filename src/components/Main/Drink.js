@@ -4,8 +4,6 @@ import { menuActions } from "../../store/menu-slice";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
-// import CardMedia from "@mui/material/CardMedia";
-// import Typography from "@mui/material/Typography";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -15,6 +13,7 @@ import classes from "./Drink.module.css";
 const Drink = (props) => {
   const dispatch = useDispatch();
   const favoritesList = useSelector((state) => state.menu.favoritesList);
+
   const {
     name,
     ingredients,
@@ -31,6 +30,7 @@ const Drink = (props) => {
   let checked = false;
   let cocktailStrength = "";
 
+  /////// to change the strength number into a string
   if (strength === 3) {
     cocktailStrength = "Strong";
   } else if (strength === 2) {
@@ -39,6 +39,7 @@ const Drink = (props) => {
     cocktailStrength = "Light";
   }
 
+  /////// to check if theres already a specific cocktail inside favoritesList
   const checkFavorites = () => {
     let foundCocktail = favoritesList.find((element) => element.name === name);
     if (foundCocktail) {
@@ -46,6 +47,7 @@ const Drink = (props) => {
     }
   };
 
+  /////// to add cocktails into favorites and
   const addToFavoritesHandler = (event) => {
     let checked = event.target.checked;
     if (checked) {
@@ -115,17 +117,16 @@ const Drink = (props) => {
         <div>
           <div className={classes.check}>{garnish}</div>
         </div>
-        {(name !== "") ? 
-        (<div>
-          <Checkbox
-            checked={checked}
-            icon={<FavoriteBorderIcon />}
-            checkedIcon={<FavoriteIcon />}
-            onChange={addToFavoritesHandler}
-          ></Checkbox>
-        </div>)
-        : null
-      }
+        {name !== "" ? (
+          <div>
+            <Checkbox
+              checked={checked}
+              icon={<FavoriteBorderIcon />}
+              checkedIcon={<FavoriteIcon />}
+              onChange={addToFavoritesHandler}
+            ></Checkbox>
+          </div>
+        ) : null}
       </CardContent>
     </Card>
   );
