@@ -17,8 +17,15 @@ const Header = () => {
   const email = localStorage.getItem("email");
   const user = email ? email.substring(0, email.indexOf("@")) : "";
   const profileUsername = email ? email.substring(0, 1).toUpperCase() : "";
-  console.log(profileUsername);
+  console.log(email);
+  let disableButtons;
+  if (email) {
+    disableButtons = true;
+  } else {
+    disableButtons = false;
+  }
 
+  console.log(disableButtons);
   ////////// On click dispatch open Favorites.
   const showFavoritesHandler = () => {
     dispatch(menuActions.openFavorites());
@@ -49,6 +56,7 @@ const Header = () => {
           <IconButton
             size="large"
             aria-label="menu-page"
+            disabled={!disableButtons}
             onClick={showMenuHandler}
           >
             <MenuBookIcon />
@@ -56,6 +64,7 @@ const Header = () => {
           <IconButton
             size="large"
             aria-label="favorite"
+            disabled={!disableButtons}
             onClick={showFavoritesHandler}
           >
             <FavoriteIcon />
@@ -63,6 +72,7 @@ const Header = () => {
           <IconButton
             size="large"
             aria-label="custom-cocktail"
+            disabled={!disableButtons}
             onClick={showCustomCocktailsHandler}
           >
             <PlaylistAddIcon />
@@ -70,11 +80,14 @@ const Header = () => {
           <IconButton
             size="large"
             aria-label="logout"
+            disabled={!disableButtons}
             onClick={showLoginPageHandler}
           >
             <LogoutIcon />
           </IconButton>
-          <Avatar src=""  alt={user === "" ? null : user}>{profileUsername === "" ? null : profileUsername}</Avatar>
+          <Avatar src="" alt={user === "" ? null : user}>
+            {profileUsername === "" ? null : profileUsername}
+          </Avatar>
         </Toolbar>
       </AppBar>
     </Box>
