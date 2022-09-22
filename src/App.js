@@ -30,7 +30,6 @@ function App() {
   const email = localStorage.getItem("email");
   const user = email ? email.substring(0, email.indexOf("@")) : "";
 
-  console.log(updatedCustomDb);
   ////////// Only when page is loaded fetch the data from firebase. then create two arrays
   ////////// 1. Contains the liquers in the db. 2. the entire db.
   useEffect(() => {
@@ -52,7 +51,6 @@ function App() {
         });
         liquers.push(key);
       }
-      console.log(dataBase);
       dispatch(dataBaseActions.fetchData({ dataBase, liquers }));
     };
     handleFetchData();
@@ -76,7 +74,6 @@ function App() {
     }
     if (isChanged) {
       async function postFavorites(enteredData) {
-        // const { name } = enteredData;
         const requestOptions = {
           method: "PUT",
           headers: { "content-type": "application/json" },
@@ -105,16 +102,23 @@ function App() {
       }
       const data = await response.json();
       let customCocktails = [];
-      for (const key in data.custom) {
-        customCocktails.push({
-          id: key,
-          main_liquer: key,
-          cocktail: data.custom[key],
-        });
+      if (data === null) {
+        return;
+      } else {
+        if (data.custom !== undefined) {
+          for (const key in data.custom) {
+            customCocktails.push({
+              id: key,
+              main_liquer: key,
+              cocktail: data.custom[key],
+            });
+          }
+          if (data.favorites !== undefined) {
+            dispatch(menuActions.replaceFavorites(data.favorites));
+          }
+        }
       }
-      console.log(customCocktails);
       dispatch(dataBaseActions.setUserCustomCocktails(customCocktails));
-      dispatch(menuActions.replaceFavorites(data.favorites));
     };
     handleFetchData();
   }, [dispatch, user, updatedCustomDb]);

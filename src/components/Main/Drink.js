@@ -13,7 +13,6 @@ import classes from "./Drink.module.css";
 const Drink = (props) => {
   const dispatch = useDispatch();
   const favoritesList = useSelector((state) => state.menu.favoritesList);
-  // const email = useSelector(state => state.profile.profileEmail);
 
   const {
     name,
@@ -31,6 +30,7 @@ const Drink = (props) => {
   let checked = false;
   let cocktailStrength = "";
 
+  /////// to change the strength number into a string
   if (strength === 3) {
     cocktailStrength = "Strong";
   } else if (strength === 2) {
@@ -39,6 +39,7 @@ const Drink = (props) => {
     cocktailStrength = "Light";
   }
 
+  /////// to check if theres already a specific cocktail inside favoritesList
   const checkFavorites = () => {
     let foundCocktail = favoritesList.find((element) => element.name === name);
     if (foundCocktail) {
@@ -46,6 +47,7 @@ const Drink = (props) => {
     }
   };
 
+  /////// to add cocktails into favorites and
   const addToFavoritesHandler = (event) => {
     let checked = event.target.checked;
     if (checked) {

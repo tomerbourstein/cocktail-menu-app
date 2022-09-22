@@ -17,7 +17,6 @@ const Header = () => {
   const email = localStorage.getItem("email");
   const user = email ? email.substring(0, email.indexOf("@")) : "";
   const profileUsername = email ? email.substring(0, 1).toUpperCase() : "";
-  console.log(email);
   let disableButtons;
   if (email) {
     disableButtons = true;
@@ -25,7 +24,6 @@ const Header = () => {
     disableButtons = false;
   }
 
-  console.log(disableButtons);
   ////////// On click dispatch open Favorites.
   const showFavoritesHandler = () => {
     dispatch(menuActions.openFavorites());
