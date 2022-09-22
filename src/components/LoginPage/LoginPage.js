@@ -1,20 +1,18 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { profileActions } from "../../store/profile-slice";
+import { menuActions } from "../../store/menu-slice";
 import Login from "./Login";
 import Register from "./Register";
 import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
-import Skeleton from "@mui/material/Skeleton";
-import { menuActions } from "../../store/menu-slice";
+
 
 const LoginPage = () => {
   const dispatch = useDispatch();
   const isRegisterForm = useSelector((state) => state.profile.isRegisterForm);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     dispatch(profileActions.resetRegisterForm());
@@ -32,7 +30,6 @@ const LoginPage = () => {
     localStorage.setItem("email", email);
 
     const remainingTime = calculateRemainingTime(expirationTime);
-    // window.location.reload();
     dispatch(menuActions.openMenu());
     setTimeout(dispatch(profileActions.logout()), remainingTime);
   };
@@ -46,7 +43,7 @@ const LoginPage = () => {
 
   const submitHandler = async (email, password) => {
     let url;
-    setIsLoading(true);
+    dispatch(menuActions.setLoadingState(true));
 
     if (!isRegisterForm) {
       url =
@@ -71,7 +68,10 @@ const LoginPage = () => {
     const expirationTime = new Date(
       new Date().getTime() + +data.expiresIn * 1000
     );
-    setIsLoading(false);
+
+    setTimeout(() => {
+      dispatch(menuActions.setLoadingState(false));
+    }, 1200);
     if (!response.ok) {
       // ....
       alert(data.error.message);
@@ -93,12 +93,6 @@ const LoginPage = () => {
         <Login submitHandler={submitHandler} />
       ) : (
         <Register submitHandler={submitHandler} />
-      )}
-      {isLoading && (
-        <Stack spacing={1}>
-          <Skeleton variant="rounded" width={210} height={60} />
-          <Skeleton variant="rounded" width={210} height={60} />
-        </Stack>
       )}
       <Divider sx={{ my: 2 }}>or</Divider>
       <Button

@@ -42,7 +42,9 @@ const Header = () => {
   const showLoginPageHandler = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("email");
-
+    dispatch(menuActions.setLoadingState(true))
+    
+    setTimeout(() => {dispatch(menuActions.setLoadingState(false))}, 1300);
     dispatch(menuActions.openLoginPage());
     dispatch(menuActions.toggleGenerated(false));
     dispatch(profileActions.logout());
