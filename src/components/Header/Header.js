@@ -5,7 +5,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Avatar from '@mui/material/Avatar';
+import Avatar from "@mui/material/Avatar";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
@@ -17,7 +17,7 @@ const Header = () => {
   const email = localStorage.getItem("email");
   const user = email ? email.substring(0, email.indexOf("@")) : "";
   const profileUsername = email ? email.substring(0, 1).toUpperCase() : "";
-console.log(profileUsername);
+  console.log(profileUsername);
 
   ////////// On click dispatch open Favorites.
   const showFavoritesHandler = () => {
@@ -74,7 +74,7 @@ console.log(profileUsername);
           >
             <LogoutIcon />
           </IconButton>
-          <Avatar alt={user}>{profileUsername}</Avatar>
+          <Avatar src=""  alt={user === "" ? null : user}>{profileUsername === "" ? null : profileUsername}</Avatar>
         </Toolbar>
       </AppBar>
     </Box>
