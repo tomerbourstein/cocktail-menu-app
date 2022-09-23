@@ -114,7 +114,7 @@ function App() {
       if (data === null) {
         return;
       } else {
-        if (data.custom !== undefined) {
+        if (data.custom !== undefined || data.favorites !== undefined) {
           for (const key in data.custom) {
             customCocktails.push({
               id: key,
@@ -122,7 +122,7 @@ function App() {
               cocktail: data.custom[key],
             });
           }
-          if (data.favorites !== undefined) {
+          if (data.favorites !== undefined || data.custom !== undefined) {
             dispatch(menuActions.replaceFavorites(data.favorites));
           }
         }

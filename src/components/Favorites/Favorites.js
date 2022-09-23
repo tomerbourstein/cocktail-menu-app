@@ -17,7 +17,7 @@ const Favorites = () => {
   const [favorite, setFavorite] = useState("");
   const favoritesList = useSelector((state) => state.menu.favoritesList);
   const dispatch = useDispatch();
-
+  console.log(favoritesList);
   let checked = false;
 
   function strengthTransform(strength) {
