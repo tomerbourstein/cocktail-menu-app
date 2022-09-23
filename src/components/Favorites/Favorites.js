@@ -15,9 +15,9 @@ import classes from "./Favorites.module.css";
 
 const Favorites = () => {
   const [favorite, setFavorite] = useState("");
+  const [itemIndex, setItemIndex] = useState(null)
   const favoritesList = useSelector((state) => state.menu.favoritesList);
   const dispatch = useDispatch();
-  console.log(favoritesList);
   let checked = false;
 
   function strengthTransform(strength) {
@@ -35,8 +35,11 @@ const Favorites = () => {
 
   function removeFavoritesHandler(cocktail) {
     checked = true;
-
-    dispatch(menuActions.removeFromFavorites(cocktail));
+    setItemIndex(favoritesList.findIndex(i=> i.name === cocktail));
+    setTimeout(() => {
+      dispatch(menuActions.removeFromFavorites(cocktail));
+      setItemIndex("")
+    }, 500);
   }
 
   function handleOpen(cocktail) {
@@ -50,44 +53,47 @@ const Favorites = () => {
         <ImageListItem key="Subheader" cols={2}>
           <ListSubheader component="div">My Favorite Cocktails</ListSubheader>
         </ImageListItem>
-          {favoritesList === undefined || favoritesList.length === 0 ? (
-            <p>No Favoties to Show!</p>
-          ) : (
-            favoritesList.map((fav) => (
-              <ImageListItem key={fav.image}>
-                <img
-                  src={`${fav.image}?w=248&fit=crop&auto=format`}
-                  srcSet={`${fav.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                  alt={fav.name}
-                  loading="lazy"
-                />
-                <ImageListItemBar
-                  title={fav.name}
-                  subtitle={strengthTransform(fav.strength)}
-                  actionIcon={
-                    <>
-                      <Checkbox
-                        color={"success"}
-                        icon={<FavoriteIcon color={"error"} />}
-                        checkedIcon={<FavoriteBorderIcon />}
-                        checked={checked}
-                        onChange={() => removeFavoritesHandler(fav.name)}
-                      ></Checkbox>
-                      <IconButton
-                        onClick={() => handleOpen(fav)}
-                        sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-                        aria-label={`info about ${fav.name}`}
-                      >
-                        <InfoIcon />
-                      </IconButton>
-                    </>
-                  }
-                />
-              </ImageListItem>
-            ))
-          )}
+        {favoritesList === undefined || favoritesList.length === 0 ? (
+          <p>No Favoties to Show!</p>
+        ) : (
+          favoritesList.map((fav, index) => (
+            <ImageListItem
+              key={fav.image}
+              className={itemIndex === index ? classes.fadeOut : null}
+            >
+              <img
+                src={`${fav.image}?w=248&fit=crop&auto=format`}
+                srcSet={`${fav.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                alt={fav.name}
+                loading="lazy"
+              />
+              <ImageListItemBar
+                title={fav.name}
+                subtitle={strengthTransform(fav.strength)}
+                actionIcon={
+                  <>
+                    <Checkbox
+                      color={"success"}
+                      icon={<FavoriteIcon color={"error"} />}
+                      checkedIcon={<FavoriteBorderIcon />}
+                      checked={checked}
+                      onChange={() => removeFavoritesHandler(fav.name)}
+                    ></Checkbox>
+                    <IconButton
+                      onClick={() => handleOpen(fav)}
+                      sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+                      aria-label={`info about ${fav.name}`}
+                    >
+                      <InfoIcon />
+                    </IconButton>
+                  </>
+                }
+              />
+            </ImageListItem>
+          ))
+        )}
 
-          <Dialog cocktail={favorite} />
+        <Dialog cocktail={favorite} />
       </ImageList>
     </section>
   );
