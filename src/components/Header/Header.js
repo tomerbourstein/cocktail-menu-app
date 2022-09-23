@@ -60,7 +60,7 @@ const Header = () => {
     }, 1700);
   };
 
-////////// logout the user to reset all local storage back to login / signup menu.
+  ////////// logout the user to reset all local storage back to login / signup menu.
   const showLoginPageHandler = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("email");

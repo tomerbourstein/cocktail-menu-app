@@ -1,0 +1,17 @@
+.blurSignIn {
+  animation: blur 1s ease;
+}
+
+@keyframes blur {
+  10% {
+    filter: blur(0);
+  }
+
+  50% {
+    filter: blur(1.5rem);
+  }
+
+  100% {
+    filter: blur(0);
+  }
+}

@@ -13,7 +13,7 @@ import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 import CustomCocktails from "./components/CustomCocktails/CustomCocktails";
 import Favorites from "./components/Favorites/Favorites";
-import "./App.css";
+import classes from "./App.module.css";
 
 let isInitial = true;
 
@@ -25,13 +25,14 @@ function App() {
     (state) => state.menu.customCocktailShow
   );
   const loginPageShow = useSelector((state) => state.menu.loginPageShow);
+  
   const favoritesList = useSelector((state) => state.menu.favoritesList);
   const isChanged = useSelector((state) => state.menu.changed);
   const updatedCustomDb = useSelector(
     (state) => state.dataBase.updatedCustomDb
   );
   const isLoading = useSelector((state) => state.menu.isLoading);
-  const playAnimation = useSelector(state=>state.menu.playAnimation);
+  const playAnimation = useSelector((state) => state.menu.playAnimation);
 
   const email = localStorage.getItem("email");
   const user = email ? email.substring(0, email.indexOf("@")) : "";
@@ -135,7 +136,7 @@ function App() {
     <div className="App">
       <Fragment>
         <Header />
-        <div className={playAnimation && "animate_content"}>
+        <div className={playAnimation && classes.animateContent}>
           {isLoading && <Loading />}
           {loginPageShow ? <LoginPage /> : null}
           {menuShow ? (

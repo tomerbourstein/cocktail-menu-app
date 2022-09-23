@@ -1,0 +1,19 @@
+@keyframes animate {
+  10% {
+    filter: blur(0);
+  }
+
+  50% {
+    filter: blur(1.5rem);
+    opacity: 0;
+  }
+
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.animateContent {
+  animation: animate 1.7s ease;
+}
