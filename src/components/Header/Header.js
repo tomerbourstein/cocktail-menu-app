@@ -11,7 +11,6 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import classes from "./Header.module.css";
 
 const Header = () => {
@@ -110,7 +109,6 @@ const Header = () => {
             <Typography className={classes.neonText}>COCKTAILS</Typography>
           </div>
 
-        
           <div className={classes.direction}>
             <IconButton
               size="large"

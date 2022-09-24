@@ -12,6 +12,9 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Switch from "@mui/material/Switch";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import classes from "./Input.module.css";
 
 const Input = () => {
@@ -121,32 +124,45 @@ const Input = () => {
             )}
           />
         </Box>
-        <div>
-          <button type="button" onClick={minusButtonHandler}>
-            -
-          </button>
+
+        <Box className={classes.quantityButtons}>
+          <IconButton onClick={minusButtonHandler}>
+            <AddIcon />
+          </IconButton>
+
           <TextField
-            hidden
+            placeholder="1"
             autoComplete="off"
             id="outlined-basic"
-            label="How Many?"
+            label=""
             variant="outlined"
             value={amount}
             onChange={enterAmountInputHandler}
           />
-          <button type="button" onClick={plusButtonHandler}>
-            +
-          </button>
-        </div>
-        <Button className={classes.generateButton} variant="contained" type="submit">
+
+          <IconButton onClick={plusButtonHandler}>
+            <RemoveIcon />
+          </IconButton>
+        </Box>
+
+        <Box className={classes.customSwitch}>
+          <span>Ours</span>
+
+          <Switch
+            color="error"
+            checked={switchIsChecked}
+            onChange={includeCustomCocktailsHandler}
+          />
+          <span>Yours</span>
+        </Box>
+
+        <Button
+          className={classes.generateButton}
+          variant="contained"
+          type="submit"
+        >
           Generate
         </Button>
-
-        <p>Include Custom</p>
-        <Switch
-          checked={switchIsChecked}
-          onChange={includeCustomCocktailsHandler}
-        />
       </form>
     </Card>
   );
