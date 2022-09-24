@@ -7,10 +7,11 @@ import { menuActions } from "../../store/menu-slice";
 import { dataBaseActions } from "../../store/dataBase-slice";
 
 import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Switch from "@mui/material/Switch";
-
+import Button from "@mui/material/Button";
 import classes from "./Input.module.css";
 
 const Input = () => {
@@ -25,12 +26,11 @@ const Input = () => {
 
   const [switchIsChecked, setSwitchIsChecked] = useState(false);
 
-///////////// To re-render the properties list everytime cocktailsToShow changes.
+  ///////////// To re-render the properties list everytime cocktailsToShow changes.
   useEffect(() => {
     dispatch(dataBaseActions.setPropsList());
   }, [dispatch, cocktailsToShow]);
 
-  
   ///////////// Changing the Alcohol input, and dispatch to redux store to save state.
   const enterAlcoholInputHandler = (event, newValue) => {
     dispatch(inputActions.setError(false));
@@ -84,7 +84,6 @@ const Input = () => {
     dispatch(dataBaseActions.setCocktailsToShow());
   };
 
-
   ////////////// On button click dispatch increment by 1 reducer.
   const plusButtonHandler = () => {
     dispatch(inputActions.increment());
@@ -99,51 +98,57 @@ const Input = () => {
     setSwitchIsChecked(event.target.checked);
   };
   return (
-    <form onSubmit={generateMenuHandler} className={classes.inputField}>
-      <Box sx={{ width: 210, margin: "auto" }}>
-        <Autocomplete
-          id="combo-box-demo"
-          options={liquers}
-          autoHighlight
-          isOptionEqualToValue={(option, value) => option.id === value.id}
-          getOptionLabel={(option) =>
-            typeof option === "string" || option instanceof String ? option : ""
-          }
-          onChange={enterAlcoholInputHandler}
-          renderInput={(params) => (
-            <TextField
-              error={error.isError}
-              {...params}
-              label={error.message}
-            />
-          )}
-        />
-      </Box>
-      <div>
-        <button type="button" onClick={minusButtonHandler}>
-          -
-        </button>
-        <TextField
-          hidden
-          autoComplete="off"
-          id="outlined-basic"
-          label="How Many?"
-          variant="outlined"
-          value={amount}
-          onChange={enterAmountInputHandler}
-        />
-        <button type="button" onClick={plusButtonHandler}>
-          +
-        </button>
-      </div>
-      <button type="submit">Generate</button>
+    <Card className={classes.inputCard}>
+      <form onSubmit={generateMenuHandler} className={classes.inputField}>
+        <Box sx={{ width: 210, margin: "auto" }}>
+          <Autocomplete
+            id="combo-box-demo"
+            options={liquers}
+            autoHighlight
+            isOptionEqualToValue={(option, value) => option.id === value.id}
+            getOptionLabel={(option) =>
+              typeof option === "string" || option instanceof String
+                ? option
+                : ""
+            }
+            onChange={enterAlcoholInputHandler}
+            renderInput={(params) => (
+              <TextField
+                error={error.isError}
+                {...params}
+                label={error.message}
+              />
+            )}
+          />
+        </Box>
+        <div>
+          <button type="button" onClick={minusButtonHandler}>
+            -
+          </button>
+          <TextField
+            hidden
+            autoComplete="off"
+            id="outlined-basic"
+            label="How Many?"
+            variant="outlined"
+            value={amount}
+            onChange={enterAmountInputHandler}
+          />
+          <button type="button" onClick={plusButtonHandler}>
+            +
+          </button>
+        </div>
+        <Button className={classes.generateButton} variant="contained" type="submit">
+          Generate
+        </Button>
 
-      <p>Include Custom</p>
-      <Switch
-        checked={switchIsChecked}
-        onChange={includeCustomCocktailsHandler}
-      />
-    </form>
+        <p>Include Custom</p>
+        <Switch
+          checked={switchIsChecked}
+          onChange={includeCustomCocktailsHandler}
+        />
+      </form>
+    </Card>
   );
 };
 

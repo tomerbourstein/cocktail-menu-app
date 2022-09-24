@@ -3,6 +3,7 @@ import { dataBaseActions } from "../../store/dataBase-slice";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 
+import classes from "./Properties.module.css";
 const Properties = (props) => {
   const dispatch = useDispatch();
   const propsToShow = useSelector((state) => state.dataBase.properties);
@@ -25,6 +26,7 @@ const Properties = (props) => {
     >
       {propsToShow.map((property) => (
         <Chip
+        className={classes.chip}
           key={propsToShow.indexOf(property)}
           label={property}
           size="small"

@@ -1,3 +1,27 @@
-.inputField {
-    color: #22577A;
+@import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
+
+.inputCard {
+  margin: 0 auto 3rem;
+  width: 75vw;
+  height: 45vh;
+}
+.inputCard label {
+    font-family: 'Yantramanav', sans-serif !important;
+
+}
+
+.inputCard button {
+  border: none;
+  color: #FFFF;
+  background-color: #ef9f9f !important;
+}
+.inputCard button:hover {
+    /* border: none; */
+    /* color: #FFFF; */
+  color: #fff2f2 !important;
+
+    /* background-color: #ef9f9f !important; */
+  }
+.generateButton {
+  background-color: #ef9f9f !important;
 }

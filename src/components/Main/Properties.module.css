@@ -1,0 +1,11 @@
+.chip {
+  background-color: #ef9f9f !important;
+  color: #fff2f2 !important;
+}
+.chip svg {
+  -webkit-tap-highlight-color: transparent;
+  color: #fff2f2 !important;
+}
+.chip svg:hover {
+  color: rgb(112, 85, 85) !important;
+}

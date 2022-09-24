@@ -10,7 +10,8 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import LogoutIcon from "@mui/icons-material/Logout";
-import Typography from '@mui/material/Typography';
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import classes from "./Header.module.css";
 
 const Header = () => {
@@ -77,46 +78,53 @@ const Header = () => {
   return (
     <Box className={classes.navigation}>
       <AppBar position="static" color="transparent">
-        <Toolbar sx={{ display: "flex", justifyContent: "start" }}>
-          <IconButton
-            size="large"
-            aria-label="menu-page"
-            disabled={!disableButtons}
-            onClick={showMenuHandler}
-          >
-            <MenuBookIcon />
-          </IconButton>
-          <IconButton
-            size="large"
-            aria-label="favorite"
-            disabled={!disableButtons}
-            onClick={showFavoritesHandler}
-          >
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton
-            size="large"
-            aria-label="custom-cocktail"
-            disabled={!disableButtons}
-            onClick={showCustomCocktailsHandler}
-          >
-            <PlaylistAddIcon />
-          </IconButton>
+        <Toolbar className={classes.toolbar}>
+          <div>
+            <IconButton
+              size="large"
+              aria-label="menu-page"
+              disabled={!disableButtons}
+              onClick={showMenuHandler}
+            >
+              <MenuBookIcon />
+            </IconButton>
+            <IconButton
+              size="large"
+              aria-label="favorite"
+              disabled={!disableButtons}
+              onClick={showFavoritesHandler}
+            >
+              <FavoriteIcon />
+            </IconButton>
+            <IconButton
+              size="large"
+              aria-label="custom-cocktail"
+              disabled={!disableButtons}
+              onClick={showCustomCocktailsHandler}
+            >
+              <PlaylistAddIcon />
+            </IconButton>
+          </div>
 
-      <Typography className={classes.neonText }>
-        COCKTAILS
-      </Typography>
-          <IconButton
-            size="large"
-            aria-label="logout"
-            disabled={!disableButtons}
-            onClick={showLoginPageHandler}
-          >
-            <LogoutIcon />
-          </IconButton>
-          <Avatar src="" alt={user === "" ? null : user}>
-            {profileUsername === "" ? null : profileUsername}
-          </Avatar>
+          <div>
+            <Typography className={classes.neonText}>COCKTAILS</Typography>
+          </div>
+
+        
+          <div className={classes.direction}>
+            <IconButton
+              size="large"
+              aria-label="logout"
+              disabled={!disableButtons}
+              onClick={showLoginPageHandler}
+            >
+              <LogoutIcon />
+            </IconButton>
+
+            <Avatar src="" alt={user === "" ? null : user}>
+              {profileUsername === "" ? null : profileUsername}
+            </Avatar>
+          </div>
         </Toolbar>
       </AppBar>
     </Box>

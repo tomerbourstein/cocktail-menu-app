@@ -1,8 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
 
 .navigation {
-  background-color: #38a3a5;
+  background-color: #f47c7c;
   margin-bottom: 2rem;
+}
+
+.toolbar {
+  display: flex; 
+  justify-content: space-between;
+
+}
+
+.direction {
+  display: flex;
+  align-items: center;
 }
 
 .neonText {
