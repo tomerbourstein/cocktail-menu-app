@@ -10,6 +10,7 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import LogoutIcon from "@mui/icons-material/Logout";
+import Typography from '@mui/material/Typography';
 import classes from "./Header.module.css";
 
 const Header = () => {
@@ -101,6 +102,10 @@ const Header = () => {
           >
             <PlaylistAddIcon />
           </IconButton>
+
+      <Typography className={classes.neonText }>
+        COCKTAILS
+      </Typography>
           <IconButton
             size="large"
             aria-label="logout"

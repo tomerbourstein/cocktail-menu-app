@@ -59,7 +59,7 @@ const Favorites = () => {
           favoritesList.map((fav, index) => (
             <ImageListItem
               key={fav.image}
-              className={itemIndex === index ? classes.fadeOut : null}
+              className={`${itemIndex === index ? classes.fadeOut : null}`}
             >
               <img
                 src={`${fav.image}?w=248&fit=crop&auto=format`}
