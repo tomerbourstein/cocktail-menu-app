@@ -1,12 +1,25 @@
 .drink {
     font-family: 'Rosarivo', serif;
-
+    border:1px solid #EF9F9F !important;
     font-size: 0.7rem;
     margin: 0 auto 3rem;
     width: 75vw;
-    height: 75vh;
+    max-height: 80vh;
 }
 
+.drink hr {
+    border: none;
+    margin: 0.5rem auto;
+    border-top: 5px dotted #bbb;
+    border-color:  #EF9F9F;
+    width: 1.5rem;
+
+
+}
+.cardHeader {
+    background-color: #FAD4D4 !important;
+    border-bottom: 20px solid #EF9F9F;
+}
 .drinkInfo  {
     padding: 1rem 2rem;
 }
@@ -18,17 +31,29 @@
     justify-content: space-around;
 }
 
+.rows p {
+    font-size: 0.75rem;
+    margin: 0.2rem 0;
+}
 .rows div {
     display: flex;
 flex-direction: column;
 }
 
 .preperation {
+    max-height: 6rem;
     font-size: 0.9rem;
 }
 
 
-.check {
-    display: flex;
-    flex-direction: column;
+/* glow effect on checkbox */
+.checkbox svg:checked {
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow:
+      0 0 10px 10px #fff,  /* inner white */
+      0 0 50px 30px #f0f, /* middle magenta */
+      0 0 70px 40px #0ff !important; /* outer cyan */
 }
+
+ 

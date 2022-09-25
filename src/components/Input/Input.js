@@ -127,7 +127,7 @@ const Input = () => {
 
         <Box className={classes.quantityButtons}>
           <IconButton onClick={minusButtonHandler}>
-            <AddIcon />
+            <RemoveIcon />
           </IconButton>
 
           <TextField
@@ -141,7 +141,7 @@ const Input = () => {
           />
 
           <IconButton onClick={plusButtonHandler}>
-            <RemoveIcon />
+            <AddIcon />
           </IconButton>
         </Box>
 
