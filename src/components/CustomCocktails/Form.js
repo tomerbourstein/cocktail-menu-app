@@ -7,6 +7,9 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import Chip from "@mui/material/Chip";
+import Card from "@mui/material/Card";
+
+import classes from "./CustomCocktails.module.css";
 
 const Form = (props) => {
   const [ingredientsList, setIngredientsList] = useState([]);
@@ -228,7 +231,6 @@ const Form = (props) => {
     state2,
     blur2
   ) => {
-
     if (value !== "" && value2 !== "") {
       if (!state.includes(value)) {
         cb((prevState) => [...prevState, value]);
@@ -262,292 +264,326 @@ const Form = (props) => {
   };
 
   return (
-    <Box component="form" onSubmit={submitHandler} sx={{ width: 433 }}>
-      <Box sx={{ ml: 1, display: "flex", justifyContent: "space-around" }}>
-        <TextField
-          sx={{ m: 1 }}
-          label="Main Liqueur"
-          variant="standard"
-          helperText={mainLiqueurHelper}
-          error={mainLiqueurHasError}
-          value={enteredMainLiqueur}
-          onBlur={mainLiqueurBlurHandler}
-          onChange={mainLiqueurChangeHandler}
-        />
-        <TextField
-          sx={{ m: 1 }}
-          label="Cocktail Name"
-          variant="standard"
-          helperText={nameHelper}
-          error={nameHasError}
-          value={enteredName}
-          onBlur={nameBlurHandler}
-          onChange={nameChangeHandler}
-        />
-      </Box>
-
-      <Box sx={{ display: "flex", alignItems: "center", pl: 2 }}>
-        <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+    <Box component="form" onSubmit={submitHandler}>
+      <Card className={classes.inputCard}>
+        <Box className={classes.mainAndName}>
           <TextField
-            id="receipt"
-            sx={{ width: 50, m: 1, mr: 0.5 }}
-            label="oz"
+            sx={{ m: 1 }}
+            label="Main Liqueur"
             variant="standard"
-            helperText={receiptHelper}
-            error={receiptHasError}
-            value={enteredReceipt}
-            onBlur={receiptBlurHandler}
-            onChange={receiptChangeHandler}
+            helperText={mainLiqueurHelper}
+            error={mainLiqueurHasError}
+            value={enteredMainLiqueur}
+            onBlur={mainLiqueurBlurHandler}
+            onChange={mainLiqueurChangeHandler}
           />
           <TextField
-            sx={{ width: 130, m: 1, ml: 0 }}
-            label="Ingredients"
+            sx={{ m: 1 }}
+            label="Cocktail Name"
             variant="standard"
-            helperText={ingredientsHelper}
-            error={ingredientsHasError}
-            value={enteredIngredients}
-            onBlur={ingredientsBlurHandler}
-            onChange={ingredientsChangeHandler}
+            helperText={nameHelper}
+            error={nameHasError}
+            value={enteredName}
+            onBlur={nameBlurHandler}
+            onChange={nameChangeHandler}
           />
-
-          <IconButton
-            size="medium"
-            color="success"
-            aria-label="add"
-            onClick={() =>
-              handleAdd(
-                enteredIngredients,
-                setIngredientsList,
-                ingredientsResetHandler,
-                ingredientsList,
-                ingredientsBlurHandler,
-                enteredReceipt,
-                setReceiptList,
-                receiptResetHandler,
-                receiptList,
-                receiptBlurHandler
-              )
-            }
-          >
-            <AddIcon />
-          </IconButton>
         </Box>
 
-        <Box sx={{ width: 168, display: "flex", flexWrap: "wrap" }}>
-          {ingredientsList.map((ingredient, index) => (
-            <Chip
-              size="small"
-              sx={{ m: 0.3 }}
-              key={index}
-              label={ingredient}
-              onDelete={() =>
-                handleDelete(
-                  ingredient,
-                  index,
+        <Box className={classes.inputBox}>
+          <TextField
+            sx={{ m: 1, width: 380 }}
+            label="Image Link"
+            variant="standard"
+            placeholder="720*720"
+            type="url"
+            helperText={imageHelper}
+            error={imageHasError}
+            value={enteredImage}
+            onBlur={imageBlurHandler}
+            onChange={imageChangeHandler}
+          />
+        </Box>
+
+        <Box>
+          <Slider
+            style={{
+              color: "#EF9F9F",
+            }}
+            sx={{ width: 310 }}
+            aria-label="Strength"
+            defaultValue={0}
+            step={1}
+            marks={marks}
+            min={0}
+            max={3}
+            onChange={sliderChangeHandler}
+            value={strength}
+          />
+        </Box>
+      </Card>
+
+            <hr />
+
+      <Card className={classes.inputCard}>
+        <Box className={classes.inputBox}>
+          <div>
+            <TextField
+              id="receipt"
+              sx={{ width: 50, mr: 0.5 }}
+              label="oz"
+              variant="standard"
+              helperText={receiptHelper}
+              error={receiptHasError}
+              value={enteredReceipt}
+              onBlur={receiptBlurHandler}
+              onChange={receiptChangeHandler}
+            />
+            <TextField
+              sx={{ width: 142, ml: 0 }}
+              label="Ingredients"
+              variant="standard"
+              helperText={ingredientsHelper}
+              error={ingredientsHasError}
+              value={enteredIngredients}
+              onBlur={ingredientsBlurHandler}
+              onChange={ingredientsChangeHandler}
+            />
+
+            <IconButton
+              size="medium"
+              aria-label="add"
+              onClick={() =>
+                handleAdd(
+                  enteredIngredients,
+                  setIngredientsList,
+                  ingredientsResetHandler,
                   ingredientsList,
-                  setIngredientsList
+                  ingredientsBlurHandler,
+                  enteredReceipt,
+                  setReceiptList,
+                  receiptResetHandler,
+                  receiptList,
+                  receiptBlurHandler
                 )
               }
+            >
+              <AddIcon />
+            </IconButton>
+          </div>
+
+          <div className={classes.chip}>
+            {ingredientsList.map((ingredient, index) => (
+              <Chip
+                size="small"
+                sx={{ m: 0.2 }}
+                key={index}
+                label={ingredient}
+                onDelete={() =>
+                  handleDelete(
+                    ingredient,
+                    index,
+                    ingredientsList,
+                    setIngredientsList
+                  )
+                }
+              />
+            ))}
+          </div>
+        </Box>
+
+        <Box className={classes.inputBox}>
+          <div>
+            <TextField
+              label="Flavours"
+              variant="standard"
+              helperText={flavoursHelper}
+              error={flavoursHasError}
+              value={enteredFlavours}
+              onBlur={flavoursBlurHandler}
+              onChange={flavoursChangeHandler}
             />
-          ))}
-        </Box>
-      </Box>
 
-      <Box sx={{ display: "flex", alignItems: "center", pl: 2 }}>
-        <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
-          <TextField
-            sx={{ m: 1 }}
-            label="Flavours"
-            variant="standard"
-            helperText={flavoursHelper}
-            error={flavoursHasError}
-            value={enteredFlavours}
-            onBlur={flavoursBlurHandler}
-            onChange={flavoursChangeHandler}
-          />
-
-          <IconButton
-            size="medium"
-            color="success"
-            aria-label="add"
-            onClick={() =>
-              handleAdd(
-                enteredFlavours,
-                setFlavoursList,
-                flavoursResetHandler,
-                flavoursList,
-                flavoursBlurHandler
-              )
-            }
-          >
-            <AddIcon />
-          </IconButton>
-        </Box>
-
-        <Box sx={{ width: 168, display: "flex", flexWrap: "wrap" }}>
-          {flavoursList.map((flavour, index) => (
-            <Chip
-              size="small"
-              sx={{ m: 0.3 }}
-              key={index}
-              label={flavour}
-              onDelete={() =>
-                handleDelete(flavour, index, flavoursList, setFlavoursList)
+            <IconButton
+              size="medium"
+              color="success"
+              aria-label="add"
+              onClick={() =>
+                handleAdd(
+                  enteredFlavours,
+                  setFlavoursList,
+                  flavoursResetHandler,
+                  flavoursList,
+                  flavoursBlurHandler
+                )
               }
+            >
+              <AddIcon />
+            </IconButton>
+          </div>
+
+          <div className={classes.chip}>
+            {flavoursList.map((flavour, index) => (
+              <Chip
+                size="small"
+                sx={{ m: 0.3 }}
+                key={index}
+                label={flavour}
+                onDelete={() =>
+                  handleDelete(flavour, index, flavoursList, setFlavoursList)
+                }
+              />
+            ))}
+          </div>
+        </Box>
+
+        <Box className={classes.inputBox}>
+          <div>
+            <TextField
+              // sx={{ m: 1 }}
+              label="Properties"
+              variant="standard"
+              helperText={propertiesHelper}
+              error={propertiesHasError}
+              value={enteredProperties}
+              onBlur={propertiesBlurHandler}
+              onChange={propertiesChangeHandler}
             />
-          ))}
-        </Box>
-      </Box>
 
-      <Box sx={{ display: "flex", alignItems: "center", pl: 2 }}>
-        <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
-          <TextField
-            sx={{ m: 1 }}
-            label="Properties"
-            variant="standard"
-            helperText={propertiesHelper}
-            error={propertiesHasError}
-            value={enteredProperties}
-            onBlur={propertiesBlurHandler}
-            onChange={propertiesChangeHandler}
-          />
-
-          <IconButton
-            size="medium"
-            color="success"
-            aria-label="add"
-            onClick={() =>
-              handleAdd(
-                enteredProperties,
-                setPropertiesList,
-                propertiesResetHandler,
-                propertiesList,
-                propertiesBlurHandler
-              )
-            }
-          >
-            <AddIcon />
-          </IconButton>
-        </Box>
-
-        <Box sx={{ width: 168, display: "flex", flexWrap: "wrap" }}>
-          {propertiesList.map((property, index) => (
-            <Chip
-              size="small"
-              sx={{ m: 0.3 }}
-              key={index}
-              label={property}
-              onDelete={() =>
-                handleDelete(property, index, propertiesList, setPropertiesList)
+            <IconButton
+              size="medium"
+              color="success"
+              aria-label="add"
+              onClick={() =>
+                handleAdd(
+                  enteredProperties,
+                  setPropertiesList,
+                  propertiesResetHandler,
+                  propertiesList,
+                  propertiesBlurHandler
+                )
               }
-            />
-          ))}
+            >
+              <AddIcon />
+            </IconButton>
+          </div>
+
+          <div className={classes.chip}>
+            {propertiesList.map((property, index) => (
+              <Chip
+                size="small"
+                sx={{ m: 0.3 }}
+                key={index}
+                label={property}
+                onDelete={() =>
+                  handleDelete(
+                    property,
+                    index,
+                    propertiesList,
+                    setPropertiesList
+                  )
+                }
+              />
+            ))}
+          </div>
         </Box>
-      </Box>
+      </Card>
 
-      <Box>
-        <TextField
-          sx={{ m: 1, width: 380 }}
-          label="Preperation"
-          variant="standard"
-          multiline
-          minRows={2}
-          maxRows={5}
-          helperText={preperationHelper}
-          error={preperationHasError}
-          value={enteredPreperation}
-          onBlur={preperationBlurHandler}
-          onChange={preperationChangeHandler}
-        />
-      </Box>
+      <hr />
 
-      <Box>
-        <TextField
-          sx={{ m: 1, width: 380 }}
-          label="Served"
-          variant="standard"
-          helperText={servedHelper}
-          error={servedHasError}
-          value={enteredServed}
-          onBlur={servedBlurHandler}
-          onChange={servedChangeHandler}
-        />
-      </Box>
 
-      <Box sx={{ display: "flex", alignItems: "center", pl: 2 }}>
-        <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
+      <Card className={classes.inputCard}>
+        <Box className={classes.inputBox}>
           <TextField
-            sx={{ m: 1 }}
-            label="Garnish"
+            sx={{ width: 380 }}
+            label="Preperation"
             variant="standard"
-            helperText={garnishHelper}
-            error={garnishHasError}
-            onChange={garnishChangeHandler}
-            value={enteredGarnish}
-            onBlur={garnishBlurHandler}
+            multiline
+            minRows={2}
+            maxRows={5}
+            helperText={preperationHelper}
+            error={preperationHasError}
+            value={enteredPreperation}
+            onBlur={preperationBlurHandler}
+            onChange={preperationChangeHandler}
           />
+        </Box>
+      </Card>
 
-          <IconButton
-            size="medium"
-            color="success"
-            aria-label="add"
-            onClick={() =>
-              handleAdd(
-                enteredGarnish,
-                setGarnishList,
-                garnishResetHandler,
-                garnishList,
-                garnishBlurHandler
-              )
-            }
-          >
-            <AddIcon />
-          </IconButton>
+      <hr />
+
+
+      <Card className={classes.inputCard}>
+        <Box className={classes.inputBox}>
+          <TextField
+            sx={{ m: 1, width: 380 }}
+            label="Served"
+            variant="standard"
+            helperText={servedHelper}
+            error={servedHasError}
+            value={enteredServed}
+            onBlur={servedBlurHandler}
+            onChange={servedChangeHandler}
+          />
         </Box>
 
-        <Box sx={{ width: 168, display: "flex", flexWrap: "wrap" }}>
-          {garnishList.map((item, index) => (
-            <Chip
-              size="small"
-              sx={{ m: 0.3 }}
-              key={index}
-              label={item}
-              onDelete={() =>
-                handleDelete(item, index, garnishList, setGarnishList)
-              }
+        <Box className={classes.inputBox}>
+          <div>
+            <TextField
+              sx={{ m: 1 }}
+              label="Garnish"
+              variant="standard"
+              helperText={garnishHelper}
+              error={garnishHasError}
+              onChange={garnishChangeHandler}
+              value={enteredGarnish}
+              onBlur={garnishBlurHandler}
             />
-          ))}
-        </Box>
-      </Box>
-      <Box>
-        <TextField
-          sx={{ m: 1, width: 380 }}
-          label="Image Link"
-          variant="standard"
-          placeholder="720*720"
-          type="url"
-          helperText={imageHelper}
-          error={imageHasError}
-          value={enteredImage}
-          onBlur={imageBlurHandler}
-          onChange={imageChangeHandler}
-        />
-      </Box>
 
-      <Slider
-        sx={{ width: 300 }}
-        aria-label="Strength"
-        defaultValue={0}
-        step={1}
-        marks={marks}
-        min={0}
-        max={3}
-        onChange={sliderChangeHandler}
-        value={strength}
-      />
-      <Button disabled={!formIsValid} type="submit" variant="contained">
-        Publish Cocktail
-      </Button>
+            <IconButton
+              size="medium"
+              color="success"
+              aria-label="add"
+              onClick={() =>
+                handleAdd(
+                  enteredGarnish,
+                  setGarnishList,
+                  garnishResetHandler,
+                  garnishList,
+                  garnishBlurHandler
+                )
+              }
+            >
+              <AddIcon />
+            </IconButton>
+          </div>
+
+          <div className={classes.chip}>
+            {garnishList.map((item, index) => (
+              <Chip
+                size="small"
+                sx={{ m: 0.3 }}
+                key={index}
+                label={item}
+                onDelete={() =>
+                  handleDelete(item, index, garnishList, setGarnishList)
+                }
+              />
+            ))}
+          </div>
+        </Box>
+      </Card>
+
+      <Box className={classes.submitBox}>
+        <Button
+          disabled={!formIsValid}
+          type="submit"
+          variant="contained"
+          disableElevation
+          className={classes.submitButton}
+        >
+          Publish Cocktail
+        </Button>
+      </Box>
     </Box>
   );
 };

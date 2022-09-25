@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { dataBaseActions } from "../../store/dataBase-slice";
 import Form from "./Form";
 
+import classes from "./CustomCocktails.module.css";
 const CustomCocktails = () => {
   const dispatch = useDispatch();
   const email = useSelector((state) => state.profile.profileEmail);
@@ -29,7 +30,7 @@ const CustomCocktails = () => {
   }
 
   return (
-    <section>
+    <section className={classes.customCocktails}>
       <Form postHandler={postHandler} />
     </section>
   );

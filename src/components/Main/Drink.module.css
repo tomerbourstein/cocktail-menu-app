@@ -9,7 +9,7 @@
 
 .drink hr {
     border: none;
-    margin: 0.5rem auto;
+    margin: 0.5rem auto 0.7rem;
     border-top: 5px dotted #bbb;
     border-color:  #EF9F9F;
     width: 1.5rem;

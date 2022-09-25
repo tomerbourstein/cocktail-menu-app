@@ -5,29 +5,24 @@
   height: 30vh;
 }
 
-
-.inputCard button:hover {
-  color: #fff2f2 !important;
-}
 .generateButton {
   width: 17rem;
-
   color: #fff;
-  background-color: #F47C7C !important;
-  -moz-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
+  background-color: #f47c7c !important;
+  -moz-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
 }
 
 .generateButton:hover {
   color: #fff;
   text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
     0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
-  -moz-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
+  -moz-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
 }
 .quantityButtons {
   justify-content: center;
@@ -39,7 +34,6 @@
   height: 0.5rem;
 }
 .quantityButtons button {
-  /* min-width: none; */
   color: #ffff;
   background-color: #ef9f9f !important;
   width: 1.5rem;

@@ -158,6 +158,7 @@ const Input = () => {
 
         <Button
           className={classes.generateButton}
+          disableElevation
           variant="contained"
           type="submit"
         >
