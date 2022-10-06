@@ -10,7 +10,8 @@ import InfoIcon from "@mui/icons-material/Info";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Checkbox from "@mui/material/Checkbox";
-import Dialog from "./DialogBackDrop";
+import DialogDialogBackDrop from "./DialogBackDrop";
+
 import classes from "./Favorites.module.css";
 
 const Favorites = () => {
@@ -107,7 +108,8 @@ const Favorites = () => {
           ))
         )}
 
-        <Dialog cocktail={favorite} />
+        <DialogDialogBackDrop cocktail={favorite} />
+ 
       </ImageList>
     </section>
   );

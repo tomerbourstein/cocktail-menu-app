@@ -1,59 +1,53 @@
 .drink {
-    font-family: 'Rosarivo', serif;
-    border:1px solid #EF9F9F !important;
-    font-size: 0.7rem;
-    margin: 0 auto 3rem;
-    width: 75vw;
-    max-height: 80vh;
+  font-family: "Rosarivo", serif;
+  border: 1px solid #ef9f9f !important;
+  font-size: 0.7rem;
+  margin: 0 auto 3rem;
+  width: 75vw;
+  max-height: 84vh;
 }
 
 .drink hr {
-    border: none;
-    margin: 0.5rem auto 0.7rem;
-    border-top: 5px dotted #bbb;
-    border-color:  #EF9F9F;
-    width: 1.5rem;
-
-
+  border: none;
+  margin: 0.5rem auto 0.7rem;
+  border-top: 5px dotted #bbb;
+  border-color: #ef9f9f;
+  width: 1.5rem;
 }
+
 .cardHeader {
-    background-color: #FAD4D4 !important;
-    border-bottom: 20px solid #EF9F9F;
+  background-color: #fad4d4 !important;
+  border-bottom: 20px solid #ef9f9f;
 }
-.drinkInfo  {
-    padding: 1rem 2rem;
+.drinkInfo {
+  padding: 1rem 2rem;
 }
 .drinkInfo div {
-    padding: 0.3rem;
+  padding: 0.3rem;
 }
 .rows {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .rows p {
-    font-size: 0.75rem;
-    margin: 0.2rem 0;
+  font-size: 0.75rem;
+  margin: 0.2rem 0;
 }
 .rows div {
-    display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .preperation {
-    max-height: 6rem;
-    font-size: 0.9rem;
+  max-height: 6rem;
+  font-size: 0.9rem;
 }
-
 
 /* glow effect on checkbox */
 .checkbox svg:checked {
-    border-radius: 50%;
-    background-color: #fff;
-    box-shadow:
-      0 0 10px 10px #fff,  /* inner white */
-      0 0 50px 30px #f0f, /* middle magenta */
-      0 0 70px 40px #0ff !important; /* outer cyan */
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 0 10px 10px #fff, /* inner white */ 0 0 50px 30px #f0f,
+    /* middle magenta */ 0 0 70px 40px #0ff !important; /* outer cyan */
 }
-
- 
