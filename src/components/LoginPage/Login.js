@@ -9,6 +9,8 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
 
+import classes from "./LoginPage.module.css";
+
 const Login = (props) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -65,8 +67,10 @@ const Login = (props) => {
     setShowPassword(!showPassword);
   };
   return (
-    <Box component="form" onSubmit={loginHandler}>
-      <Box>
+    <Box component="form" onSubmit={loginHandler} 
+    className={classes.textField}
+    >
+      <Box >
         <TextField
           sx={{ width: 300 }}
           label="E-Mail"
@@ -85,6 +89,7 @@ const Login = (props) => {
       </Box>
       <Box>
         <TextField
+        className={classes.inputField}
           sx={{ width: 300 }}
           label="Password"
           value={enteredPassword}
@@ -109,7 +114,7 @@ const Login = (props) => {
       </Box>
 
       <Box>
-        <Button type="submit" variant="contained" sx={{ width: 300 }}>
+        <Button className={classes.buttonLoginPage} type="submit" variant="contained" sx={{ width: 300 }}>
           Login
         </Button>
       </Box>

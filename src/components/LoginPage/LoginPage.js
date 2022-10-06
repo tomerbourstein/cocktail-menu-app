@@ -4,11 +4,13 @@ import { profileActions } from "../../store/profile-slice";
 import { menuActions } from "../../store/menu-slice";
 import Login from "./Login";
 import Register from "./Register";
+import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
+import LogoImage from "../../media/glass-logo.png";
 import classes from "./LoginPage.module.css";
 
 const LoginPage = () => {
@@ -102,27 +104,34 @@ const LoginPage = () => {
     // show error modal
   };
   return (
-    <Box
-      sx={{ width: 300, m: "auto" }}
-      className={playAnimation && classes.blurSignIn}
-    >
-      <Typography variant="h3">
-        {!isRegisterForm ? "Login" : "Register"}
-      </Typography>
-      {!isRegisterForm ? (
-        <Login submitHandler={submitHandler} />
-      ) : (
-        <Register submitHandler={submitHandler} />
-      )}
-      <Divider sx={{ my: 2 }}>or</Divider>
-      <Button
-        variant="outlined"
-        type="button"
-        sx={{ width: 300 }}
-        onClick={toggleRegisterFormHandler}
-      >
-        {!isRegisterForm ? "Create an Account" : "Go Back"}
-      </Button>
+    <Box className={classes.box}>
+      <div className={classes.neonSign}>
+        <img src={LogoImage} alt="logo" />
+
+        <p className={classes.neonText}>COCKTAILS</p>
+      </div>
+      <Box className={playAnimation && classes.blurSignIn}>
+        <Card className={classes.card}>
+          <Typography className={classes.heading}>
+            {!isRegisterForm ? "LOGIN" : "CREATE ACOUNT"}
+          </Typography>
+          {!isRegisterForm ? (
+            <Login submitHandler={submitHandler} />
+          ) : (
+            <Register submitHandler={submitHandler} />
+          )}
+          <Divider sx={{ my: 5 }}>or</Divider>
+
+          <Button
+            variant="outlined"
+            type="button"
+            sx={{ width: 300 }}
+            onClick={toggleRegisterFormHandler}
+          >
+            {!isRegisterForm ? "Create an Account" : "Go Back"}
+          </Button>
+        </Card>
+      </Box>
     </Box>
   );
 };
