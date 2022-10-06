@@ -26,9 +26,9 @@
 
 
 .avatar {
-  width: 25px;
-  height: 25px;
-  background-color: #f47c7c;
+  width: 30px !important;
+  height: 30px !important;
+  background-color: #f47c7c !important;
   border: 1.7px solid #EEEEEE;
   color: #EEEEEE;
 }
