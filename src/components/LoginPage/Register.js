@@ -9,6 +9,8 @@ import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
+import classes from "./LoginPage.module.css";
+
 const Register = (props) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -63,7 +65,9 @@ const Register = (props) => {
     passwordResetHandler();
   };
   return (
-    <Box component="form" onSubmit={createAccountSubmitHandler}>
+    <Box component="form" onSubmit={createAccountSubmitHandler}
+    className={classes.textField}
+    >
       <Box>
         <TextField
           sx={{ width: 300 }}
@@ -108,7 +112,7 @@ const Register = (props) => {
       </Box>
 
       <Box>
-        <Button type="submit" variant="contained" sx={{ width: 300 }}>
+        <Button className={classes.buttonLoginPage} type="submit" variant="contained" sx={{ width: 300 }}>
           Create Account
         </Button>
       </Box>

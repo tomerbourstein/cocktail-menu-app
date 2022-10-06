@@ -3,29 +3,28 @@
   margin: 1rem auto 0;
 }
 .neonSign {
-  width: 97%;
   padding: 3px;
   margin: 0;
   background-color: #f47c7c;
   border: 2px solid #ef9f9f;
-border-radius: 20px;
+  border-radius: 20px;
 }
 .neonSign img {
-  width: 3rem ;
-  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
-    0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
-  animation: flicker 5s infinite alternate; 
-}
-.neonText {
-  color: #fff;
-  margin-top: 0.3rem;
-  letter-spacing: .9rem;
+  width: 3rem;
   text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
     0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
   animation: flicker 5s infinite alternate;
 }
- 
-  /* Flickering animation */
+.neonText {
+  color: #fff;
+  margin-top: 0.3rem;
+  letter-spacing: 0.9rem;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
+    0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+  animation: flicker 5s infinite alternate;
+}
+
+/* Flickering animation */
 @keyframes flicker {
   0%,
   18%,
@@ -59,10 +58,12 @@ border-radius: 20px;
 .textField div {
   margin-bottom: 0.2rem;
 }
-.inputField:-internal-autofill-selected {
-  background-color: red !important;
-  /* margin-bottom: 0.2rem; */
+
+.textField input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-text-fill-color: rgb(0, 0, 0) !important;
 }
+  
 
 .buttonLoginPage {
   color: #fff;

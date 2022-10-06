@@ -89,7 +89,6 @@ const Login = (props) => {
       </Box>
       <Box>
         <TextField
-        className={classes.inputField}
           sx={{ width: 300 }}
           label="Password"
           value={enteredPassword}
