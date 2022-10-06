@@ -1,5 +1,5 @@
 .customCocktails {
-  width: 400px;
+  width: 92vw;
   margin: auto;
 }
 
@@ -15,6 +15,11 @@
   padding: 0.5rem;
 }
 
+.inputCard input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-text-fill-color: rgb(0, 0, 0) !important;
+}
 .inputBox {
   display: flex;
   justify-content: flex-start;

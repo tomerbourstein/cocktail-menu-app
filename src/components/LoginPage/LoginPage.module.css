@@ -1,5 +1,5 @@
 .box {
-  width: 80vw;
+  width: 90vw;
   margin: 1rem auto 0;
 }
 .neonSign {
@@ -45,7 +45,6 @@
 }
 
 .card {
-  width: 100%;
   margin-top: 1rem;
   padding: 2rem 0;
 }
@@ -60,10 +59,10 @@
 }
 
 .textField input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
   -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
   -webkit-text-fill-color: rgb(0, 0, 0) !important;
 }
-  
 
 .buttonLoginPage {
   color: #fff;

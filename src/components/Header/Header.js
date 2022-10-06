@@ -78,8 +78,9 @@ const Header = () => {
     <Box className={classes.navigation}>
       <AppBar position="static" color="transparent">
         <Toolbar className={classes.toolbar}>
-          <div>
+          <div className={classes.navButtons}>
             <IconButton
+              sx={{ color: "#EEEEEE" }}
               size="large"
               aria-label="menu-page"
               disabled={!disableButtons}
@@ -88,6 +89,7 @@ const Header = () => {
               <MenuBookIcon />
             </IconButton>
             <IconButton
+              sx={{ color: "#EEEEEE" }}
               size="large"
               aria-label="favorite"
               disabled={!disableButtons}
@@ -96,6 +98,7 @@ const Header = () => {
               <FavoriteIcon />
             </IconButton>
             <IconButton
+              sx={{ color: "#EEEEEE" }}
               size="large"
               aria-label="custom-cocktail"
               disabled={!disableButtons}
@@ -111,6 +114,7 @@ const Header = () => {
 
           <div className={classes.direction}>
             <IconButton
+              sx={{ color: "#EEEEEE" }}
               size="large"
               aria-label="logout"
               disabled={!disableButtons}
@@ -119,7 +123,11 @@ const Header = () => {
               <LogoutIcon />
             </IconButton>
 
-            <Avatar src="" alt={user === "" ? null : user}>
+            <Avatar
+              className={classes.avatar}
+              src=""
+              alt={user === "" ? null : user}
+            >
               {profileUsername === "" ? null : profileUsername}
             </Avatar>
           </div>
