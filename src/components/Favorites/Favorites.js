@@ -15,11 +15,12 @@ import classes from "./Favorites.module.css";
 
 const Favorites = () => {
   const [favorite, setFavorite] = useState("");
-  const [itemIndex, setItemIndex] = useState(null)
+  const [itemIndex, setItemIndex] = useState(null);
   const favoritesList = useSelector((state) => state.menu.favoritesList);
   const dispatch = useDispatch();
   let checked = false;
 
+  /////// to change the strength number into a string
   function strengthTransform(strength) {
     let cocktailStrength = "";
 
@@ -33,15 +34,27 @@ const Favorites = () => {
     return cocktailStrength;
   }
 
+  /////// replace underscores to spaces and change first letter to uppercase.
+  const transformText = (element) => {
+    let transformElement = element.replaceAll("_", " ");
+    const newStr = transformElement
+      .split(" ")
+      .map((w) => w[0].toUpperCase() + w.substring(1).toLowerCase())
+      .join(" ");
+    return newStr;
+  };
+
+  /////// remove from favorites and add fade out onChange dynamically.
   function removeFavoritesHandler(cocktail) {
     checked = true;
-    setItemIndex(favoritesList.findIndex(i=> i.name === cocktail));
+    setItemIndex(favoritesList.findIndex((i) => i.name === cocktail));
     setTimeout(() => {
       dispatch(menuActions.removeFromFavorites(cocktail));
-      setItemIndex("")
+      setItemIndex("");
     }, 500);
   }
 
+  /////// open the modal for each cocktails
   function handleOpen(cocktail) {
     setFavorite(cocktail);
     dispatch(menuActions.toggleDialog());
@@ -67,8 +80,9 @@ const Favorites = () => {
                 alt={fav.name}
                 loading="lazy"
               />
+
               <ImageListItemBar
-                title={fav.name}
+                title={transformText(fav.name)}
                 subtitle={strengthTransform(fav.strength)}
                 actionIcon={
                   <>

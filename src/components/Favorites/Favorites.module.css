@@ -1,8 +1,9 @@
 .favorites {
-  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .fadeOut {
   opacity: 0;
   transition: opacity 0.5s;
 }
+
