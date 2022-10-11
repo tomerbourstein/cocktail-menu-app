@@ -10,7 +10,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Checkbox from "@mui/material/Checkbox";
-import DialogDialogBackDrop from "./DialogBackDrop";
+import DialogBackDrop from "./DialogBackDrop";
 
 import classes from "./Favorites.module.css";
 
@@ -63,12 +63,12 @@ const Favorites = () => {
 
   return (
     <section className={classes.favorites}>
-      <ImageList col={1}>
+      <ImageList>
         <ImageListItem key="Subheader" cols={2}>
           <ListSubheader component="div">My Favorite Cocktails</ListSubheader>
         </ImageListItem>
         {favoritesList === undefined || favoritesList.length === 0 ? (
-          <p>No Favoties to Show!</p>
+          <p>Nothing to Show!</p>
         ) : (
           favoritesList.map((fav, index) => (
             <ImageListItem
@@ -108,7 +108,7 @@ const Favorites = () => {
           ))
         )}
 
-        <DialogDialogBackDrop cocktail={favorite} />
+        <DialogBackDrop cocktail={favorite} />
  
       </ImageList>
     </section>

@@ -1,45 +1,4 @@
 .drink {
-    background: initial !important;
-    text-align: center;
-    /* text-decoration: line-through; */
+  background: initial !important;
+  text-align: center;
 }
-
-
-
-/* .drink hr {
-    border: none;
-    margin: 0.5rem auto 0.7rem;
-    border-top: 5px dotted #bbb;
-    border-color: #ef9f9f;
-    width: 1.5rem;
-  }
-
-.dialogHeader {
-    background-color: #fad4d4 !important;
-    border-bottom: 20px solid #ef9f9f;
-  display: flex;
-  flex-direction: column;
-}
-
-.contentTextFont {
-    font-family: "Rosarivo", serif;
-
-}
-.ingredientsList {
-  display: flex;
-  flex-direction: column;
-}
-
-.rows {
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .rows p {
-    font-size: 0.75rem;
-    margin: 0.2rem 0;
-  }
-  .rows div {
-    display: flex;
-    flex-direction: column;
-  } */
