@@ -1,3 +1,11 @@
+.chipBox {
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-bottom: 1.5rem;
+}
 .chip {
   background-color: #ef9f9f !important;
   color: #fff2f2 !important;
@@ -8,4 +16,10 @@
 }
 .chip svg:hover {
   color: rgb(112, 85, 85) !important;
+}
+
+@media only screen and (max-width: 350px) {
+  .chipBox {
+    width: 320px;
+  }
 }

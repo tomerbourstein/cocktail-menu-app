@@ -5,12 +5,10 @@
 
 .mainAndName {
   display: flex;
-  justify-content: space-around;
-  padding: 0 0.5rem 0rem !important;
+    justify-content: flex-start;  padding: 0 0.5rem 0rem !important;
 }
 
 .inputCard {
-    /* border-top: 1px solid; */
   margin-bottom: 1rem;
   padding: 0.5rem;
 }
@@ -77,4 +75,33 @@
     width: 1.5rem;
 
 
+}
+
+@media only screen and (max-width: 350px) {
+  .submitButton {
+    width: 15rem;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .customCocktails {
+    width: 80%;
+  }
+}
+@media only screen and (min-width: 800px) {
+  .customCocktails {
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .customCocktails {
+    width: 40%;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .customCocktails {
+    width: 25%;
+  }
 }

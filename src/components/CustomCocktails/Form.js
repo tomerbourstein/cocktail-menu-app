@@ -318,7 +318,7 @@ const Form = (props) => {
             style={{
               color: "#EF9F9F",
             }}
-            sx={{ width: 290 }}
+            sx={{ width: 250 }}
             aria-label="Strength"
             defaultValue={0}
             step={1}

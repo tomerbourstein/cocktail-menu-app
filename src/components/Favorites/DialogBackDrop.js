@@ -23,7 +23,8 @@ const DialogBackDrop = (props) => {
       aria-labelledby="cocktail-name"
       aria-describedby="cocktail-receipt"
     >
-      <Drink drink={props.cocktail} />
+      <Drink
+      className={classes.dialogDrink} drink={props.cocktail} />
     </Dialog>
   );
 };

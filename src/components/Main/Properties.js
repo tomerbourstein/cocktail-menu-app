@@ -13,22 +13,19 @@ const Properties = (props) => {
     dispatch(dataBaseActions.filterCocktails(removedProperty));
   };
 
+  /////// replace underscores to spaces and change first letter to uppercase.
+  const transformText = (element) => {
+    let transformElement = element.replaceAll("_", " ");
+    return transformElement;
+  };
+
   return (
-    <Box
-      sx={{
-        width: 350,
-        display: "flex",
-        justifyContent: "center",
-        flexWrap: "wrap",
-        mx: "auto",
-        mb: 2,
-      }}
-    >
+    <Box className={classes.chipBox}>
       {propsToShow.map((property) => (
         <Chip
-        className={classes.chip}
+          className={classes.chip}
           key={propsToShow.indexOf(property)}
-          label={property}
+          label={transformText(property)}
           size="small"
           sx={{ m: 0.3 }}
           onDelete={() => handleDelete(property)}

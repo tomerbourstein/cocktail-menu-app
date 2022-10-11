@@ -3,9 +3,11 @@ import { useSelector } from "react-redux";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ListSubheader from "@mui/material/ListSubheader";
-import classes from "./Main.module.css";
 import Properties from "./Properties";
 import Drink from "./Drink";
+
+import classes from "./Main.module.css";
+
 const Main = (props) => {
   const isGenerated = useSelector((state) => state.menu.generated);
   const dataBase = useSelector((state) => state.dataBase.dataBase);
@@ -41,11 +43,12 @@ const Main = (props) => {
         <div>{mapCocktails}</div>
       ) : (
         <>
-          <ListSubheader component="div">
+          <ListSubheader component="div" className={classes.ListSubheader}>
             What Would You Like to Drink Tonight?
           </ListSubheader>
           <ImageList
-            sx={{ height: 150, mx: 2 }}
+            className={classes.imageList}
+            // sx={{ height: 150, mx: 2 }}
             cols={6}
             rowHeight="150"
             variant="standard "

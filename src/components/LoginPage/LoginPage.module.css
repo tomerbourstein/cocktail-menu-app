@@ -85,3 +85,27 @@
     filter: blur(0);
   }
 }
+
+@media only screen and (max-width: 350px) {
+  .box {
+    width: 99vw;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .box {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .box {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .box {
+    width: 25%;
+  }
+}
