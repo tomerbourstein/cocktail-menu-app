@@ -8,6 +8,7 @@ const CustomCocktails = () => {
   const email = useSelector((state) => state.profile.profileEmail);
   const user = email.substring(0, email.indexOf("@"));
 
+  //// https post request to save cocktail to backend.
   async function postHandler(enteredData) {
     const { main_liqueur } = enteredData;
     console.log(main_liqueur);

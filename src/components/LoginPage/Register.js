@@ -14,6 +14,7 @@ import classes from "./LoginPage.module.css";
 const Register = (props) => {
   const [showPassword, setShowPassword] = useState(false);
 
+  //// using imported custom hook for validation of the form.
   const {
     value: enteredEmail,
     isValid: emailIsValid,
@@ -32,29 +33,12 @@ const Register = (props) => {
     reset: passwordResetHandler,
   } = useInput((value) => value.trim() !== "");
 
+  /// toggle show password on and off.
   const showPasswordHandler = () => {
     setShowPassword(!showPassword);
   };
 
-  //   async function postProfileHandler(profile) {
-  //     const { username } = profile;
-  //     const requestOptions = {
-  //       method: "PATCH",
-  //       headers: { "content-type": "application/json" },
-  //       body: JSON.stringify(profile),
-  //     };
-  //     const response = await fetch(
-  //       `https://cocktail-menu-app-default-rtdb.firebaseio.com/users/${username}.json`,
-  //       requestOptions
-  //     );
-
-  //     if (!response.ok) {
-  //       throw new Error("Something Went Wrong!");
-  //     }
-  //     const data = await response.json();
-  //     console.log(data);
-  //   }
-
+  /// create account onSubmit form.
   const createAccountSubmitHandler = (event) => {
     event.preventDefault();
     if (!passwordIsValid || !emailIsValid) {
@@ -65,8 +49,10 @@ const Register = (props) => {
     passwordResetHandler();
   };
   return (
-    <Box component="form" onSubmit={createAccountSubmitHandler}
-    className={classes.textField}
+    <Box
+      component="form"
+      onSubmit={createAccountSubmitHandler}
+      className={classes.textField}
     >
       <Box>
         <TextField
@@ -112,7 +98,12 @@ const Register = (props) => {
       </Box>
 
       <Box>
-        <Button className={classes.buttonLoginPage} type="submit" variant="contained" sx={{ width: 300 }}>
+        <Button
+          className={classes.buttonLoginPage}
+          type="submit"
+          variant="contained"
+          sx={{ width: 300 }}
+        >
           Create Account
         </Button>
       </Box>

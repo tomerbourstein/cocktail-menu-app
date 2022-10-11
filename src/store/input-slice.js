@@ -5,7 +5,7 @@ const inputSlice = createSlice({
   initialState: {
     onChangeAlcohol: "",
     onChangeAmount: "",
-    error:{isError: false, message:"Liqueur"},
+    error: { isError: false, message: "Liqueur" },
   },
   reducers: {
     enterAlcohol(state, action) {
@@ -25,8 +25,8 @@ const inputSlice = createSlice({
       }
     },
     setError(state, action) {
-      state.error.isError = action.payload
-    }
+      state.error.isError = action.payload;
+    },
   },
 });
 

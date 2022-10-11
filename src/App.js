@@ -25,7 +25,6 @@ function App() {
     (state) => state.menu.customCocktailShow
   );
   const loginPageShow = useSelector((state) => state.menu.loginPageShow);
-
   const favoritesList = useSelector((state) => state.menu.favoritesList);
   const isChanged = useSelector((state) => state.menu.changed);
   const updatedCustomDb = useSelector(

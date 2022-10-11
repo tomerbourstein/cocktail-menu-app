@@ -17,7 +17,7 @@ const Form = (props) => {
   const [propertiesList, setPropertiesList] = useState([]);
   const [receiptList, setReceiptList] = useState([]);
   const [garnishList, setGarnishList] = useState([]);
-
+  //// using imported custom hook for form validation.
   const {
     value: enteredMainLiqueur,
     isValid: mainLiqueurIsValid,
@@ -116,6 +116,7 @@ const Form = (props) => {
 
   const [strength, setStrength] = useState(2);
 
+  ///// to make the submit button disabled if the form is invalid.
   let formIsValid = false;
   if (
     mainLiqueurIsValid &&
@@ -132,6 +133,7 @@ const Form = (props) => {
     formIsValid = true;
   }
 
+  //// dynmic helper text for input is invalid or untouched.
   const mainLiqueurHelper = !mainLiqueurHasError
     ? "Cocktail's main spirit"
     : "Enter Something";
@@ -158,6 +160,8 @@ const Form = (props) => {
   const imageHelper = !imageHasError
     ? "Image Should be 720*720"
     : "Enter Something";
+
+  /// slider marks values.
   const marks = [
     {
       value: 0,
@@ -177,10 +181,12 @@ const Form = (props) => {
     },
   ];
 
+  /// slider change handler
   const sliderChangeHandler = (event) => {
     setStrength(event.target.value);
   };
 
+  /// submit form handler.
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -219,6 +225,7 @@ const Form = (props) => {
     setGarnishList([]);
   };
 
+  /// adding chip attributes next to input.
   const handleAdd = (
     value,
     cb,
@@ -256,6 +263,8 @@ const Form = (props) => {
     }
     reset();
   };
+
+  /// removing chip attributes next to input.
   const handleDelete = (item, index, list, cb) => {
     let arr = [...list];
     arr.splice(index, 1);
@@ -322,7 +331,7 @@ const Form = (props) => {
         </Box>
       </Card>
 
-            <hr />
+      <hr />
 
       <Card className={classes.inputCard}>
         <Box className={classes.inputBox}>
@@ -490,7 +499,6 @@ const Form = (props) => {
 
       <hr />
 
-
       <Card className={classes.inputCard}>
         <Box className={classes.inputBox}>
           <TextField
@@ -510,7 +518,6 @@ const Form = (props) => {
       </Card>
 
       <hr />
-
 
       <Card className={classes.inputCard}>
         <Box className={classes.inputBox}>

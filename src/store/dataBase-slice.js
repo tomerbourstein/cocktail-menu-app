@@ -15,21 +15,26 @@ const dataBaseSlice = createSlice({
   },
   reducers: {
     fetchData(state, action) {
+      /// sace the database from backend and list of liqueurs.
       state.dataBase = action.payload.dataBase;
       state.liquers = action.payload.liquers.map((element) => {
         return element.charAt(0).toUpperCase() + element.slice(1).toLowerCase();
       });
     },
     setPreference(state, action) {
+      /// save the preferred alcohol set by the user.
       state.preferences = action.payload;
     },
     setUserCustomCocktails(state, action) {
+      /// save the entered custom cocktails the user published.
       state.userCustomCocktails = action.payload;
     },
     addCustomCocktails(state) {
+      /// adding the custom cocktail list of the user into the db to shuffle drink from.
       state.updatedCustomDb = !state.updatedCustomDb;
     },
     filterByLiquer(state, action) {
+      /// filter the db by preferred alcohol to shuffle from.
       let foundAlcohol = state.dataBase.find(
         (element) =>
           element.main_liquer === action.payload.alcohol.toLowerCase()
@@ -116,7 +121,8 @@ const dataBaseSlice = createSlice({
         state.cocktailsToShow = first.concat(second_third, fourth);
       }
     },
-    setPropsList(state, action) {
+    setPropsList(state) {
+      /// create new list of properties for chip in main menu.
       state.properties = [];
       for (const key in state.cocktailsToShow) {
         let flavours = state.cocktailsToShow[key].flavours;

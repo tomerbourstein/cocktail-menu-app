@@ -14,6 +14,7 @@ import classes from "./LoginPage.module.css";
 const Login = (props) => {
   const [showPassword, setShowPassword] = useState(false);
 
+  //// using imported custom hook for validation of the form.
   const {
     value: enteredEmail,
     isValid: emailIsValid,
@@ -32,27 +33,12 @@ const Login = (props) => {
     reset: passwordResetHandler,
   } = useInput((value) => value.trim() !== "");
 
-  // useEffect(() => {
-  //   async function getUsernames() {
-  //     const response = await fetch(
-  //       `https://cocktail-menu-app-default-rtdb.firebaseio.com/users.json`
-  //     );
-  //     if (!response.ok) {
-  //       throw new Error("Could not fetch data!");
-  //     }
-  //     const data = await response.json();
-  //     for (const key in data) {
-  //       usernameList.push({
-  //         id: key,
-  //         username: data[key].username,
-  //         password: data[key].password,
-  //       });
-  //     }
-  //     console.log(usernameList);
-  //   }
-  //   getUsernames();
-  // }, [usernameList]);
+  /// toggle show password on and off.
+  const showPasswordHandler = () => {
+    setShowPassword(!showPassword);
+  };
 
+  // login to account onSubmit form.
   const loginHandler = (event) => {
     event.preventDefault();
     if (!passwordIsValid || !emailIsValid) {
@@ -63,14 +49,9 @@ const Login = (props) => {
     passwordResetHandler();
   };
 
-  const showPasswordHandler = () => {
-    setShowPassword(!showPassword);
-  };
   return (
-    <Box component="form" onSubmit={loginHandler} 
-    className={classes.textField}
-    >
-      <Box >
+    <Box component="form" onSubmit={loginHandler} className={classes.textField}>
+      <Box>
         <TextField
           sx={{ width: 300 }}
           label="E-Mail"
@@ -113,7 +94,12 @@ const Login = (props) => {
       </Box>
 
       <Box>
-        <Button className={classes.buttonLoginPage} type="submit" variant="contained" sx={{ width: 300 }}>
+        <Button
+          className={classes.buttonLoginPage}
+          type="submit"
+          variant="contained"
+          sx={{ width: 300 }}
+        >
           Login
         </Button>
       </Box>

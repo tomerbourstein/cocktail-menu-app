@@ -9,6 +9,7 @@ const DialogBackDrop = (props) => {
   const dispatch = useDispatch();
   const open = useSelector((state) => state.menu.dialog);
 
+  /// closing favorite dialog. 
   function handleClose() {
     dispatch(menuActions.toggleDialog());
   }
