@@ -14,19 +14,10 @@ const Properties = (props) => {
   };
 
   return (
-    <Box
-      sx={{
-        width: 350,
-        display: "flex",
-        justifyContent: "center",
-        flexWrap: "wrap",
-        mx: "auto",
-        mb: 2,
-      }}
-    >
+    <Box className={classes.chipBox}>
       {propsToShow.map((property) => (
         <Chip
-        className={classes.chip}
+          className={classes.chip}
           key={propsToShow.indexOf(property)}
           label={property}
           size="small"

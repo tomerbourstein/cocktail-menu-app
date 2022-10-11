@@ -54,6 +54,11 @@
   justify-content: center;
 }
 
+@media only screen and (max-width: 350px) {
+  .inputCard {
+    width: 17rem;
+  }
+}
 @media only screen and (min-width: 600px) {
   .inputCard {
     width: 20rem;

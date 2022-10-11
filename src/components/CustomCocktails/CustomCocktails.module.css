@@ -77,6 +77,12 @@
 
 }
 
+@media only screen and (max-width: 350px) {
+  .submitButton {
+    width: 15rem;
+  }
+}
+
 @media only screen and (min-width: 600px) {
   .customCocktails {
     width: 80%;
