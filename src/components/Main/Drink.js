@@ -39,6 +39,16 @@ const Drink = (props) => {
     cocktailStrength = "Light";
   }
 
+  /////// replace underscores to spaces and change first letter to uppercase.
+  const transformText = (element) => {
+    let transformElement = element.replaceAll("_", " ");
+    const newStr = transformElement
+      .split(" ")
+      .map((w) => w[0].toUpperCase() + w.substring(1).toLowerCase())
+      .join(" ");
+    return newStr;
+  };
+
   /////// to check if theres already a specific cocktail inside favoritesList
   const checkFavorites = () => {
     let foundCocktail = favoritesList.find((element) => element.name === name);
@@ -74,7 +84,8 @@ const Drink = (props) => {
   return (
     <Card className={classes.drink}>
       <CardHeader
-        title={name}
+        className={classes.cardHeader}
+        title={transformText(name)}
         subheader={cocktailStrength}
         avatar={
           <Avatar
@@ -87,39 +98,39 @@ const Drink = (props) => {
       <CardContent className={classes.drinkInfo}>
         <div className={classes.rows}>
           <div>
-            {ingredients.map((ingredient) => (
-              <span key={ingredients.indexOf(ingredient)}>{ingredient}</span>
+            {receipt.map((item, index) => (
+              <span key={index}>{transformText(item)}</span>
             ))}
+          </div>
+        </div>
+
+        <hr />
+        <div className={classes.preperation}>{`${preperation}${"."}`}</div>
+        <hr />
+
+        <div className={classes.rows}>
+          <div>
+            <p>Served</p>
+            <div>{transformText(served)}</div>
           </div>
 
           <div>
-            {receipt.map((item) => (
-              <span key={receipt.indexOf(item)}>{item}</span>
-            ))}
+            <p>Garnish with one</p>
+            <div>
+              {garnish.map((item, index) => (
+                <span key={index}>{transformText(item)}</span>
+              ))}
+            </div>
           </div>
         </div>
-        {/* <div>
-          {flavours.map((flavour) => (
-            <span>{flavour}</span>
-          ))}
-        </div> */}
 
-        {/* <div>
-          {properties.map((prop) => (
-            <span>{prop}</span>
-          ))}
-        </div> */}
-
-        <div className={classes.preperation}>{preperation}</div>
-
-        <div>{served}</div>
-
-        <div>
-          <div className={classes.check}>{garnish}</div>
-        </div>
         {name !== "" ? (
           <div>
             <Checkbox
+            className={classes.checkbox}
+              style={{
+                color: "#F47C7C",
+              }}
               checked={checked}
               icon={<FavoriteBorderIcon />}
               checkedIcon={<FavoriteIcon />}

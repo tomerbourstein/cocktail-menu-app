@@ -2,11 +2,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { dataBaseActions } from "../../store/dataBase-slice";
 import Form from "./Form";
 
+import classes from "./CustomCocktails.module.css";
 const CustomCocktails = () => {
   const dispatch = useDispatch();
   const email = useSelector((state) => state.profile.profileEmail);
   const user = email.substring(0, email.indexOf("@"));
 
+  //// https post request to save cocktail to backend.
   async function postHandler(enteredData) {
     const { main_liqueur } = enteredData;
     console.log(main_liqueur);
@@ -29,7 +31,7 @@ const CustomCocktails = () => {
   }
 
   return (
-    <section>
+    <section className={classes.customCocktails}>
       <Form postHandler={postHandler} />
     </section>
   );

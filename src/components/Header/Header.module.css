@@ -1,4 +1,61 @@
+@import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
+
 .navigation {
-    background-color:#38A3A5;
-    margin-bottom: 2rem;
+  background-color: #f47c7c;
+  margin-bottom: 2rem;
+}
+
+.toolbar {
+  display: flex; 
+  justify-content: space-between;
+
+}
+
+.direction {
+  display: flex;
+  align-items: center;
+}
+.navButtons {
+  padding: 0 inherit;
+  border: 1.4px solid #EEEEEE;
+  border-radius: 10px;
+}
+.navButtons button {
+  padding: 0.3rem !important;
+}
+
+
+.avatar {
+  width: 30px !important;
+  height: 30px !important;
+  background-color: #f47c7c !important;
+  border: 1.7px solid #EEEEEE;
+  color: #EEEEEE;
+}
+.neonText {
+  letter-spacing: 0.3rem !important;
+  color: #fff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
+    0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+  animation: flicker 5s infinite alternate;
+}
+
+/* Flickering animation */
+@keyframes flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #0fa,
+      0 0 80px #0fa, 0 0 90px #0fa, 0 0 100px #0fa, 0 0 150px #0fa;
+  }
+
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
 }

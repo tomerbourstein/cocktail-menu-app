@@ -15,7 +15,7 @@
         ],
         "receipt": ["1_1/2_oz_vodka", "1/6_oz_lemon_juice", "4_oz_ginger_beer"],
         "preperation": "Combine vodka and ginger beer in a copper mug or highball glass filled with ice. Add lime juice. Stir gently",
-        "served": "On the rocks; poured over ice",
+        "served": "on_the_rocks",
         "garnish": ["lime_slice"],
         "strength": 1
       },
@@ -429,7 +429,7 @@
         ],
         "preperation": "Add all ingredients with ice and shake. Double strain into a coupe glass",
         "served": "straight_up",
-        "garnish": "mint",
+        "garnish": ["mint"],
         "strength": 2
       }
     },
@@ -500,7 +500,7 @@
         ],
         "preperation": "Shake all ingredients with ice and strain into a chilled cocktail glass",
         "served": "straight_up",
-        "garnish": "lemon_twist",
+        "garnish":[ "lemon_twist"],
         "strength": 2
       },
       "basil_smash": {

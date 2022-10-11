@@ -11,6 +11,8 @@ const menuSlice = createSlice({
     customCocktailShow: false,
     menuShow: false,
     loginPageShow: true,
+    isLoading: false,
+    playAnimation: null,
   },
   reducers: {
     toggleGenerated(state, action) {
@@ -61,6 +63,12 @@ const menuSlice = createSlice({
     toggleDialog(state) {
       state.dialog = !state.dialog;
     },
+    setLoadingState(state, action) {
+      state.isLoading = action.payload;
+    },
+    setAnimation(state, action) {
+      state.playAnimation = action.payload;
+    }
   },
 });
 

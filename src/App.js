@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { dataBaseActions } from "./store/dataBase-slice";
 import { profileActions } from "./store/profile-slice";
 import { menuActions } from "./store/menu-slice";
+
+import Loading from "./components/Main/Loading";
+
 import Header from "./components/Header/Header";
 import LoginPage from "./components/LoginPage/LoginPage";
 import Input from "./components/Input/Input";
@@ -10,7 +13,7 @@ import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 import CustomCocktails from "./components/CustomCocktails/CustomCocktails";
 import Favorites from "./components/Favorites/Favorites";
-import "./App.css";
+import classes from "./App.module.css";
 
 let isInitial = true;
 
@@ -27,6 +30,9 @@ function App() {
   const updatedCustomDb = useSelector(
     (state) => state.dataBase.updatedCustomDb
   );
+  const isLoading = useSelector((state) => state.menu.isLoading);
+  const playAnimation = useSelector((state) => state.menu.playAnimation);
+
   const email = localStorage.getItem("email");
   const user = email ? email.substring(0, email.indexOf("@")) : "";
 
@@ -67,6 +73,7 @@ function App() {
     }
   }, [dispatch, email]);
 
+  ////////// Post favorites everytime the list changes for each user.
   useEffect(() => {
     if (isInitial) {
       isInitial = false;
@@ -92,6 +99,7 @@ function App() {
     }
   }, [favoritesList, user, isChanged]);
 
+  ////////// For every reload of the page the custom cocktails and favorites of each user will be saved and rendered.
   useEffect(() => {
     const handleFetchData = async () => {
       const response = await fetch(
@@ -105,7 +113,7 @@ function App() {
       if (data === null) {
         return;
       } else {
-        if (data.custom !== undefined) {
+        if (data.custom !== undefined || data.favorites !== undefined) {
           for (const key in data.custom) {
             customCocktails.push({
               id: key,
@@ -113,7 +121,7 @@ function App() {
               cocktail: data.custom[key],
             });
           }
-          if (data.favorites !== undefined) {
+          if (data.favorites !== undefined || data.custom !== undefined) {
             dispatch(menuActions.replaceFavorites(data.favorites));
           }
         }
@@ -126,18 +134,21 @@ function App() {
   return (
     <div className="App">
       <Fragment>
-        <Header />
-        {loginPageShow ? <LoginPage /> : null}
-        {menuShow ? (
-          <>
-            <Input />
-            <Main />
-          </>
-        ) : null}
-        {favoritesShow ? <Favorites /> : null}
+        {!loginPageShow && <Header />}
+        <div className={playAnimation && classes.animateContent}>
+          {isLoading && <Loading />}
+          {loginPageShow ? <LoginPage /> : null}
+          {menuShow ? (
+            <>
+              <Input />
+              <Main />
+            </>
+          ) : null}
+          {favoritesShow ? <Favorites /> : null}
 
-        {!customCocktailShow ? null : <CustomCocktails />}
-        <Footer />
+          {!customCocktailShow ? null : <CustomCocktails />}
+        </div>
+        {!loginPageShow && <Footer />}
       </Fragment>
     </div>
   );

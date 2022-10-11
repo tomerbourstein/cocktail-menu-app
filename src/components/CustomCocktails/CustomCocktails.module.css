@@ -1,0 +1,80 @@
+.customCocktails {
+  width: 92vw;
+  margin: auto;
+}
+
+.mainAndName {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 0.5rem 0rem !important;
+}
+
+.inputCard {
+    /* border-top: 1px solid; */
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.inputCard input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-text-fill-color: rgb(0, 0, 0) !important;
+}
+.inputBox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0.5rem;
+}
+.inputBox svg {
+  color: #944e4e;
+}
+.inputBox div {
+  display: flex;
+}
+
+.chip {
+  max-width: 10rem;
+  flex-wrap: wrap;
+}
+.chip span {
+  font-size: 0.65rem;
+}
+
+.submitBox {
+  margin: 2rem;
+}
+
+.submitButton {
+  width: 17rem;
+  color: #fff;
+  background-color: #f47c7c !important;
+  -moz-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+
+.submitButton:disabled {
+  background-color: #fad4d4 !important;
+}
+
+.submitButton:hover {
+  color: #fff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
+    0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+  -moz-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+
+.customCocktails hr {
+    border: none;
+    margin: 0.5rem auto;
+    border-top: 5px dotted #bbb;
+    border-color:  #EF9F9F;
+    width: 1.5rem;
+
+
+}
