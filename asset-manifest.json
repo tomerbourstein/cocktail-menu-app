@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/%7Bcocktail-menu-app%7D/static/css/main.d589f43f.css",
-    "main.js": "/%7Bcocktail-menu-app%7D/static/js/main.6976899d.js",
-    "static/media/glass-logo.png": "/%7Bcocktail-menu-app%7D/static/media/glass-logo.9a2a57e55e40fec8a68e.png",
-    "index.html": "/%7Bcocktail-menu-app%7D/index.html",
-    "main.d589f43f.css.map": "/%7Bcocktail-menu-app%7D/static/css/main.d589f43f.css.map",
-    "main.6976899d.js.map": "/%7Bcocktail-menu-app%7D/static/js/main.6976899d.js.map"
+    "main.css": "/cocktail-menu-app/static/css/main.d589f43f.css",
+    "main.js": "/cocktail-menu-app/static/js/main.b4b47573.js",
+    "static/media/glass-logo.png": "/cocktail-menu-app/static/media/glass-logo.9a2a57e55e40fec8a68e.png",
+    "index.html": "/cocktail-menu-app/index.html",
+    "main.d589f43f.css.map": "/cocktail-menu-app/static/css/main.d589f43f.css.map",
+    "main.b4b47573.js.map": "/cocktail-menu-app/static/js/main.b4b47573.js.map"
   },
   "entrypoints": [
     "static/css/main.d589f43f.css",
-    "static/js/main.6976899d.js"
+    "static/js/main.b4b47573.js"
   ]
 }
