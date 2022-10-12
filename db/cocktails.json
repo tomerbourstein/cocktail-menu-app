@@ -500,7 +500,7 @@
         ],
         "preperation": "Shake all ingredients with ice and strain into a chilled cocktail glass",
         "served": "straight_up",
-        "garnish":[ "lemon_twist"],
+        "garnish": ["lemon_twist"],
         "strength": 2
       },
       "basil_smash": {
@@ -519,8 +519,255 @@
         "served": "on_the_rocks",
         "garnish": ["basil_leaves"],
         "strength": 2
+      },
+      "50-50_birthday": {
+        "name": "50-50_birthday",
+        "image": "https://www.liquor.com/thmb/hi0wURxe0B5BDJlO-olr1athU2E=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/50-50-Birthday-720x720-primary-91b665e542ef4f7ba4066bf540272ed7.jpg",
+        "ingredients": ["gin", "dry_vermouth", "white_vermouth"],
+        "flavours": ["sweet", "bitter"],
+        "properties": ["citrus", "light"],
+        "receipt": [
+          "1_1/2_oz_gin",
+          "3/4_oz_dry_vermouth",
+          "3/4_oz_white_vermouth"
+        ],
+        "preperation": "Add all ingredients into a mixing glass with ice and stir until well chilled. Strain into a cocktail glass",
+        "served": "straight_up",
+        "garnish": ["lemon_twist"],
+        "strength": 3
+      },
+      "gin_fizz": {
+        "name": "gin_fizz",
+        "image": "https://www.liquor.com/thmb/5e8COyWKwLRzHmZblY_ptkI2yD4=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/gin-fizz-720x720-primary-v3-2c1390963d014e35a01d741df2f9ae77.jpg",
+        "ingredients": [
+          "gin",
+          "lemon_juice",
+          "simple_syrup",
+          "egg_white",
+          "soda"
+        ],
+        "flavours": ["sour", "sweet"],
+        "properties": ["sparkling", "thick", "simple"],
+        "receipt": [
+          "2_oz_gin",
+          "1_oz_lemon_juice",
+          "3/4_oz_simple_syrup",
+          "1/2_oz_egg_white",
+          "1_oz_soda"
+        ],
+        "preperation": "Add the gin, lemon juice, simple syrup and egg white to a shaker without ice, shake for about 15 seconds. Add ice cubes and shake well chilled. Double strain into a chilled collins glass and top with soda",
+        "served": "on_the_rocks",
+        "garnish": ["lemon_slice", "mint_sprig"],
+        "strength": 1
+      },
+      "ginger_gin_fizz": {
+        "name": "ginger_gin_fizz",
+        "image": "https://www.liquor.com/thmb/cnZ6p7MhQrWIY1kIqOxDt0nu3uI=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2016__06__17115737__ginger-fizz-720x720-recipe-ed3cdfbb980b4bb2bfbfb65b0448afcd.jpg",
+        "ingredients": [
+          "ginger_infused_gin",
+          "lemon_juice",
+          "lime_juice",
+          "simple_syrup",
+          "egg_white",
+          "ginger_bitters",
+          "soda"
+        ],
+        "flavours": [""],
+        "properties": [""],
+        "receipt": [
+          "1_1/2_oz_ginger_infused_gin",
+          "1_oz_lemon_juice",
+          "1/4_oz_lime_juice",
+          "1/2_oz_simple_syrup",
+          "1/4_oz_egg_white",
+          "2_dash_ginger_bitters",
+          "1/4_oz_soda"
+        ],
+        "preperation": "Add the gin, lemon, lime, syrup, egg white and ginger bitters to a shaker and dry shake for about 15 seconds. Add ice and shake until well chilled. Double strain into a highball glass. Top with soda",
+        "served": "on_the_rocks",
+        "garnish": ["orange_twist"],
+        "strength": 1
+      },
+      "gin_and_tonic": {
+        "name": "gin_and_tonic",
+        "image": "https://www.liquor.com/thmb/grUJFzXcdOgR9dfVwtohEBiprZk=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2019__09__18090535__Gin-and-Tonic-720x720-recipe-c2e32c4cf53c4ed7a4de20af8e862a12.jpg",
+        "ingredients": ["gin", "tonic_water"],
+        "flavours": ["sour", "sweet", "bitter"],
+        "properties": ["sparkling", "dry", "aromatic"],
+        "receipt": ["2_oz_gin", "4_oz_tonic_water"],
+        "preperation": "Fill a highball glass with ice, then add the gin. Top with the tonic water and gently stir",
+        "served": "on_the_rocks",
+        "garnish": ["lemon_wedge", "orange_wedge", "seasonal_garnish"],
+        "strength": 1
+      },
+      "pink_gin_and_tonic": {
+        "name": "pink_gin_and_tonic",
+        "image": "https://www.liquor.com/thmb/MIzdF71znS_L0DmPIItPibk1fRQ=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/All-the-Labor-Day-Drinks-for-an-Effortless-Labor-Day-pink-plymouth-gin-and-tonic-720x720-slideshow-617ab7dd6b084abfa31920ccaeae9636.jpg",
+        "ingredients": [
+          "gin",
+          "lime_juice",
+          "angostura_bitters",
+          "tonic_water"
+        ],
+        "flavours": ["sour", "bitter"],
+        "properties": ["sparkling", "aromatic", "dry"],
+        "receipt": [
+          "1_1/2_oz_gin",
+          "1/2_oz_lime_juice",
+          "5_dash_angostura_bitters",
+          "3_oz_tonic_water"
+        ],
+        "preperation": "Add the gin, lime juice and bitters into a tall glass filled with ice. Top with the tonic water and stir briefly",
+        "served": "on_the_rocks",
+        "garnish": ["lemon_wedge", "mint"],
+        "strength": 1
+      },
+      "london_mule": {
+        "name": "london_mule",
+        "image": "https://www.liquor.com/thmb/VOiabwlesd3BgL4nJkObFr6r1vU=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/london-mule-720x720-primary-6855087a28af48c7a22be2094d0328f5.jpg",
+        "ingredients": ["gin", "lime_juice", "ginger_beer"],
+        "flavours": ["sour", "sweet", "spicy"],
+        "properties": ["ginger", "sparkling"],
+        "receipt": ["2_oz_gin", "1/2_oz_lime_juice", "3_oz_ginger_beer"],
+        "preperation": "Fill a copper mug with ice, then add the gin and lime juice. Top with the ginger beer and stir briefly",
+        "served": "on_the_rocks",
+        "garnish": ["lemon_wedge", "mint"],
+        "strength": 1
+      },
+      "red_snapper": {
+        "name": "red_snapper",
+        "image": "https://www.liquor.com/thmb/hQT8o0m05qRF0WMH5Bbvpp17H4I=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2017__01__05101425__red-snapper-720x720-recipe-2c4e2543024c4f58bb5aa12a5b964bc4.jpg",
+        "ingredients": [
+          "gin",
+          "tomato_juice",
+          "lemon_juice",
+          "salt",
+          "pepper",
+          "tabasco",
+          "worcestershire_sauce"
+        ],
+        "flavours": ["sour", "spicy", "spiced"],
+        "properties": ["heavy", "seasoned"],
+        "receipt": ["1_1/2_oz_gin", "1/2_oz_lemon_juice", "3_oz_tomato_juice"],
+        "preperation": "Add dashes of Worcestershire Sauce, Tabasco, salt and pepper into highball glass, then pour all ingredients into highball with ice cubes. Stir gently",
+        "served": "on_the_rocks",
+        "garnish": ["celery_stalk", "cornichon", "lemon_slice"],
+        "strength": 1
+      },
+      "pink_lady": {
+        "name": "pink_lady",
+        "image": "https://www.liquor.com/thmb/2TVv505W-HoQE7YgjPNe9MRDZcs=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/pink-lady-720x720-primary-v2-80334dc275ca4c009799a0cf424d9a87.jpg",
+        "ingredients": [
+          "gin",
+          "apple_brandy",
+          "lemon_juice",
+          "grenadine",
+          "egg_white"
+        ],
+        "flavours": ["sweet", "sour"],
+        "properties": ["thick", "heavy"],
+        "receipt": [
+          "1_1/2_oz_gin",
+          "1/2_oz_apple_brandy",
+          "3/4_oz_lemon_juice",
+          "1/2_oz_grenadine",
+          "1/2_oz_egg_white"
+        ],
+        "preperation": "Add all ingredients into a shaker and vigorously dry shake. Add ice and shake again until well chilled. Strain into a chilled cocktail glass",
+        "served": "straight_up",
+        "garnish": ["cherry"],
+        "strength": 2
+      },
+      "vesper": {
+        "name": "vesper",
+        "image": "https://www.liquor.com/thmb/_YduVzA3uhvYyKgC2J-rfmx6pmI=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2018__01__29145254__vesper-720x720-recipe-a8733cdfcfc1495687f1073004e04950.jpg",
+        "ingredients": ["vodka", "gin", "blonde_lillet"],
+        "flavours": ["bitter", "citrus", "tropical"],
+        "properties": ["citrus", "heavy", "strong", "tropical"],
+        "receipt": ["1/2_oz_vodka", "2_oz_gin", "1/4_oz_blonde_lillet"],
+        "preperation": "Shake over ice until well chilled, then strain into a deep goblet",
+        "served": "straight_up",
+        "garnish": ["lemon_twist"],
+        "strength": 3
+      },
+      "tom_collins": {
+        "name": "tom_collins",
+        "image": "https://www.liquor.com/thmb/-K9ud1woazda92Ot0HuyuFeU2NY=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2019__04__03080950__Tom-Collins-720x720-recipe-e87bf7954cdb4438b5e8d21f568cdd6f.jpg",
+        "ingredients": ["gin", "lemon_juice", "simple_syrup", "soda"],
+        "flavours": ["sour", "sweet"],
+        "properties": ["sparkling", "refreshing", "light", "simple"],
+        "receipt": [
+          "2_oz_gin",
+          "1_oz_lemon_juice",
+          "1/2_oz_simple_syrup",
+          "3_oz_soda"
+        ],
+        "preperation": "Add the gin, lemon juice and simple syrup to a Collins glass. Fill with ice, top with club soda and stir",
+        "served": "on_the_rocks",
+        "garnish": ["lemon_slice"],
+        "strength": 1
+      },
+      "killer_queen": {
+        "name": "killer_queen",
+        "image": "https://www.liquor.com/thmb/UFGXM1rtg7TDVkkFtBRrXqCfbWY=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Killer-Queen-Credit-Robin-Wolf_main_720x720-351cf176f6cc4ffa85d4ff2d4d76ade6.jpg",
+        "ingredients": [
+          "aromatic_gin",
+          "white_vermouth",
+          "benedictine",
+          "angostura_bitters"
+        ],
+        "flavours": ["sweet", "bitter"],
+        "properties": ["herbaceous", "aromatic", "floral"],
+        "receipt": [
+          "2_oz_gin",
+          "3/4_oz_white_vermouth",
+          "1/4_oz_benedictine",
+          "4_dash_angostura_bitters"
+        ],
+        "preperation": "Add the gin, white vermouth, Benedictine and bitters into a mixing glass with ice and stir until well chilled. Strain into a coupe glass and spray flower water on top",
+        "served": "straight_up",
+        "garnish": ["lemon_twist"],
+        "strength": 3
+      },
+      "french_75": {
+        "name": "french_75",
+        "image": "https://www.liquor.com/thmb/EVdPV6NT0UwpsqEWRQ1QXF0f3LU=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/french-75-720x720-primary-17fc1ce34c0a49e2ad60eb4a5705c6a2.jpg",
+        "ingredients": ["gin", "lemon_juice", "simple_syrup", "champagne"],
+        "flavours": ["sour", "sweet"],
+        "properties": ["sparkling", "classic"],
+        "receipt": [
+          "1_oz_gin",
+          "1/2_oz_lemon_juice",
+          "1/2_oz_simple_syrup",
+          "3_oz_champagne"
+        ],
+        "preperation": "Add the gin, lemon juice and simple syrup to a shaker with ice and shake until well chilled. Strain into a Champagne glass. Top with the Champagne",
+        "served": "straight_up",
+        "garnish": ["lemon_twist"],
+        "strength": 2
+      },
+      "the_last_word": {
+        "name": "the_last_word",
+        "image": "https://www.liquor.com/thmb/9l0UuoXE5u872YLT2TKDVp1nTeI=/720x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/last-word-720x720-primary-c83c917809af47bf9be9a01c628bbd5e.jpg",
+        "ingredients": [
+          "gin",
+          "green_chartreuse",
+          "maraschino_liqueur",
+          "lime_juice"
+        ],
+        "flavours": ["sour", "sweet"],
+        "properties": ["herbaceous", "dry"],
+        "receipt": [
+          "3/4_oz_gin",
+          "3/4_oz_green_chartreuse",
+          "3/4_oz_maraschino_liqueur",
+          "3/4_oz_lime_juice"
+        ],
+        "preperation": "Add the gin, green Chartreuse, maraschino liqueur and lime juice into a shaker with ice and shake until well chilled. Strain into a chilled coupe glass",
+        "served": "on_the_rocks",
+        "garnish": ["brandied_cherry"],
+        "strength": 2
       }
     }
   }
 }
-
